@@ -1,11 +1,11 @@
-[![Build Status](https://api.travis-ci.com/kesslermaximilian/GeometrieUndTopologie.svg)](https://travis-ci.com/kesslermaximilian/GeometrieUndTopologie)
+![Live PDF status](https://github.com/Zyranix/ADM2-Lecture-Notes/actions/workflows/makefile.yml/badge.svg)
 
 # Discrete Optimization
 
 These are my lecture notes for the module 'Algorithmic Discrete Optimization', taught by [Prof. Dr. Tom McCormick](https://www.sauder.ubc.ca/people/thomas-mccormick) in the summer term 2022 at the TU Berlin. There is no guarantee for completeness or correctness.
 
 - The homepage of the course can also be found [here](https://www3.math.tu-berlin.de/coga/study/teaching/adm-ii-summer-2022/)
-- The [most recent version](https://kesslermaximilian.github.io/GeometrieUndTopologie/2021_Topologie.pdf) of this script is made available with [Travis CI](https://github.com/traviscibot). You can also have a look at the [generated log files](https://kesslermaximilian.github.io/GeometrieUndTopologie/2021_Topologie.log)
+- The [most recent version](https://zyranix.github.io/ADM2-Lecture-Notes/2022_ADM2.pdf) of this script is made available with Github Actions. You can also have a look at the [generated log files](https://zyranix.github.io/ADM2-Lecture-Notes/2022_ADM2.log)
 
 ## Set-up
 This set-up is largely inspired by Maximilian Keßler's set-up for lecture notes. Please refer to [this link](https://gitlab.com/latexci/packages/LatexPackages) for further instructions. This document uses custom packages, so you won't be directly able to compile this document!
