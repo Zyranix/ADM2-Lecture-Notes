@@ -1,0 +1,33 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    env:
+      TEXINPUTS: ${{'LatexPackages//:'}}
+    
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      
+    - name: Handle prerequisits
+      run: make before-install
+      
+    - name: Install packages
+      run: make install-packages
+      
+    - name: Generate output
+      run: make generate-output
+    
+    - uses: peaceiris/actions-gh-pages@v3
+    
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+    
