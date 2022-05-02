@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.5.2)  2 MAY 2022 21:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.5.2)  2 MAY 2022 21:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2700,7 +2700,7 @@ dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/mathabx-type1/mathx10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on full.pdf (15 pages, 267875 bytes).
+Output written on full.pdf (15 pages, 267884 bytes).
 PDF statistics:
  880 PDF objects out of 1000 (max. 8388607)
  420 compressed objects within 5 object streams
