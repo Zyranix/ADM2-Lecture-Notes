@@ -109,6 +109,36 @@ config:
 	@echo "[Push annotated tags by default]"
 	@git config push.followTags true
 
+#### CI stuff
+before-install:
+	@wget 'https://packages.oth-regensburg.de/ctan/macros/latex/contrib/IEEEtran/tools/IEEEtrantools.sty'
+	@sudo chmod +x .ci/git-info-2.sh
+	@sudo ".ci/git-info-2.sh"
+
+install-packages:
+	@sudo apt install -y wget
+	@sudo apt install -y tree
+	@sudo apt install -y texlive-latex-recommended
+	@sudo apt install -y texlive-latex-extra
+	@sudo apt install -y texlive-fonts-extra
+	# @sudo apt install -y texlive-lang-german
+	@sudo apt install -y texlive-science
+	@sudo apt install -y texlive-bibtex-extra
+	@sudo apt install -y lmodern
+	@sudo apt install -y latexmk
+	@sudo apt install -y biber
+	@sudo apt install -y gnuplot
+	@sudo apt install -y make
+
+generate-output: full
+	@mkdir dist
+	@mv full.pdf dist/2022_ADM2.pdf
+	@mv full.log dist/2022_ADM2.log
+	@cd dist/
+	@tree -H '.' -I "index.html" -D --charset utf-8 -T "Discrete Optimization" > index.html
+
+
+
 # See
 # https://stackoverflow.com/a/26339924/16371376
 # for explanation
