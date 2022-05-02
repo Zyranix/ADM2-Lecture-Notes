@@ -1,0 +1,3 @@
+[submodule "LatexPackagesBuild"]
+	path = LatexPackagesBuild
+	url = https://github.com/kesslermaximilian/LatexPackagesBuild/

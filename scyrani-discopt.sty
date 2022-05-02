@@ -1,0 +1,89 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{scyrani-discopt}
+
+%% This is just a collection of the preamble for this lecture so that it can be included in both the master and the full file
+
+\usepackage{mkessler-hypersetup}
+\usepackage{mkessler-math}
+\usepackage[lecture numbers = false, number all = true, number small environments = section, oral remarks = natural, show daggers = false, own environments = on]{mkessler-fancythm}
+\usepackage[index]{mkessler-vocab}
+\usepackage[bibfile=references/bibliography.bib, imagefile=references/images.bib]{mkessler-bibliography}
+\usepackage[fancyhead]{mkessler-lectures}
+\usepackage{mkessler-incfig}
+\usepackage{mkessler-counters}
+\usepackage{mkessler-proof}
+\usepackage{mkessler-exsheet}
+\usepackage{mkessler-figures}
+\usepackage{mkessler-enumerate}
+\usepackage{mkessler-restate}
+
+\usepackage{import}
+% \usepackage[ngerman]{babel}
+\usepackage{todonotes}
+
+% own packages
+\usepackage[ruled,vlined]{algorithm2e}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% own shortcuts
+\newcommand*{\bigO}{\mathrm{O}}
+\newcommand*{\Oh}{\mathrm{O}}
+\newcommand*{\bigOmega}{\Omega}
+\newcommand*{\smallO}{\mathrm{o}}
+\newcommand*{\smallOmega}{\upomega}
+
+\newcommand*{\natnum}{\mathbb{N}}
+\newcommand*{\integers}{\mathbb{Z}}
+\newcommand*{\rationals}{\mathbb{Q}}
+\newcommand*{\realnum}{\mathbb{R}}
+
+\newcommand*{\eps}{\varepsilon}
+
+\newcommand*{\WHILE}{\textsc{While }}
+\newcommand*{\DO}{\textsc{ Do}}
+\newcommand*{\THEN}{\textsc{ Then}}
+\newcommand*{\IF}{\textsc{If }}
+\newcommand*{\END}{\textsc{End }}
+
+\newcommand{\CalA}{\mathcal{A}}
+\newcommand{\CalC}{\mathcal{C}}
+\newcommand{\CalP}{\mathcal{P}}
+\newcommand{\CalM}{\mathcal{M}}
+\newcommand{\CalR}{\mathcal{R}}
+\newcommand{\CalS}{\mathcal{S}}
+
+\newcommand{\AND}{\wedge}
+\newcommand{\OR}{\vee}
+\newcommand{\IMP}{\rightarrow}
+\newcommand{\AEQ}{\Leftrightarrow}
+\newcommand{\EQ}{\equiv}
+\newcommand{\NOT}{\neg}
+\newcommand{\XOR}{\veebar}
+
+\newcommand{\SAT}{\mathsf{SAT}}
+\newcommand{\TSAT}{\mathsf{3SAT}}
+\newcommand{\NC}{\mathsf{NC}}
+\newcommand{\IS}{\mathsf{IS}}
+\newcommand{\CLI}{\mathsf{CLIQUE}}
+\newcommand{\PART}{\mathsf{PART}}
+\newcommand{\TPART}{\mathsf{3PART}}
+\newcommand{\BIP}{\text{0-1-}\mathsf{IP}}
+
+\newcommand{\NP}{\mathbf{NP}}
+\newcommand{\NPC}{\mathbf{NPC}}
+\newcommand{\pP}{\mathbf{P}}
+
+
+\newcommand{\redto}{\varpropto}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\emphasize}[1]{{\color{red} #1}}
+
+\import{inputs/exercises/}{preambleBlatt.tex}
+
+
+\renewenvironment{orga}{\comment}{\endcomment}
+
+
+\usepackage[left = 4cm, right = 4cm]{geometry}

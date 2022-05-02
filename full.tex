@@ -1,0 +1,64 @@
+\documentclass[fancyfoot, git]{mkessler-script}
+
+\course{Discrete Optimization - ADM2}
+\lecturer{Prof. Dr. Tom McCormick}
+\assistant[f]{Svenja Griesbach and Sarah Morell}
+\author{Simon Cyrani}
+
+\usepackage{scyrani-discopt}
+% \setuptodonotes{disable}
+\restatesetup{strict=true}
+\usepackage{grffile}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\maketitle
+
+\import{inputs/}{abstract.tex}
+
+%Table of contents
+\cleardoublepage
+\tableofcontents
+
+%List of lectures with their corresponding keywords
+\cleardoublepage
+\summaryoflectures
+
+\cleardoublepage
+% start lectures
+\part{Lecture notes}
+\import{inputs/lectures/}{lec_01.tex}
+\import{inputs/lectures/}{lec_02.tex}
+\import{inputs/lectures/}{lec_03.tex}
+\import{inputs/lectures/}{lec_04.tex}
+
+% end lectures
+
+%Start appendix
+\cleardoublepage
+\appendix
+\part{Appendix}
+
+%Exercises of the lecture
+\import{inputs/exercises/}{exercises.tex}
+
+%Explanation of environments
+\cleardoublepage
+%    \import{inputs/}{environments.tex}
+
+%Index
+\cleardoublepage
+\printvocabindex
+
+%Image attributions
+\cleardoublepage
+\printimageattributions
+
+%Literature
+\cleardoublepage
+\printliterature
+
+\end{document}
+
+

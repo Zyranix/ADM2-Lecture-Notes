@@ -1,0 +1,39 @@
+\section{Erklärung der Umgebungen}\label{chap:erklärung-der-umgebungen}
+\ifenglish
+    \subsection*{Sprache}
+    Diese Mitschrift wurde auf Englisch kompiliert. Wenn das bewusst der Fall ist, meinetwegen, auch wenn die Mitschrift eigentlich gänzlich auf Deutsch ist. Falls das ein Fehler ist, so kompiliere erneut mit der Option \verb?german?. 
+\fi
+\subsection*{Nummerierung}
+\iflecturenumbers
+    Die Nummerierung in dieser Mitschrift folgt derjenigen der Vorlesung. Das hat den Vorteil, dass die Nummern in dieser Mitschrift auch zum Referenzieren genutzt werden können (z.B. bei Übungsaufgaben). \\
+    Andererseits bedeutet dies, dass es einige Sätze (o.Ä.) gibt, die nicht nummeriert sind.
+\else
+In dieser Mitschrift sind alle Sätze, Korollare, Definitionen und Lemmata \ifnumbersmallenvironments sowie auch alle Beispiele, Bemerkungen, etc\fi nummeriert. \\
+    \Warning Das bedeutet, dass die vorkommenden Nummern von denen der Vorlesung abweichen. Verwendet sie also nicht, um darauf zu referenzieren (z.B. in Übungsblättern).
+\fi
+
+\subsection*{Abweichende Handhabung von Umgebungen}
+    An manchen Stellen wurde die Umgebung einer Aussage verändert\ifshowdaggers, das ist dann mit einem $^\dagger$ markiert:\else.\\\Warning Vorsicht, diese sind nicht speziell gekennzeichnet, lasst euch nicht verwirren.\fi
+    \ifshowdaggers
+    \begin{dlemma}[Einfaches Lemma]
+        Diese Aussage wurde in der Vorlesung erwähnt, allerdings nicht als Lemma, sondern nur im Fließtext oder einem Nebensatz. Da ich der Meinung war, dass sie einen eigenen Platz verdient, ist sie nun ein Lemma.
+    \end{dlemma}
+    Der Inhalt solcher Aussagen ist also Teil der Vorlesung, trotzdem sind solche Stellen sicherlich fehleranfälliger, da ich teilweise umformuliere.
+    \fi %showdaggers
+\ifincludestars
+\subsection*{Kommentare}
+    Diese Mitschrift enthält Kommentare, die von mir selbst hinzugefügt wurden\ifshowstars, diese sind dann mit einem $^*$ gekennzeichnet:\else\\ \Warning Vorsicht, diese sind nicht speziell gekennzeichnet. Es ist also nicht zwischen offiziellen Vorlesungsinhalten und meinen Kommentaren zu unterscheiden!\fi %showstars
+    \begin{remark*}
+        An dieser Stelle hätten wir noch überprüfen müssen, dass X. Das ist klar, weil Y.
+    \end{remark*}
+    Wenn ihr sie lesenswert findet, so tut das, wenn nicht, ignoriert sie einfach. Insbesondere kann es auch hier vermehrt zu Fehlern kommen, seid besonders vorsichtig!\\
+    Es gibt (selten) auch Sätze, Beweise, etc, die mit einem $^*$ versehen sind, das hat dieselbe Bedeutung. Das passiert z.B. wenn in der Vorlesung auf einen Satz verwiesen wird, der nicht behandelt wird, den ich aber an dieser Stelle eingefügt habe. Ihr könnt sie ebenfalls ignorieren.
+\ifincludeoral Diese Mitschrift enthält\else Es gibt auch\fi mündliche Kommentare, d.h. Kommentare, die in der Vorlesung nicht schriftlich festgehalten, aber gesagt wurden. Ich versuche, relevante davon ebenfalls als
+\begin{oral}
+    festzuhalten.
+\end{oral}
+Manchmal sind diese auch mit einem $^\dagger$ markiert, wenn ich das Gefühl hatte, arg abzuschweifen. \\
+{\footnotesize Dass ich mündliche Kommentare so markiere, ist neu, insbesondere ist das am Anfang des Skript wohl noch nicht so.}
+\fi %includestars
+
+    

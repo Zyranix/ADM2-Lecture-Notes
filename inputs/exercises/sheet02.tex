@@ -1,0 +1,41 @@
+\begin{aufgabe}
+	An correct ordering is given by:
+	\begin{align}
+		\bigO\left(\eps^n\right) & \subseteq \bigO\left(n^{\eps-1}\right) \subseteq \bigO\left(n^{-\eps}\right) \subseteq \bigO\left(\frac{\log n}{n^\eps}\right)                                                                              \\
+		                         & \subseteq \bigO\left(\frac{1}{\log n}\right) \subseteq \bigO\left(\frac{\log^2 n}{\log n}\right) \subseteq \bigO\left(\frac{1}{\log^2 n} \right)                                                            \\
+		                         & \subseteq \bigO\left(e^\frac{1}{n}\right) = \bigO\left(1 \right) = \bigO\left(\left(1-\frac{1}{n}\right)^n\right)                                                                  \label{eq:equality_ex21} \\
+		                         & \subseteq \bigO\left(\log n\right) \subseteq \bigO\left(\frac{n^\eps}{\log n} \right)\subseteq  \bigO\left(n^\eps\right) \subseteq \bigO\left(n^\eps \log n\right) \subseteq \bigO\left(n^{1- \eps} \right) \\
+		                         & \subseteq \bigO\left(\frac{n}{\log n}\right) \subseteq \bigO\left(n \log n\right) \subseteq \bigO\left(n^2\right) \subseteq \bigO\left(n^2 \log n\right) \subseteq \bigO\left(n^e \right)                   \\
+		                         & \subseteq \bigO\left(n^{\log n}\right) \subseteq \bigO\left(e^n\right) \subseteq \bigO\left((\log n)^n\right) \subseteq \bigO\left(n! \right)
+	\end{align}
+	These can mostly achieved by the fact that $n^x \in \bigO(n^y)$ if $x \leq y$, and
+	$(\log n) \cdot n^x \in \bigO(n^y)$ if $y > x$, otherwise the other way around. Additionally, it is often useful to consider
+	the logarithm of the functions we compare, because it maintains monotonocity.
+\end{aufgabe}
+\begin{aufgabe}
+	Analoguous to the lecture we can introduce constraints, such that $y_{ij} = x_i \AND x_j$:
+	\begin{align*}
+		y_{ij} & \leq x_i           \\
+		y_{ij} & \leq x_j           \\
+		y_{ij} & \geq x_i + x_j - 1 \\
+		y_{ij} & \in [0,1]
+	\end{align*}
+\end{aufgabe}
+\begin{aufgabe}
+	We can show that $f(x_1) = \max(c_1x_1, c_1p + c_2x_1 - c_2p)$ using a case distinction.
+	\begin{itemize}
+		\item $x_1 = p$: Trivial.
+		\item $x_1 > p$: Consider $c_1 < c_2$. Multiplying by $x_1 - p$ (which is positive)
+		      and rearranging yields $c_1x_1 < c_1p + c_2x_1 - c_2p$.
+		\item $x_1 < p$: Analoguous, but now $x_1 - p$ is negative, which reverses the inequality.
+	\end{itemize}
+	As shown in ADM1, the maximum of linear functions can be written as an LP by introducing a helper variable as follows:
+	\begin{align*}
+		\min         &  & z + \sum_{i=2}^n c_ix_i                             \\
+		\text{s.t. } &  & Ax                      & = b                       \\
+		             &  & l \leq x_1              & \leq u                    \\
+		             &  & x_2,...,x_n             & \leq 0                    \\
+		             &  & z                       & \geq c_1x_1               \\
+		             &  & z                       & \geq c_1p + c_2x_1 - c_2p
+	\end{align*}
+\end{aufgabe}

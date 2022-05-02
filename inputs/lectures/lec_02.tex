@@ -1,0 +1,44 @@
+%! TEX root = ../../master.tex
+\lecture[Intuition why IP is hard. Big-$\mathcal{O}$ notation]{Di 19 Apr 2022}{Introduction II}
+
+
+\section{Modelling using IP}
+
+
+\begin{align*}
+    \text{s.t.} &  & \lambda_1            & \leq y_1                  \\
+                &  & \lambda_i            & \leq y_{i-1} + y_i, & i>1 \\
+                &  & \lambda_k            & \leq y_{k-1}              \\
+                &  & \sum_{i=1}^{k-1} y_i & = 1                       \\
+                &  & y_i                  & \in \mathbb{B}
+\end{align*}
+This allows $\lambda_{i-1}, \lambda_{i}$ to be positive and rest negative.\footnote{Ch 1: Nemhauser Wolsey}.
+
+Now, given an IP $Q$ could be formulated by \emph{many} $P$'s.
+\begin{align*}
+    Q:    & \{0000,1000,0100,0010,0110,0101,0011\}                          \\
+    P_1 = & \{x \in \realnum^4 \mid 93 x_1 + 49x_2 + 37x_3+29x_4 \leq 111\} \\
+    P_2 = & \{x \in \realnum^4 \mid 2 x_1 + x_2 + x_3+ x_4 \leq 2\}         \\
+    P_3 = & \{x \in \realnum^4 \mid 2 x_1 + x_2 + x_3+ x_4 \leq 2,          \\
+          & x_1 + x_2 \leq 1,                                               \\
+          & x_1 + x_3 \leq 1,                                               \\
+          & x_1 + x_4 \leq 1\}                                              \\
+\end{align*}
+Then, $P_3 \subsetneq P_2 \subsetneq P_1$.
+
+\subsection*{Facility location}
+Consider following boolean variables:
+\begin{align*}
+    m: &  & y_i    & = \begin{cases}
+        1, & \text{open warehouse } i, \\
+        0, & \text{else}
+    \end{cases} \\
+    n: &  & x_{ij} & = \begin{cases}
+        1, & \text{if serve store } j \text{ from warehouse } i, \\
+        0, & \text{else}
+    \end{cases}
+\end{align*}
+
+\subsection*{Complexity}
+\emph{Question:} Easy vs. hard?\newline
+(some recap of big-$\mathcal{O}$-notation and $\mathcal{P}$ vs. $\mathcal{NP}$)\newline

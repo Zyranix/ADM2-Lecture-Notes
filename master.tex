@@ -1,0 +1,34 @@
+% master is lecture-only
+
+\documentclass[a4paper, english, lecturenumbers = true, number small environments = theorem, hide version]{mkessler-script}
+
+\course{Discrete Optimization - ADM2}
+\lecturer{Prof. Dr. Tom McCormick}
+\assistant[f]{Svenja Griesbach and Sarah Morell}
+\author{Simon Cyrani}
+
+\usepackage{scyrani-discopt}
+\restatesetup{strict=false}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+    {\color{red} Warning:} This is the working copy of my lecture notes. It might contain stuff I still want to fix, or that are missing.
+\end{abstract}
+\newpage
+\listoftodos
+\newpage
+\summaryoflectures
+\newpage
+% start lectures
+\setcounter{abspage}{7}
+\setcounter{page}{8}
+\setcounter{bookmark@seq@number}{1}
+\import{inputs/lectures/}{lec_01.tex}
+\import{inputs/lectures/}{lec_02.tex}
+\import{inputs/lectures/}{lec_03.tex}
+\import{inputs/lectures/}{lec_04.tex}
+% end lectures
+\end{document}

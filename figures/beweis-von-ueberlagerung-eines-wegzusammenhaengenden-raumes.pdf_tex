@@ -1,0 +1,102 @@
+%% Creator: Inkscape inkscape 0.92.5, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{372.12955505bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.8495156)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.93585392,0.70084837){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$e$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.83617487,0.78387943){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$U$\end{tabular}}}}%
+    \put(0.86100173,0.58588276){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$E$\end{tabular}}}}%
+    \put(0.8752228,0.04723844){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$X$\end{tabular}}}}%
+    \put(0.78825694,0.63400827){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$U'$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.77890668,0.43563198){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p|_{U'}$\end{tabular}}}}%
+    \put(0.76296213,0.07157969){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p(U')$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.93122336,0.77700839){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}${\color{red} U''}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.93370898,0.17254112){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p(e)$\end{tabular}}}}%
+    \put(0.92581847,0.24532612){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}${\color{red} p(U'')}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.93128682,0.21396448){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}${\color{blue} V'}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.93362297,0.74151599){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}${\color{blue} V}$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.25432664,0.69928691){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$C$\end{tabular}}}}%
+    \put(0.52039779,0.13318994){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.61089582,0.19561475){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$U$\end{tabular}}}}%
+    \put(0.5779597,0.12568904){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.36974358,0.30895509){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\pr_V$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.49287261,0.46255032){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$u$\end{tabular}}}}%
+    \put(0.4558356,0.49736207){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\cong$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.28267114,0.84684227){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p^{-1} (V)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=13]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(-0.00097681,0.46073118){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$V\times p^{-1} (x)$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=14]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.61190912,0.3877652){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=15]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.36366292,0.15569333){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$p(c)$\end{tabular}}}}%
+    \put(0.55819821,0.04360248){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$x$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=16]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.40111882,0.08008552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$w$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=17]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.39800997,0.66583937){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$c$\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=18]{beweis-von-ueberlagerung-eines-wegzusammenhaengenden-raumes.pdf}}%
+    \put(0.46253869,0.64010555){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}$\tilde{w}$\end{tabular}}}}%
+  \end{picture}%
+\endgroup%
