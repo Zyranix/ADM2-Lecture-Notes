@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.5.2)  2 MAY 2022 21:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.5.3)  3 MAY 2022 11:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2551,66 +2551,123 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 35.
 [8]
 Package hyperref Info: bookmark level for unknown strategy defaults to 0 on inp
-ut line 44.
+ut line 45.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 52.
+(mdframed)              on input line 53.
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 59.
+ine 60.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 61.
+(mdframed)              on input line 62.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 66.
+(mdframed)              on input line 67.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 77.
+(mdframed)              on input line 78.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 83.
+(mdframed)              on input line 84.
  [9]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 141.
+(mdframed)              on input line 142.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 143.
+(mdframed)              on input line 144.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 148.
+(mdframed)              on input line 149.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 154.
+(mdframed)              on input line 155.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 160.
+(mdframed)              on input line 161.
  [10]
-Package mdframed Info: Not enough space on this page on input line 166.
+Package mdframed Info: Not enough space on this page on input line 167.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 168.
+(mdframed)              on input line 169.
 Package hyperref Info: bookmark level for unknown sketch defaults to 0 on input
- line 171.
+ line 172.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 178.
+(mdframed)              on input line 179.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 181.
+(mdframed)              on input line 182.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 185.
+(mdframed)              on input line 186.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 190.
+(mdframed)              on input line 191.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 196.
-) [11]
+(mdframed)              on input line 197.
+) (./inputs/lectures/lec_05.tex
+Overfull \hbox (27.47742pt too wide) in paragraph at lines 3--3
+[]$[]$ 
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 3.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 7.
+[11]
+Package mdframed Info: Not enough space on this page on input line 9.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 11.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 15.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 25.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 29.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 33.
+Package hyperref Info: bookmark level for unknown openquestion defaults to 0 on
+ input line 33.
+<figures/np-not-p.png, id=286, 455.7025pt x 319.1925pt>
+File: figures/np-not-p.png Graphic file (type png)
+<use figures/np-not-p.png>
+Package pdftex.def Info: figures/np-not-p.png  used on input line 37.
+(pdftex.def)             Requested size: 145.86694pt x 102.1729pt.
+File: figures/np-not-p.png Graphic file (type png)
+<use figures/np-not-p.png>
+Package pdftex.def Info: figures/np-not-p.png  used on input line 38.
+(pdftex.def)             Requested size: 145.86694pt x 102.1729pt.
+Package hyperref Info: bookmark level for unknown recall defaults to 0 on input
+ line 57.
+ [12 <./figures/np-not-p.png>]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 69.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 74.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 81.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 89.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 104.
+ [13]) [14]
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 40.
+less on input line 41.
 
 (./inputs/exercises/exercises.tex (./inputs/exercises/sheet01.tex
 Package mdframed Info: mdframed detected package amsthm 
@@ -2629,45 +2686,45 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 25.
- [12
+ [15
 
-])) [13]
+])) [16]
 runsystem(makeindex vocabindex.idx)...executed safely (allowed).
 
- (./vocabindex.ind) [14
+ (./vocabindex.ind) [17
 
 
 
 ]
 
-Package biblatex Warning: Type 'image' not found on input line 56.
+Package biblatex Warning: Type 'image' not found on input line 57.
 
 
-LaTeX Warning: Empty bibliography on input line 56.
+LaTeX Warning: Empty bibliography on input line 57.
 
-[15
+[18
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 62.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
  (./full.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 62.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
 Package rerunfilecheck Info: File `full.out' has not changed.
-(rerunfilecheck)             Checksum: 5D5F479A0C953E587FC05A78C8303455;646.
+(rerunfilecheck)             Checksum: 319254AE344A8ACA1F459BE32301CB05;647.
 Package logreq Info: Writing requests to 'full.run.xml'.
 \openout1 = `full.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52813 strings out of 483107
- 1152640 string characters out of 5964631
- 2003385 words of memory out of 5000000
- 66562 multiletter control sequences out of 15000+600000
- 570386 words of font info for 145 fonts, out of 8000000 for 9000
+ 52954 strings out of 483107
+ 1155294 string characters out of 5964631
+ 2006669 words of memory out of 5000000
+ 66659 multiletter control sequences out of 15000+600000
+ 570686 words of font info for 146 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 87i,16n,110p,3460b,1529s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,16n,110p,3460b,1717s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/runner/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1000.60
 0pk> </home/runner/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.
 600pk> </home/runner/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt100
@@ -2700,10 +2757,10 @@ dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/mathabx-type1/mathx10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on full.pdf (15 pages, 267884 bytes).
+Output written on full.pdf (18 pages, 286377 bytes).
 PDF statistics:
- 880 PDF objects out of 1000 (max. 8388607)
- 420 compressed objects within 5 object streams
- 151 named destinations out of 1000 (max. 500000)
- 205 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 963 PDF objects out of 1000 (max. 8388607)
+ 483 compressed objects within 5 object streams
+ 189 named destinations out of 1000 (max. 500000)
+ 210 words of extra memory for PDF output out of 10000 (max. 10000000)
 
