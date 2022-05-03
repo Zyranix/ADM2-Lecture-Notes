@@ -1,20 +1,18 @@
-name: Makefile CI
+name: Make and Deploy
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
-    env:
-      TEXINPUTS: ${{'LatexPackages//:'}}
-    
+  build-and-deploy:    
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
       
-    - name: Handle prerequisits
+    - name: Handle prerequisites
       run: make before-install
       
     - name: Install packages
@@ -23,11 +21,9 @@ jobs:
     - name: Generate output
       run: make generate-output
     
-    - uses: peaceiris/actions-gh-pages@v3
-    
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        branch: live-script # The branch the action should deploy to.
+        folder: dist # The folder the action should deploy.
     
