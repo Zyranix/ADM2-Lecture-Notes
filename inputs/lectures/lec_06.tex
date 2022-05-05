@@ -1,0 +1,156 @@
+%! TEX root = ../../master.tex
+\lecture[$\coNP$. Ellipsoid method. Separation vs. optimization.]{Di 03 May 2022}{Ellipsoid method}
+\todo{Content lec06}
+\begin{theorem}[Minkowski]
+    For a polyhedron $P$ it holds $x \in P$ iff there exist vertices $v_1,...,v_k$
+    and rays $r_1, ..., r_l$, such that
+    \begin{align*}
+        \sum_i \lambda v_i + \sum_j \mu_j r_j & = x    \\
+        \sum_i \lambda_i                      & = 1    \\
+        \lambda, \mu                          & \geq 0
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    See ADM1.
+\end{proof}
+\todo{add ref HW?}
+\begin{conclusion}
+    Depending on the representation we have, we have different ways to solve $\OPT$ and $\SEP$:
+
+    \begin{tabular}{lll}
+                                    & Hull repr.                                & Vertex-repr                        \\ \cline{2-3}
+        \multicolumn{1}{l|}{$\OPT$} & \multicolumn{1}{l|}{LP Simplex/Ellipsoid} & \multicolumn{1}{l|}{Brute Force}   \\ \cline{2-3}
+        \multicolumn{1}{l|}{$\SEP$} & \multicolumn{1}{l|}{Brute Force}          & \multicolumn{1}{l|}{LP (Homework)} \\ \cline{2-3}
+    \end{tabular}
+\end{conclusion}
+\todo{picture example}
+\begin{example}
+    Consider the $n$-cube $C^n \coloneqq \{x \in \realnum^n \mid -1 \leq x_i \leq 1\}$.
+    It has $2n$ facets, but $2^n$ vertices.
+
+    Now, consider the polar of $C^n$, which can be shown to be the $n$-octahedron $O^n$.
+    Remember the intuition, that the polar exchanges vertices with facets. Indeed it holds that
+    now, we have $2^n$ facets, but only $2n$ vertices.
+\end{example}
+\todo{hyperlink polymake}
+\begin{info}
+    Polymake is a tool for converting between H-representation and V-representation.
+\end{info}
+\begin{question}
+    Consider the problem of finding a solution $x$ to $Ax=b$.
+    How do we construct succinct certificates of feasibility and infeasibility?
+\end{question}
+\begin{theorem}
+    Exactly one of the following systems is feasible:
+    \begin{align*}
+        Ax & =b & \text{vs.} &  & y^TA & =0 \\
+           &    &            &  & y^Tb & =1 \\
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    Suppose both are feasible. Then we have solutions $y^0,x^0$, and can construct following contradiction:
+    \begin{align*}
+                        &  & Ax^0                        & = b            \\
+        \Leftrightarrow &  & \underbrace{(y^0)^TA}_0 x^0 & = (y^0)^Tb = 1
+    \end{align*}
+    It remains to proove at least one system is feasible. We can use \vocab{Gaussian Elimination} for that:
+    Gaussian Elimination either yields a solution $x^0$ we can use as a succinct certificate for feasibility,
+    or determine it is infeasible by yielding the row multiplier $y^0$ as a succinct certificate of infeasibility.
+\end{proof}
+\begin{strategy}
+    The method we used in previous proof is called \vocab{Theorem of the Alternative}.
+\end{strategy}
+\begin{question}
+    Now consider the problem of finding a solution $x$ to $Ax \leq b$.
+    How do we construct succinct certificates of feasibility and infeasibility?
+\end{question}
+\begin{theorem}[Farkas Lemma]
+    \label{thm:farkas}
+    Exactly one of the following systems is feasible:
+    \begin{align*}
+        Ax & \leq b & \text{vs.} &  & y^TA & =0     \\
+           &        &            &  & y^Tb & <0     \\
+           &        &            &  & y    & \geq 0 \\
+    \end{align*}
+    This is also known as \vocab{Farkas Lemma}.
+\end{theorem}
+\begin{proof}
+    Suppose both are feasible. Analoguous to previous proof we can see the contradiction:
+    \begin{align*}
+                        &  & Ax^0                        & \leq b            \\
+        \Leftrightarrow &  & \underbrace{(y^0)^TA}_0 x^0 & \leq (y^0)^Tb < 0
+    \end{align*}
+    At least one system is feasible, which we can see by using Phase 1 of the Simplex Algorithm, and the Ellipsoid Method,
+    which can generate certificates $x$ or else $y$.
+\end{proof}
+\begin{definition}[Diophantine equations]
+    An equation of the form $Ax=b$, for $x \in \integers^n$, is called \vocab{diophantine equation}.
+\end{definition}
+\begin{theorem}
+    Exactly one of following is feasible:
+    \begin{align*}
+        Ax & \leq b          & \text{vs.} &  & y^TA & \in \integers^n    \\
+        x  & \in \integers^n &            &  & y^Tb & \not \in \integers \\
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    Suppose both are feasible. Then
+    \begin{align*}
+                        &  & Ax^0                                                               & = b                                          \\
+        \Leftrightarrow &  & \underbrace{(y^0)^TA}_{\integers^n} \underbrace{x^0}_{\integers^n} & = \underbrace{(y^0)^Tb}_{\not \in \integers}
+    \end{align*}
+    We can use the \vocab{Hermite Normal Form} algorithm to show that at least one system is feasible.
+    Note that HNF is a polynomial algorithm.
+\end{proof}
+\begin{conclusion}
+    Summing everything up for feasibility of linear systems:
+
+    \begin{tabular}{lll}
+                                    & continuous                & integer                           \\ \cline{2-3}
+        \multicolumn{1}{l|}{$=$}    & \multicolumn{1}{l|}{G.E.} & \multicolumn{1}{l|}{HNF}          \\ \cline{2-3}
+        \multicolumn{1}{l|}{$\leq$} & \multicolumn{1}{l|}{LP}   & \multicolumn{1}{l|}{not possible} \\ \cline{2-3}
+    \end{tabular}
+
+    The problem with integer inequality systems is missing duality, e.g. there is no way of generating succinct certificates for verifying infeasibility, making
+    it impossible to use the Theorem of the Alternative.
+\end{conclusion}
+Another usage of Theorem of the Alternative:
+\begin{align*}
+    Ax & = b    & \Leftrightarrow                        &  & Ax                            & \leq b       \\
+    x  & \geq b &                                        &  & -Ax                           & \leq -b      \\
+       &        &                                        &  & -x                            & \leq 0       \\
+    \\
+       &        & \overset{\ref{thm:farkas}}{\text{vs.}} &  & (y^1)^TA - (y^2)^TA - (y^3)^T & = 0          \\
+       &        &                                        &  & (y^1)^Tb - (y^2)^Tb           & <0           \\
+       &        &                                        &  & y^1,y^2,y^3                   & \geq 0       \\
+    \\
+       &        & \Leftrightarrow                        &  & y^TA                          & \geq 0       \\
+       &        &                                        &  & y^Tb                          & < 0          \\
+       &        &                                        &  & y                             & \text{ free} \\
+\end{align*}
+\begin{theorem}[Gourdan]
+    Consider $Ax < 0$.
+\end{theorem}
+\todo{write Gourdan}
+Consider an LP with lower and upper bounds:
+\begin{align*}
+    \min \quad c^Tx \\
+    Ax=b            \\
+    l \leq x \leq u
+\end{align*}
+Decompose:
+\begin{align*}
+    \min \quad c^Tx \\
+    Ax=b            \\
+    x \geq l        \\
+    -x \geq u       \\
+    x \text{ free}
+\end{align*}
+Dualize:
+\begin{align*}
+    \max \quad b^Ty + l^T\lambda - u^T \mu \\
+    y^TA + \lambda^T - \mu^T = c^T         \\
+    \lambda,\mu \geq 0                     \\
+    y \text{ free}
+\end{align*}
+Rewrite

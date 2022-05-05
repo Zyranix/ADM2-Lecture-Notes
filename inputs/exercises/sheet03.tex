@@ -1,0 +1,43 @@
+\begin{aufgabe}
+	\begin{enumerate}
+		\item We can show easily that $\mathsf{SPATH} \in \pP$ by using the fact from ADM1, that breadth-first search started from $s$
+		      finds a shortest path to $t$ in polynomial time. Therefore, if the shortest path has length $k^* \leq k$, we can return true, and false otherwise.
+		\item We first show $\mathsf{LPATH} \in \NP$: Suppose an instance of $\mathsf{LPATH}$ is true, then there is a path of at least length $k$.
+		      Therefore, we can simply use this path as a succinct certificate and verify in polynomial time that the path is indeed valid.
+
+		      It remains to show that we can reduce a $\NP$-complete problem to $\mathsf{LPATH}$.
+		      It suffices to show $\mathsf{UHAMPATH} \redto \mathsf{LPATH}$: Suppose we have an instance $((V,E),s,t)$ of $\mathsf{UHAMPATH}$.
+		      We can simply reduce it to the problem of finding a path of at least length $|V|-1$ starting in $s$ and ending in $t$, because
+		      every such path is indeed a hamiltonian path, because every vertex needs to be visited exactly once.
+		      Therefore, if there is a hamiltonian path, it is already a path of at least length $|V|-1$.
+		      For the other direction, if there is a path of at least length $|V|-1$, then it must visit every node exactly once in order to be a valid path.\\
+		      This shows that the reduction is Yes-preserving.
+	\end{enumerate}
+\end{aufgabe}
+\begin{aufgabe}
+	If $\mathsf{DOUBLESAT}$ is true, then we can choose any two valid assignments as a succinct certificate
+	and easily verify their correctness in polynomial time.
+
+	It remains to show $\SAT \redto \mathsf{DOUBLESAT}$: Starting from our $\SAT$-instance,
+	we can simply introduce two new variables $a,b$ and a new clause $a \OR b$.
+	This construction is Yes-preserving, because if the original instance is infeasible, the
+	new instance still has no assignments. On the other hand, if there is a valid assignment in the original,
+	then we now have at least 3 valid instances for different assignments of $a$ and $b$.
+\end{aufgabe}
+\begin{aufgabe}
+	We notice that $a \OR b$ is equivalent to $\neg a \IMP b$, and $\neg b \IMP a$.
+	By doing this for all clauses, we can construct a graph with the literals as vertices,
+	and the implications as directed edges. Now, checking for each literal pair $l, \neg l$ if both can reach
+	one another by a directed path suffices to show feasibility:
+
+	If previous condition holds true, then by logic it must hold that a feasible assignment satisfies $l \Leftrightarrow \neg l$,
+	which is impossible. On the other hand, if this is never the case, then there must be a feasible solution:
+
+	We can construct this solution by iteratively setting either $l$ or $\neg l$ to true, depending if $l \IMP \neg l$ holds, and then
+	also set every implied variable to true. If we would encounter a variable $r$ which is already false, then
+	$\neg r$ must be true, and therefore all further implications would need to be true by construction.
+	Because $l \IMP r$, also $\neg r \IMP \neg l$, meaning that $l$ would be already false - contradiction!\\
+	Therefore, our construction always works.
+
+
+\end{aufgabe}
