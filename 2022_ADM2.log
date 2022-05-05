@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.5.3)  3 MAY 2022 11:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.5.5)  5 MAY 2022 11:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2637,7 +2637,7 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 33.
 Package hyperref Info: bookmark level for unknown openquestion defaults to 0 on
  input line 33.
-<figures/np-not-p.png, id=286, 455.7025pt x 319.1925pt>
+<figures/np-not-p.png, id=298, 455.7025pt x 319.1925pt>
 File: figures/np-not-p.png Graphic file (type png)
 <use figures/np-not-p.png>
 Package pdftex.def Info: figures/np-not-p.png  used on input line 37.
@@ -2647,27 +2647,84 @@ File: figures/np-not-p.png Graphic file (type png)
 Package pdftex.def Info: figures/np-not-p.png  used on input line 38.
 (pdftex.def)             Requested size: 145.86694pt x 102.1729pt.
 Package hyperref Info: bookmark level for unknown recall defaults to 0 on input
- line 57.
+ line 58.
  [12 <./figures/np-not-p.png>]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 69.
+(mdframed)              on input line 70.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 74.
+(mdframed)              on input line 75.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 81.
+(mdframed)              on input line 82.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 89.
+(mdframed)              on input line 90.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 104.
- [13]) [14]
+(mdframed)              on input line 105.
+ [13]) (./inputs/lectures/lec_06.tex
+Overfull \hbox (27.47742pt too wide) in paragraph at lines 3--3
+[]$[]$ 
+ []
+
+
+LaTeX Warning: Marginpar on page 14 moved.
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 18.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 28.
+Package hyperref Info: bookmark level for unknown info defaults to 0 on input l
+ine 37.
+
+Overfull \hbox (28.40027pt too wide) in paragraph at lines 37--38
+[]\T1/cmr/bx/n/10 Information. []\T1/cmr/m/n/10 Poly-make is a tool for con-ver
+t-ing be-tween H-representation and V-representation. 
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 40.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 44.
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 49.
+[14]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 64.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 67.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 86.
+Package mdframed Info: Not enough space on this page on input line 88.
+ [15]
+Package mdframed Info: Not enough space on this page on input line 88.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 90.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 106.
+ [16]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 131.
+) [17]
 
 Package Fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 41.
+less on input line 42.
 
 (./inputs/exercises/exercises.tex (./inputs/exercises/sheet01.tex
 Package mdframed Info: mdframed detected package amsthm 
@@ -2686,42 +2743,54 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 25.
- [15
+ [18
 
-])) [16]
+]) (./inputs/exercises/sheet03.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 18.
+ [19]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 28.
+))
+[20]
 runsystem(makeindex vocabindex.idx)...executed safely (allowed).
 
- (./vocabindex.ind) [17
+ (./vocabindex.ind) [21
 
 
 
 ]
 
-Package biblatex Warning: Type 'image' not found on input line 57.
+Package biblatex Warning: Type 'image' not found on input line 58.
 
 
-LaTeX Warning: Empty bibliography on input line 57.
+LaTeX Warning: Empty bibliography on input line 58.
 
-[18
+[22
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 63.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 63.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 64.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 64.
  (./full.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 63.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 63.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 64.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 64.
 Package rerunfilecheck Info: File `full.out' has not changed.
-(rerunfilecheck)             Checksum: 319254AE344A8ACA1F459BE32301CB05;647.
+(rerunfilecheck)             Checksum: 910310B149E6A4AE4B759EA8847AF3B0;788.
 Package logreq Info: Writing requests to 'full.run.xml'.
 \openout1 = `full.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52954 strings out of 483107
- 1155294 string characters out of 5964631
- 2006669 words of memory out of 5000000
- 66659 multiletter control sequences out of 15000+600000
+ 53057 strings out of 483107
+ 1157256 string characters out of 5964631
+ 2015567 words of memory out of 5000000
+ 66712 multiletter control sequences out of 15000+600000
  570686 words of font info for 146 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  87i,16n,110p,3460b,1717s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2756,11 +2825,12 @@ mf-dist/fonts/type1/public/mathabx-type1/matha10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/mathabx-type1/matha7.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/mathabx-type1/mathx10.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on full.pdf (18 pages, 286377 bytes).
+ts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on full.pdf (22 pages, 307933 bytes).
 PDF statistics:
- 963 PDF objects out of 1000 (max. 8388607)
- 483 compressed objects within 5 object streams
- 189 named destinations out of 1000 (max. 500000)
- 210 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1058 PDF objects out of 1200 (max. 8388607)
+ 564 compressed objects within 6 object streams
+ 233 named destinations out of 1000 (max. 500000)
+ 226 words of extra memory for PDF output out of 10000 (max. 10000000)
 
