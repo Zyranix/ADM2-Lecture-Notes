@@ -46,61 +46,98 @@ As a consequence, it is sufficient to solve the $\LP$
     Computing $A',b'$ is non-trivial! In fact, computing the \vocab{integer hull} $\conv(Q)$
     is what makes $\IP$ hard.
 \end{warning}
-In fact, we can gather more evidence that $\IP$ must be hard.
-\begin{enumerate}
-    \item Consider a polyhedron $P = \{x \in \realnum^n \mid Ax=b\}$ and its integer hull $Q$.
-          Even though $P$ can be "smooth" (e.g. cube), its integer hull can look more like a "disco ball" with many facets.
-    \item In real life, many problems can be modeled with decision variables. Let's have a closer look:
-          \begin{theorem}
-              Every logical statement can be expressed with integer programming.
-          \end{theorem}
-          \begin{proof}
-              It suffices to show that for variables $x_1,x_2,y \in \bool$ we can find $\IP$s that model $\AND, \OR, \NOT$.
-              \begin{itemize}
-                  \item $y = x_1 \AND x_2$ can be modeled as
-                        \begin{align*}
-                            y & \leq x_1           \\
-                            y & \leq x_2           \\
-                            y & \geq x_1 + x_2 - 1
-                        \end{align*}
-                  \item $y \coloneqq x_1 \OR x_2$ can be modeled as
-                        \begin{align*}
-                            y & \geq x_1       \\
-                            y & \geq x_2       \\
-                            y & \leq x_1 + x_2
-                        \end{align*}
-                  \item $y \coloneqq \neg x$ can be modeled as
-                        \begin{align*}
-                            y & = 1- x
-                        \end{align*}
-              \end{itemize}
-          \end{proof}
-    \item $\IP$ can handle non-convex problems.
-          \begin{theorem}
-              $\IP$ can model (finite) unions of polyhedra, e.g. non-convex problems.
-          \end{theorem}
-          \begin{proof}
-              Consider
+
+\subsection{$\IP$ is "hard"}
+We can gather more evidence that $\IP$ must be hard.
+\begin{theorem}
+    \label{thm:ip-logical-decomposition}
+    Every logical statement can be expressed with integer programming.
+\end{theorem}
+\begin{proof}
+    It suffices to show that for variables $x_1,x_2,y \in \bool$ we can find $\IP$s that model $\AND, \OR, \NOT$.
+    \begin{itemize}
+        \item $y = x_1 \AND x_2$ can be modeled as
               \begin{align*}
-                  P \coloneqq \bigcup_{i=1}^k \underbrace{\{x \mid A_ix \leq b_i\}}_{P_i}
+                  y & \leq x_1           \\
+                  y & \leq x_2           \\
+                  y & \geq x_1 + x_2 - 1
               \end{align*}
-              and introduce auxiliary binary variables
+        \item $y \coloneqq x_1 \OR x_2$ can be modeled as
               \begin{align*}
-                  y_i \coloneqq \begin{cases}
-                      1, & \text{if $x \in P_i$},   \\
-                      0, & \text{if we don't care.} \\
-                  \end{cases}
+                  y & \geq x_1       \\
+                  y & \geq x_2       \\
+                  y & \leq x_1 + x_2
               \end{align*}
-              Now, assume $M \in \realnum$ large enough (\vocab[Big-M method]{Big-$M$ method}), such that
+        \item $y \coloneqq \neg x$ can be modeled as
               \begin{align*}
-                  P_i \subset \overline{P} \coloneqq \{x \mid A_ix \leq b_i + M \cdot \mathbf{1}\}
+                  y & = 1- x
               \end{align*}
-              for all $i$. Thus, we can construct following $\IP$:
-              \begin{mini*}{x}{w^Tx}{}{}
-                  \addConstraint{A_ix}{\leq b_i + (1-y_i) M \cdot \mathbf{1}, \quad}{i=1, \dots, k}
-                  \addConstraint{\sum_i y_i}{=1}
-              \end{mini*}
-              This forces exactly one $y_i$ to $1$, resulting that $x \in P_i$ and $x \in \overline{P}$ is sufficient.
-              Further information can be found in \cite[Ch. 1]{int-comb-optimization}.
-          \end{proof}
-\end{enumerate}
+    \end{itemize}
+\end{proof}
+\begin{theorem}
+    \label{thm:ip-model-union}
+    $\IP$ can model (finite) unions of polyhedra, e.g. non-convex problems.
+\end{theorem}
+\begin{proof}
+    Consider
+    \begin{align*}
+        P \coloneqq \bigcup_{i=1}^k \underbrace{\{x \mid A_ix \leq b_i\}}_{P_i}
+    \end{align*}
+    and introduce auxiliary binary variables
+    \begin{align*}
+        y_i \coloneqq \begin{cases}
+            1, & \text{if $x \in P_i$},   \\
+            0, & \text{if we don't care.} \\
+        \end{cases}
+    \end{align*}
+    Now, assume $M \in \realnum$ large enough (\vocab[Big-M method]{Big-$M$ method}), such that
+    \begin{align*}
+        P_i \subset \overline{P} \coloneqq \{x \mid A_ix \leq b_i + M \cdot \mathbf{1}\}
+    \end{align*}
+    for all $i$. Thus, we can construct following $\IP$:
+    \begin{mini*}{x}{w^Tx}{}{}
+        \addConstraint{A_ix}{\leq b_i + (1-y_i) M \cdot \mathbf{1}, \quad}{i=1, \dots, k}
+        \addConstraint{\sum_i y_i}{=1}
+    \end{mini*}
+    This forces exactly one $y_i$ to $1$, resulting that $x \in P_i$ and $x \in \overline{P}$ is sufficient.
+    We call this method \vocab[Big-M method!righthandside]{righthandside Big-$M$}, short RHS.
+    Further information can be found in \cite[Ch. 1]{int-comb-optimization}.
+\end{proof}
+
+\begin{note}
+    It's also possible to handle $M$ as a symbolic value, but this makes other things more complicated.
+\end{note}
+
+\begin{problem}
+Finding $M$ big enough can make $\LP$ hard to solve, because of matrix-inversions getting numerically unstable.
+\end{problem}
+
+\begin{proof}[Alternative proof of \autoref{thm:ip-model-union}]
+    Assume that we can bound each $x \in P_i$ by $u_i$, i.e. $x \leq u_i$  (note that this is basically a hidden big-$M$!).
+    Now we can disaggregate $x$ for each $P_i$ as its own private $x_i \in \realnum^k$, and analogously introduce $y_i \in \bool$ to restrict ourselves to one polyhedron:
+    \begin{mini*}{x}{w^Tx}{}{}
+        \addConstraint{A_ix_i}{\leq y_ib_i, \quad}{i=1,\dots,k}
+        \addConstraint{x_i}{\leq y_iu_i, \quad}{i=1,\dots,k}
+        \addConstraint{\sum_{i=1}^n y_i}{=1}
+        \addConstraint{\sum_{i=1}^n x_i}{=x}
+        \addConstraint{x,x_i}{\geq 0}
+    \end{mini*}
+    Again, exactly one $y_i$ is equal to $1$, forcing the other $x_j$ to be equal to $0$,
+    and thus setting $x$ to $x_i$.
+    We call this method \vocab[Big-M method!upper bound]{upper bound on $x$ Big-$M$}, short UBX.
+\end{proof}
+\begin{remark}
+    In general, it cannot be said if RHS or UBX is better.
+    Even though RHS only introduces $n$ new variables as opposed to UBX's $nk$ variables, UBX's disaggregated
+    formulation often is \emph{tighter} in the sense that the $\LP$ relaxation is closer to the integer hull.
+\end{remark}
+
+\begin{conclusion}
+    Summarizing, following facts deliver an intuition why $\IP$ should be hard:
+    \begin{enumerate}
+        \item Consider a polyhedron $P = \{x \in \realnum^n \mid Ax=b\}$ and its integer hull $Q$.
+              Even though $P$ can be "smooth" (e.g. cube), its integer hull can look more like a "disco ball" with many facets.
+        \item In real life, many problems can be modeled with decision variables. $\IP$ can handle this, see \autoref{thm:ip-logical-decomposition}.
+        \item Additionally, $\IP$ also can handle non-convex problems, see \autoref{thm:ip-model-union}.
+    \end{enumerate}
+\end{conclusion}
