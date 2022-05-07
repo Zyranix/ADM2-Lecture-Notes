@@ -1,25 +1,106 @@
 %! TEX root = ../../master.tex
 \lecture[Definitions for ILP. Binary LP. Disaggregation.]{Di 19 Apr 2022}{Introduction}
-\begin{orga}
+% \begin{orga}
+%     \begin{itemize}
+%         \item    Die Vorlesung wird aufgezeichnet.
+%         \item Wir duzen uns.
+%         \item Für die Übungen muss man sich auf eCampus anmelden, ob Do, 20:00 Uhr (Do 15 Apr 2021 20:00 Uhr)
+%         \item Die Übungsblätter werden Donnerstag zur Verfügung gestellt und werden nach 10 Tagen am Montag, 10 Uhr abgegeben.
+%         \item Es wird eine Fragestunde um Donnerstag, 16 Uhr geben.
+%         \item Es wird kein Skript geben, allerdings werden die geschriebenen Notizen auf eCampus zur Verfügung gestellt.
+%         \item Die Vorlesung orientiert sich an der vom letzten Jahr.
+%               % \item Für Literatur sind empfohlen: \cite{topology-waldhausen}, \cite{algebraic-topology-hatcher} sowie \cite{topology-and-geometry} (auch auf der Vorlesungshomepage zu finden).
+%     \end{itemize}
+% \end{orga}
+
+\section{Introduction}
+In ADM1 we often already worked with Integer Programming and just assumed everything is fine.
+In this course however, we want to find out how Integer Programming actually works, why it is generally "hard", and under which circumstances it is "easy".
+\begin{definition}[Flavors of $\IP$]
+    First of all, we want to define different variants of \vocab{Integer Programming}:
     \begin{itemize}
-        \item    Die Vorlesung wird aufgezeichnet.
-        \item Wir duzen uns.
-        \item Für die Übungen muss man sich auf eCampus anmelden, ob Do, 20:00 Uhr (Do 15 Apr 2021 20:00 Uhr)
-        \item Die Übungsblätter werden Donnerstag zur Verfügung gestellt und werden nach 10 Tagen am Montag, 10 Uhr abgegeben.
-        \item Es wird eine Fragestunde um Donnerstag, 16 Uhr geben.
-        \item Es wird kein Skript geben, allerdings werden die geschriebenen Notizen auf eCampus zur Verfügung gestellt.
-        \item Die Vorlesung orientiert sich an der vom letzten Jahr.
-              % \item Für Literatur sind empfohlen: \cite{topology-waldhausen}, \cite{algebraic-topology-hatcher} sowie \cite{topology-and-geometry} (auch auf der Vorlesungshomepage zu finden).
+        \item \vocab[Integer Programming!pure]{Pure Integer Programming} assumes \emph{all} variables are integer.
+        \item \vocab[Integer Programming!mixed]{Mixed Integer Programming} also allows some variables to be real.
+        \item \vocab[Integer Programming!binary]{Binary Integer Programming}, also called 0-1-Integer-Programming, restricts the integer variables to $\bool \coloneqq\{0,1\}$. Mixed variants are also possible.
     \end{itemize}
-\end{orga}
-
-\section{Test}
-I didn't make any notes.
-
-
-
-
-
-
-
-
+\end{definition}
+\begin{question}
+    Why is $\IP$ harder than $\LP$?
+    Naively, one would assume this should \emph{not} be the case, because our search space is smaller (at most countably infinite)!
+\end{question}
+Let's solve the $\IP$ in ADM1-style - suppose
+\begin{maxi*}{x}{w^Tx}{}{}
+    \addConstraint{x \in Q}{ = \{x \in \integers^n \colon Ax \leq b\}}
+\end{maxi*}
+For simplicity, assume $Q$ is bounded. Then the set of feasible points in $Q$
+is finite, and therefore we can consider the polytope
+\begin{align*}
+    \conv(Q) = \{x \in \realnum^n \mid A'x \leq b'\}
+\end{align*}
+for suitable $A'$ and $b'$. Notice all vertices must be in $Q$ and thus are integral.
+As a consequence, it is sufficient to solve the $\LP$
+\begin{maxi*}{x}{w^Tx}{}{}
+    \addConstraint{A'x}{\leq b'.}
+\end{maxi*}
+\begin{warning}
+    Computing $A',b'$ is non-trivial! In fact, computing the \vocab{integer hull} $\conv(Q)$
+    is what makes $\IP$ hard.
+\end{warning}
+In fact, we can gather more evidence that $\IP$ must be hard.
+\begin{enumerate}
+    \item Consider a polyhedron $P = \{x \in \realnum^n \mid Ax=b\}$ and its integer hull $Q$.
+          Even though $P$ can be "smooth" (e.g. cube), its integer hull can look more like a "disco ball" with many facets.
+    \item In real life, many problems can be modeled with decision variables. Let's have a closer look:
+          \begin{theorem}
+              Every logical statement can be expressed with integer programming.
+          \end{theorem}
+          \begin{proof}
+              It suffices to show that for variables $x_1,x_2,y \in \bool$ we can find $\IP$s that model $\AND, \OR, \NOT$.
+              \begin{itemize}
+                  \item $y = x_1 \AND x_2$ can be modeled as
+                        \begin{align*}
+                            y & \leq x_1           \\
+                            y & \leq x_2           \\
+                            y & \geq x_1 + x_2 - 1
+                        \end{align*}
+                  \item $y \coloneqq x_1 \OR x_2$ can be modeled as
+                        \begin{align*}
+                            y & \geq x_1       \\
+                            y & \geq x_2       \\
+                            y & \leq x_1 + x_2
+                        \end{align*}
+                  \item $y \coloneqq \neg x$ can be modeled as
+                        \begin{align*}
+                            y & = 1- x
+                        \end{align*}
+              \end{itemize}
+          \end{proof}
+    \item $\IP$ can handle non-convex problems.
+          \begin{theorem}
+              $\IP$ can model (finite) unions of polyhedra, e.g. non-convex problems.
+          \end{theorem}
+          \begin{proof}
+              Consider
+              \begin{align*}
+                  P \coloneqq \bigcup_{i=1}^k \underbrace{\{x \mid A_ix \leq b_i\}}_{P_i}
+              \end{align*}
+              and introduce auxiliary binary variables
+              \begin{align*}
+                  y_i \coloneqq \begin{cases}
+                      1, & \text{if $x \in P_i$},   \\
+                      0, & \text{if we don't care.} \\
+                  \end{cases}
+              \end{align*}
+              Now, assume $M \in \realnum$ large enough (\vocab[Big-M method]{Big-$M$ method}), such that
+              \begin{align*}
+                  P_i \subset \overline{P} \coloneqq \{x \mid A_ix \leq b_i + M \cdot \mathbf{1}\}
+              \end{align*}
+              for all $i$. Thus, we can construct following $\IP$:
+              \begin{mini*}{x}{w^Tx}{}{}
+                  \addConstraint{A_ix}{\leq b_i + (1-y_i) M \cdot \mathbf{1}, \quad}{i=1, \dots, k}
+                  \addConstraint{\sum_i y_i}{=1}
+              \end{mini*}
+              This forces exactly one $y_i$ to $1$, resulting that $x \in P_i$ and $x \in \overline{P}$ is sufficient.
+              Further information can be found in \cite[Ch. 1]{int-comb-optimization}.
+          \end{proof}
+\end{enumerate}

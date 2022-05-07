@@ -4,13 +4,15 @@
 
 \section{Modelling using IP}
 
+\begin{mini*}{\lambda}{\sum_i \lambda_i f(a_i)}{}{}
+    \addConstraint{\sum_{i=1}^{k-1} y_i }{ = 1                }
+    \addConstraint{\lambda_i            }{ \leq y_{i-1} + y_i,\quad}{i = 2,\dots,k}
+    \addConstraint{\lambda_1            }{ \leq y_1           }
+    \addConstraint{\lambda_k            }{ \leq y_{k-1}       }
+    \addConstraint{y_i                  }{ \in \mathbb{B}     }
+\end{mini*}
 
 \begin{align*}
-    \text{s.t.} &  & \lambda_1            & \leq y_1                  \\
-                &  & \lambda_i            & \leq y_{i-1} + y_i, & i>1 \\
-                &  & \lambda_k            & \leq y_{k-1}              \\
-                &  & \sum_{i=1}^{k-1} y_i & = 1                       \\
-                &  & y_i                  & \in \mathbb{B}
 \end{align*}
 This allows $\lambda_{i-1}, \lambda_{i}$ to be positive and rest negative.\footnote{Ch 1: Nemhauser Wolsey}.
 
