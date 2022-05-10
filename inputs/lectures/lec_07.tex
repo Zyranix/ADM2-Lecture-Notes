@@ -1,0 +1,172 @@
+%! TEX root = ../../master.tex
+\lecture[Convex duality.]{Di 10 May 2022}{rrrr}
+\todo{Content lec07}
+\begin{fact}[Convex duality]
+    If term $j$ of the primal objective is $f_j(x_j)$ for convex $f_j$,
+    then term $j$ of the dual objective is $-f_j^\bullet(y_j)$, such that
+    $y_j$ is the dual of $x_j$.
+
+    We're using $f^\bullet$ as the \vocab{convex conjugate} of $f$, which has the property that
+    $(f^\bullet)^\bullet=f$.
+\end{fact}
+\section{Approaches to $\IP$}
+Even though $\IP$ is $\NP$-complete, we still want to solve them as they model many real-world problems.
+For certain cases, though, we can use tricks to make calculation easier:
+\begin{enumerate}
+    \item If the $\IP$ only has integer vertices for all $b$, we can just use $\LP$.
+    \item If the $\IP$ only has integer vertices for a single useful $b$, we can at least use $\LP$ for this $b$, and might derive useful information anyway.
+    \item We could get a direct combinatorial algorithm that doesn't use $\LP$. \todo{referring to duality SEP OPT}
+    \item For a \emph{fixed} (small) dimension, we can solve $\IP$ in polynomial time.
+    \item If we are only interested in \emph{good} solutions, we could use approximation algorithms and heuristics.
+    \item Alternatively, solve the relaxed $\LP$ and round to an $\IP$ solution.
+    \item Just use Cutting Planes.
+\end{enumerate}
+\subsection{Integer-optimal solutions in $\LP$}
+\begin{recall}
+    In ADM1 we proved that there are combinatorial problems that can be solved using $\LP$ nonetheless, e.g.
+    Max-Flow, Min-Cut, Bipartite Matching, Min-Cost-Flow etc.
+\end{recall}
+\begin{question}
+    Why do exactly these problems have the property of integer vertices?
+\end{question}
+Given an optimal vertex solution $x^*=(x_B^*,0)=(B^{-1}b,0)$ with basis $B$ to an $\LP$.
+By \vocab{Cramer's Rule}, it holds for all $j \in B$, that
+\begin{align*}
+    x_j^* = \frac{\overbrace{\det(B_1,B_2,...,b_j,...,B_n)}^{\text{integer}}}{\det(B)}.
+\end{align*}
+Thus, if $|\det(B)|=1$, then $x^*$ is integer.
+\begin{definition}[Totally unimodular]
+    A matrix $A$ is \vocab{totally unimodular}, if for all square submatrices $B$ of $A$ it holds
+    that $\det(B) \in \{-1,0,1\}$.
+\end{definition}
+\begin{note}
+    Obiviously, $A$ itself must consist only of $\{-1,0,1\}$ entries in order to be totally unimodular.
+\end{note}
+\begin{theorem}
+    Given $A$ is totally unimodular. Then all optimal vertices $x^*$ are integer for all righthandside $b$'s.
+    Conversely, if all vertices of $\{x \mid Ax\leq b, x \geq 0\}$ are integer for all righthandside $b$, then $A$ is totally unimodular.
+\end{theorem}
+\begin{proof}
+    See \cite[Thm 2.5 III 1.2]{int-comb-optimization}.
+\end{proof}
+\begin{definition}
+    Let $G=(N,A)$ be a directed graph, $T$ a spanning tree of $G$,
+    and $S \subseteq A$. We construct a matrix $D \in \realnum^{|N-1|,|S|}$,
+    such that every column corresponds to an arc $(u,v) \in S$, and every row to an arc in $T$.
+    Consider the undirected (unique) path from $u$ to $v$ in $T$.
+    We set in each column every entry to $1$, where we used the arc as supposed, to $-1$, if we used the arc backwards, and $0$ otherwise.
+    Then $D$ is called a \vocab{tree-path}, or \vocab{network matrix}.
+\end{definition}
+\begin{example}
+    Given following graph:
+    \\
+    \begin{minipage}{\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[
+                    every node/.style={circle, draw},
+                    every edge/.style={->, draw, -Stealth, semithick}
+                ]
+
+                \node (1) at (0,0) {$1$};
+                \node (2) at (2,2) {$2$};
+                \node (3) at (4,2) {$3$};
+                \node (4) at (6,2) {$4$};
+                \node (5) at (4,4) {$5$};
+                \node (6) at (2,4) {$6$};
+
+                \path (1) edge (2);
+                \path (2) edge (3);
+                \path (4) edge (3);
+                \path (2) edge[bend left=30] (6);
+                \path (3) edge (5);
+
+                \path[draw=orange, fill=orange] (3) edge (1);
+                \path[draw=orange, fill=orange] (1) edge[bend right=30] (4);
+                \path[draw=orange, fill=orange] (4) edge (5);
+                \path[draw=orange, fill=orange] (2) edge[bend right=30] (6);
+                \path[draw=orange, fill=orange] (5) edge[bend right=90] (1);
+            \end{scope}
+        \end{tikzpicture}
+        % \captionof{figure}{A graph with the spanning tree in black and arc subset $S$ in orange}
+    \end{minipage}
+    Then a network matrix of this graph is given by
+    \begin{align*}
+        % \begin{blockarray}{*{6}{c}}
+        \begin{pNiceMatrix}[first-row, first-col]
+            & 1 \rightarrow 4 & 2 \rightarrow 6 & 3 \rightarrow 1 & 4 \rightarrow 5 & 5 \rightarrow 1 \\
+            % \begin{block}{r[*{5}{c}]}
+            1 \rightarrow 2 & 1               & 0               & -1              & 0               & -1              \\
+            2 \rightarrow 3 & 1               & 0               & -1              & 0               & -1              \\
+            3 \rightarrow 6 & 0               & 1               & 0               & 0               & 0               \\
+            3 \rightarrow 5 & 0               & 0               & 0               & 1               & -1              \\
+            4 \rightarrow 3 & -1              & 0               & 0               & 1               & 0               \\
+            % \end{block}
+            % \end{blockarray}.
+        \end{pNiceMatrix}
+    \end{align*}
+\end{example}
+\todo{graph}
+\begin{theorem}
+    Any network matrix $M$ is totally unimodular.
+\end{theorem}
+\begin{proof}
+    Every submatrix of a network matrix $M$ is again a network matrix.
+    Thus it suffices to show that every square network matrix $M_s$ has $\det(M_s)\in \{-1,0,1\}$.
+    We prove by induction over dimension $d$ of $M_s$.
+
+    For $d=1$ this is clear. Thus, consider the statement true for some $d$.
+    Let node $l$ be a leaf of the spanning tree $T$, and consider row $l \rightarrow k$. Using a case distinction:
+    \begin{itemize}
+        \item 0 arcs in $S$ hit $l$. Then row $l \rightarrow k$ is $0$, and thus $\det(M_s)=0$.
+        \item Exactly 1 arc in $S$ hits $l$. Then row $l \rightarrow k$ is a unit vector, and we
+        \item Otherwise, there are at least 2 arcs in $S$ that hit $l$.
+    \end{itemize}
+\end{proof}
+\begin{corollary}
+    A node-arc incidence matrix of a directed graph is totally unimodular.
+\end{corollary}
+\begin{proof}
+
+\end{proof}
+\begin{corollary}
+    A node-edge incidence matrix of a directed graph is totally unimodular.
+\end{corollary}
+\begin{proof}
+
+\end{proof}
+\begin{definition}
+    A 0-1-matrix $A$ has the \vocab{consecutive ones-property} if the $1$'s in each row
+    do not have any $0$'s between them, i.e. $0001111100$.
+\end{definition}
+\begin{corollary}
+    A matrix $A$ with consecutive ones-property is totally unimodular.
+\end{corollary}
+\begin{proof}
+    Suppose $T$ is a line of connected nodes.
+    For each row, construct an arc from the first $1$ to the last $1$. Then $A$ is a network matrix for this graph.
+\end{proof}
+\begin{theorem}
+    Let $A_1,A_2$ be two totally unimodular matrices. Then
+    \[
+        \left(
+        \begin{BMAT}(rc){c|c}{c|c}
+                A_1 & 0\\
+                0 & A_2
+            \end{BMAT}
+        \right)
+    \]
+    is also totally unimodular.
+\end{theorem}
+\todo{Construct new TU}
+\begin{theorem}[Seymour]
+    The set of totally unimodular matrices is fully defined by
+    \begin{itemize}
+        \item network matrices,
+        \item two additional $5\times 5$ matrices, and
+        \item three different composition operations.
+    \end{itemize}
+\end{theorem}
+\begin{conclusion}
+    Network problems are the easiest $\IP$s.
+\end{conclusion}
