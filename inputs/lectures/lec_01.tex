@@ -131,13 +131,3 @@ Finding $M$ big enough can make $\LP$ hard to solve, because of matrix-inversion
     Even though RHS only introduces $n$ new variables as opposed to UBX's $nk$ variables, UBX's disaggregated
     formulation often is \emph{tighter} in the sense that the $\LP$ relaxation is closer to the integer hull.
 \end{remark}
-
-\begin{conclusion}
-    Summarizing, following facts deliver an intuition why $\IP$ should be hard:
-    \begin{enumerate}
-        \item Consider a polyhedron $P = \{x \in \realnum^n \mid Ax=b\}$ and its integer hull $Q$.
-              Even though $P$ can be "smooth" (e.g. cube), its integer hull can look more like a "disco ball" with many facets.
-        \item In real life, many problems can be modeled with decision variables. $\IP$ can handle this, see \autoref{thm:ip-logical-decomposition}.
-        \item Additionally, $\IP$ also can handle non-convex problems, see \autoref{thm:ip-model-union}.
-    \end{enumerate}
-\end{conclusion}

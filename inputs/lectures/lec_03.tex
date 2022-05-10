@@ -1,10 +1,17 @@
 %! TEX root = ../../master.tex
 \lecture[Hardness. Decision problems.]{Di 26 Apr 2022}{Hardness}
-
-
 \section{Hardness}
-We cheat and restrict hardness to \emph{decision problems}, that is, problems
-that can be answered by "Yes" or "No" only.
+Prior, we only gave intuition why $\IP$ is "harder" than $\LP$.
+In order to analyze $\IP$ more thoroughly, we now want to work towards a formal definition of hardness of problems.
+Basically, there are two types of problems for now:
+\begin{definition}[Problem types]
+    We differentiate between
+    \begin{itemize}
+        \item \vocab[problem types!decision]{decision problems}, which can be answered by \emph{Yes} or \emph{No} only, and
+        \item \vocab[problem types!optimization]{optimization problems}, which seeks for a numerical value minimizing a certain (cost) function.
+    \end{itemize}
+\end{definition}
+For the beginning, we can cheat and restrict ourselves to decision problems.
 \begin{example} Possible decision problems could be:
     \begin{enumerate}
         \item Does there exist a Hamiltonian cycle?
