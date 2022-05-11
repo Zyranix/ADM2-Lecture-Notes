@@ -73,7 +73,7 @@
     \NewDocumentCommand{\vocab}{O{} m}{
         \textbf{\color{blue} #2}%
         \if\relax\detokenize{#1}\relax%
-        \index[vocabindex]{#2} % true branch: #1 was empty
+        \index[vocabindex]{\text_titlecase_first:n{#2}} % true branch: #1 was empty
         \else
         \index[vocabindex]{#1} % false branch: #1 was supplied
         \fi

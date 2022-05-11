@@ -111,7 +111,7 @@ For the beginning, we can cheat and restrict ourselves to decision problems.
     Let $P\in \mathbf{P}$. Then there exists a polynomial algorithm $A$.
     Record the steps of A on an instance $I$ and use this as a polynomial certificate.
 \end{proof}
-\begin{theorem}
+\begin{theorem}\label{thm:LP-NP}
     $\mathsf{LP} \in \mathbf{NP}$, using decision variant if there is any feasible $x$.
 \end{theorem}
 \begin{proof}
@@ -140,9 +140,10 @@ Let's also have a look at the canonical $\mathbf{NP}$ problem:
 \begin{proof}
     The satisfiability truth assignment is a succinct certificate.
 \end{proof}
-\begin{theorem}[Cook]
+\begin{theorem}[Cook]\label{thm:cook}
     If $P\in \mathbf{NP}$, then $P$ has an oracle-polynomial algorithm with $\mathsf{SAT}$ as an oracle.
 \end{theorem}
 \begin{proof}
     Suppose $P \in \mathbf{NP}$, then $P$ has a non-deterministic Turing Machine with polynomial size.
+    Encode the Turing Machine as a logical formula such that it is true iff $P$ is a Yes-instance.
 \end{proof}

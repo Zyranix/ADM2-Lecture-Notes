@@ -81,9 +81,10 @@
         \captionof{figure}{Landscape of problems depending if $\pP = \NP$}
     \end{minipage}
 \end{openquestion}
-\section{Complexity in linear programming}
+\section{Complexity differences between $\IP$ and $\LP$}
 Some $\BIP$s are easy, such as bipartite matching, or the assignment problem, even though $\IP \in \NPC$.
 In the following section, we want to give intuition, why there are different complexities in $\IP$.
+\subsection{Optimization vs. Separation}
 \begin{recall}[Ellipsoid Algorithm]
     As discussed in ADM1, the \vocab{ellipsoid method} can be used to determine feasibility of LPs in polynomial time.
     One could also call the ellipsoid method a fancy "$n$-dimensional binary search".
@@ -96,7 +97,7 @@ In the following section, we want to give intuition, why there are different com
     For details, refer to the slides from ADM1.
 \end{recall}
 \begin{definition}
-    Given a poylhedron $P$ with an associated cost function. We want to introduce two distinct problem types:
+    Given a polyhedron $P$ with an associated cost function. We want to introduce two distinct problem types:
     \begin{itemize}
         \item The \vocab[problem types!optimization]{optimization problem $\mathsf{\OPT}$} denotes the problem of finding an optimal $x^* \in P$.
         \item The \vocab[separation problem]{separation problem $\mathsf{\SEP}$} denotes the problem of deciding if $x \in P$, or else stating a separating hyperplane.
@@ -146,3 +147,9 @@ In the following section, we want to give intuition, why there are different com
         \overset{\text{Ellips.}}{\IMP} & \OPT \in \pP \text{ for } \mathcal{Q}
     \end{alignat*}
 \end{proof}
+\begin{conclusion}
+    There is a close relationship between $\OPT$ and $\SEP$:
+    \[
+        \underset{\OPT}{\framebox[1.1\width]{\text{Complexity}}} \Longleftrightarrow \underset{\SEP}{\framebox[1.1\width]{\text{Integrality}}}
+    \]
+\end{conclusion}

@@ -1,8 +1,6 @@
 %! TEX root = ../../master.tex
 \lecture[NP-complete. Problems in $\NPC$. Reductions. Weakly vs. strongly.]{Do 28 Apr 2022}{NP-completeness}
 
-This means $\mathsf{SAT}$ is the hardest problem in $\mathbf{NP}$.
-
 We remind ourselves that $\mathsf{IP}$ can formulate logic, and therefore can encode
 $\SAT$ formulas.
 \begin{example}
@@ -41,6 +39,9 @@ $\SAT$ formulas.
     \end{enumerate}
     We call the set of all $\NP$-complete problems $\NPC$.
 \end{definition}
+\begin{corollary}
+    Using our new definition, it follows immediately from \autoref{thm:cook} that $\mathsf{SAT} \in \NPC$.
+\end{corollary}
 \begin{strategy}
     In order to show a problem $P$ is $\NP$-complete we first describe a way to construct a succinct certificate,
     and state an algorithm that describes how we use the certificate to verify a Yes-instance is indeed a Yes-instance.
@@ -49,7 +50,7 @@ $\SAT$ formulas.
     We do this by converting each instance of $Q$ into an instance of $P$ in polynomial time, and verify that the conversion is Yes-preserving.
 \end{strategy}
 
-\begin{theorem}
+\begin{theorem} \label{thm:IP-NPC}
     $\SAT$ is as hard as $\BIP$
 \end{theorem}
 \begin{proof}
