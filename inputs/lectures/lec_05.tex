@@ -1,8 +1,8 @@
 %! TEX root = ../../master.tex
-\lecture[$\coNP$. Ellipsoid method. Separation vs. optimization.]{Di 03 May 2022}{Ellipsoid method}
+\lecture[$\coNP$. Ellipsoid method. Separation vs. optimization. Polar of polyhedrons.]{Di 03 May 2022}{Ellipsoid method \& $\SEP$ vs $\OPT$}
 \begin{definition}[$\NP$-hard]
-    Consider an optimization problem $P$. We can't have $P \in \NP$, but because of \autoref{th:opt-dec-problem}
-    we can introduce the notion to call $P$ \vocab[NP!hard]{$\NP$-hard}, if its decision variant is in $\NPC$.
+    Consider an optimization problem $P$. Formally, we can't have $P \in \NP$, but because of \autoref{th:opt-dec-problem}
+    we can introduce the notion to call $P$ \vocab[NP!hard]{$\NP$-hard}, if its decision variant is $\NP$-complete.
 \end{definition}
 \begin{definition}[$\coNP$]
     We say \vocab[NP!co-NP]{$P \in \coNP$}, if we have a succinct certificate for verifying No-instances.
@@ -26,35 +26,64 @@
     Analoguous to \autoref{def:NPC}, we can also define \vocab[NP!coNP-complete]{$\coNP$-completeness}, or $\coNPC$, for the "most difficult" problem in $\coNP$.
 \end{definition}
 \begin{remark}
-    It holds that $\coNPC \cap \NPC = \emptyset$, except $\pP = \NP$.
+    It holds that $\coNPC \cap \NPC = \emptyset$, except $\pP = \NP$. See \cite{comb-optimization-korte}.
 \end{remark}
-\todo{images p np}
 \begin{openquestion}
     Is $\pP = \NP$?
-    \begin{multicols}{2}
-        % \begin{figure}[htpb]
+    \\
+    \vspace*{10pt}
+    \begin{minipage}{\textwidth}
         \centering
-        \includegraphics[width=.4\textwidth]{figures/np-not-p.png}\hfill
-        \includegraphics[width=.4\textwidth]{figures/np-not-p.png}\hfill
-        % \caption{Picture of complexity if $\NP \neq P$}
-        % \caption{Picture of complexity if $\NP = P$}
-        % \end{figure}
-    \end{multicols}
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \def\radius{2cm}
 
-    % \begin{minipage}{\textwidth}
-    %     \centering
-    %     \begin{minipage}{0.45\textwidth}
-    %         % \includegraphics{figures/np-not-p.png}
-    %         % https://www.semanticscholar.org/paper/Complexity-Theory-and-Np-completeness/a6894674c16ea11ab53e7f5567a645b9e0835afa/figure/4
-    %         \captionof{figure}{Picture of complexity if $\NP \neq P$}
-    %     \end{minipage}
-    %     \begin{minipage}{0.45\textwidth}
-    %         % \includegraphics{figures/np-not-p.png}
-    %     \end{minipage}
-    %     % \captionof{figure}{Beispiele 'gleicher' metrischer Räume (homöomorph)}
-    % \end{minipage}
+                % some coordinates for the center of the circles
+                \coordinate (centerl);
+                \coordinate[xshift=-.5*\radius, yshift=-.25*\radius] (centerll);
+                \coordinate[xshift=\radius] (centerr);
+                \coordinate[xshift=1.5*\radius, yshift=-.25*\radius] (centerrr);
+                \coordinate[yshift=.2*\radius, xshift=.5*\radius] (centerm);
+
+                % the circles
+                \draw (centerl) circle (\radius);
+                \draw (centerr) circle (\radius);
+                \draw (centerm) circle (.4*\radius);
+                \draw (centerll) circle (.4*\radius);
+                \draw (centerrr) circle (.4*\radius);
+
+                %the labels
+                \node[xshift=-.5*\radius, yshift=.4*\radius] at (centerl) {$\NP$};
+                \node[xshift=.5*\radius, yshift=.4*\radius] at (centerr) {$\coNP$};
+                \node at (centerm) {$\pP$};
+                \node at (centerll) {$\NPC$};
+                \node at (centerrr) {$\coNPC$};
+            \end{tikzpicture}
+        \end{minipage} vs.
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \begin{tikzpicture}
+                \def\radius{2cm}
+
+                % some coordinates for the center of the circles
+                \coordinate (center);
+
+                % \draw  (current bounding box.north west) rectangle (current bounding box.south east);
+
+                % the circles
+                \draw (center) circle (\radius);
+
+                %the labels
+                \node at (center) {$\pP = \NP = \coNP$};
+            \end{tikzpicture}
+        \end{minipage}
+        \captionof{figure}{Landscape of problems depending if $\pP = \NP$}
+    \end{minipage}
 \end{openquestion}
 \section{Complexity in linear programming}
+Some $\BIP$s are easy, such as bipartite matching, or the assignment problem, even though $\IP \in \NPC$.
+In the following section, we want to give intuition, why there are different complexities in $\IP$.
 \begin{recall}[Ellipsoid Algorithm]
     As discussed in ADM1, the \vocab{ellipsoid method} can be used to determine feasibility of LPs in polynomial time.
     One could also call the ellipsoid method a fancy "$n$-dimensional binary search".
@@ -66,16 +95,22 @@
     \end{enumerate}
     For details, refer to the slides from ADM1.
 \end{recall}
+\begin{definition}
+    Given a poylhedron $P$ with an associated cost function. We want to introduce two distinct problem types:
+    \begin{itemize}
+        \item The \vocab[problem types!optimization]{optimization problem $\mathsf{\OPT}$} denotes the problem of finding an optimal $x^* \in P$.
+        \item The \vocab[separation problem]{separation problem $\mathsf{\SEP}$} denotes the problem of deciding if $x \in P$, or else stating a separating hyperplane.
+    \end{itemize}
+\end{definition}
 \begin{remark}
-    The key step of the ellipsoid method is to find a hyperplane that separated the current $x$ from the considered polyhedron.
-    This is equivalent to solving the \vocab{separation problem} $\SEP$.
-    Especially, iff $\SEP \in \pP$, then $\OPT \in \pP$.
+    The key step of the ellipsoid method is to find a hyperplane that separates the current $x$ from the considered polyhedron.
+    Especially, if $\SEP \in \pP$, then $\OPT \in \pP$. The converse can also be proven.
 \end{remark}
 \begin{definition}
     Let $\mathcal{Q}$ be the class of full-dimensional polytopes with $0$ inside.
     We define the \vocab{polar} $Q^*$ for $Q \in \mathcal{Q}$ as
     \begin{align*}
-        Q^* \coloneqq \{ y \in \realnum^n \mid y^Tx \leq 1 \forall x \in Q \}.
+        Q^* \coloneqq \{ y \in \realnum^n \mid \forall x \in Q \colon y^Tx \leq 1  \}.
     \end{align*}
 \end{definition}
 \begin{theorem}
@@ -105,9 +140,9 @@
     $\SEP \in \pP$ for $\mathcal{Q}$ iff $\OPT \in \pP$ for $\mathcal{Q}$
 \end{theorem}
 \begin{proof} Using what we proven so far:
-    \begin{align*}
-                                       & \OPT \in \pP \text{ for } \mathcal{Q}   &  & \overset{\ref{thm:sep-opt-lp}}{\IMP}  \SEP \in \pP \text{ for } \mathcal{Q}^*       \\
-        \overset{\text{Ellips.}}{\IMP} & \OPT \in \pP \text{ for } \mathcal{Q}^* &  & \overset{\ref{thm:sep-opt-lp}}{\IMP}  \SEP \in \pP \text{ for } (\mathcal{Q}^*)^*=Q \\
+    \begin{alignat*}{2}
+                                       & \OPT \in \pP \text{ for } \mathcal{Q}   &  & \overset{\ref{thm:sep-opt-lp}}{\IMP}  \SEP \in \pP \text{ for } \mathcal{Q}^*                 \\
+        \overset{\text{Ellips.}}{\IMP} & \OPT \in \pP \text{ for } \mathcal{Q}^* &  & \overset{\ref{thm:sep-opt-lp}}{\IMP}  \SEP \in \pP \text{ for } (\mathcal{Q}^*)^*=\mathcal{Q} \\
         \overset{\text{Ellips.}}{\IMP} & \OPT \in \pP \text{ for } \mathcal{Q}
-    \end{align*}
+    \end{alignat*}
 \end{proof}

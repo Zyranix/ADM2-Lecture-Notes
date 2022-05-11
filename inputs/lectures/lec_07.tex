@@ -1,5 +1,5 @@
 %! TEX root = ../../master.tex
-\lecture[Convex duality.]{Di 10 May 2022}{rrrr}
+\lecture[Convex duality. $\IP$ solving strategies. Integrality of $\LP$s. Totally unimodular matrices. Network matrices.]{Di 10 May 2022}{Convex duality \& integral LPs}
 \todo{Content lec07}
 \begin{fact}[Convex duality]
     If term $j$ of the primal objective is $f_j(x_j)$ for convex $f_j$,
@@ -47,7 +47,7 @@ Thus, if $|\det(B)|=1$, then $x^*$ is integer.
     Conversely, if all vertices of $\{x \mid Ax\leq b, x \geq 0\}$ are integer for all righthandside $b$, then $A$ is totally unimodular.
 \end{theorem}
 \begin{proof}
-    See \cite[Thm 2.5 III 1.2]{int-comb-optimization}.
+    See \cite[Thm~2.5~III~1.2]{int-comb-optimization}.
 \end{proof}
 \begin{definition}
     Let $G=(N,A)$ be a directed graph, $T$ a spanning tree of $G$,
@@ -73,7 +73,7 @@ Thus, if $|\det(B)|=1$, then $x^*$ is integer.
                 \node (3) at (4,2) {$3$};
                 \node (4) at (6,2) {$4$};
                 \node (5) at (4,4) {$5$};
-                \node (6) at (2,4) {$6$};
+                \node (6) at (2,3.5) {$6$};
 
                 \path (1) edge (2);
                 \path (2) edge (3);
@@ -93,7 +93,7 @@ Thus, if $|\det(B)|=1$, then $x^*$ is integer.
     Then a network matrix of this graph is given by
     \begin{align*}
         \begin{pNiceMatrix}[first-row, first-col]
-            & 1 \rightarrow 4 & 2 \rightarrow 6 & 3 \rightarrow 1 & 4 \rightarrow 5 & 5 \rightarrow 1 \\
+                            & 1 \rightarrow 4 & 2 \rightarrow 6 & 3 \rightarrow 1 & 4 \rightarrow 5 & 5 \rightarrow 1 \\
             1 \rightarrow 2 & 1               & 0               & -1              & 0               & -1              \\
             2 \rightarrow 3 & 1               & 0               & -1              & 0               & -1              \\
             3 \rightarrow 6 & 0               & 1               & 0               & 0               & 0               \\
@@ -102,7 +102,6 @@ Thus, if $|\det(B)|=1$, then $x^*$ is integer.
         \end{pNiceMatrix}
     \end{align*}
 \end{example}
-\todo{graph}
 \begin{theorem}
     Any network matrix $M$ is totally unimodular.
 \end{theorem}
@@ -119,6 +118,7 @@ Thus, if $|\det(B)|=1$, then $x^*$ is integer.
         \item Otherwise, there are at least 2 arcs in $S$ that hit $l$.
     \end{itemize}
 \end{proof}
+\todo{finish proof}
 \begin{corollary}
     A node-arc incidence matrix of a directed graph is totally unimodular.
 \end{corollary}
@@ -142,6 +142,8 @@ Thus, if $|\det(B)|=1$, then $x^*$ is integer.
     Suppose $T$ is a line of connected nodes.
     For each row, construct an arc from the first $1$ to the last $1$. Then $A$ is a network matrix for this graph.
 \end{proof}
+Note that there are totally unimodular matrices that aren't network matrices.
+Furthermore, it's also possible to combine totally unimodular matrices to get new ones.
 \begin{theorem}
     Let $A_1,A_2$ be two totally unimodular matrices. Then
     \[
@@ -152,15 +154,15 @@ Thus, if $|\det(B)|=1$, then $x^*$ is integer.
             \end{BMAT}
         \right)
     \]
-    is also totally unimodular.
+    is also totally unimodular. \label{thm:comp-unimod}
 \end{theorem}
 \todo{Construct new TU}
 \begin{theorem}[Seymour]
     The set of totally unimodular matrices is fully defined by
     \begin{itemize}
-        \item network matrices,
+        \item all network matrices,
         \item two additional $5\times 5$ matrices, and
-        \item three different composition operations.
+        \item three different composition operations, e.g. \autoref{thm:comp-unimod}.
     \end{itemize}
 \end{theorem}
 \begin{conclusion}

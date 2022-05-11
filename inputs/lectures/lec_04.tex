@@ -56,8 +56,8 @@ $\SAT$ formulas.
     We know $\BIP \in \NP$, and therefore $\BIP \redto \SAT$.
     It remains to show $\SAT \redto \BIP$:
     Let $I \in \SAT$ with clauses $c_j={l_1,...,l_k}$. We convert each clause
-    to the inequality $l_1+...+l_k\geq 1$ for binary $l$. It was previously shown this encodes exactly the
-    logic formula. \todo{insert reference lec01}
+    to the inequality $l_1+...+l_k\geq 1$ for binary $l$. As shown in \autoref{thm:ip-logical-decomposition}, this encodes exactly the
+    logic formula.
 \end{proof}
 \begin{definition}[$\TSAT$]
     We define \vocab[satisfiability problem!3-satisfiability]{$\TSAT$} as a variant of $\SAT$ where we only allow clauses with exactly 3 literals, e.g. $|C_j|=3$.
@@ -179,8 +179,8 @@ $\SAT$ formulas.
     Still, $\PART$ has a pseudopolynomial algorithm using dynamic programming.
 \end{remark}
 \begin{definition}
-    If a (numerical) problem is only $\NP$-complete if it is dependent on the size
-    of the numbers (e.g. exponentially in count of numbers), we call it \vocab[NP-complete!weakly]{weakly $\NP$-complete}.
+    If a (numerical) problem is only $\NP$-complete if it depends on the size
+    of the numbers (e.g. polynomial in the unary bit model), we call it \vocab[NP-complete!weakly]{weakly $\NP$-complete}.
     Otherwise, we call it \vocab[NP-complete!strongly]{strongly $\NP$-complete}.
 \end{definition}
 \begin{definition}[3-partition, $\TPART$]
@@ -188,11 +188,8 @@ $\SAT$ formulas.
     in sets of 3 such that every set has the same value, is called \vocab[partition!3-partition]{3-Partition}, or $\TPART$.
 \end{definition}
 \begin{theorem}
-    $\TSAT$ is strongly $\NP$-complete.
+    $\TPART$ is strongly $\NP$-complete.
 \end{theorem}
-\begin{proof}
-    \todo{proof 3part NPC}
-\end{proof}
 \begin{remark}
     Only weakly $\NP$-complete problems could have pseudopolynomial algorithms (except $\pP = \NP$).
 \end{remark}
