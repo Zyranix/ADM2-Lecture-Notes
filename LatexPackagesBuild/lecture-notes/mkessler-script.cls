@@ -78,14 +78,24 @@
     \gdef\@lecturertitle{\ifmkessler@script@english Lecturer\else\ifthenelse{\isempty{#1}}{Dozent}{Dozentin}\fi}{}
 }
 
-%Set the assistant
+%Set the teaching assistants
 \newif\ifmkessler@script@printassistant\mkessler@script@printassistantfalse
 \def\@assistant{}%
 \def\@assistantitle{}
-\DeclareRobustCommand*{\assistant}[2][]{
+\DeclareRobustCommand*{\assistant}[1]{
     \mkessler@script@printassistanttrue
-    \gdef\@assistant{#2}
-    \gdef\@assistanttitle{\ifmkessler@script@english Assistant\else\ifthenelse{\isempty{#1}}{Assistent}{Assistentin}\fi}
+    \gdef\@assistant{#1}
+    \gdef\@assistanttitle{\ifmkessler@script@english Teaching Assistants\else Assistenz\fi}
+}
+
+%Set the student assistants
+\newif\ifmkessler@script@printstudentassistant\mkessler@script@printstudentassistantfalse
+\def\@studentassistant{}%
+\def\@studentassistantitle{}
+\DeclareRobustCommand*{\studentassistant}[1]{
+    \mkessler@script@printstudentassistanttrue
+    \gdef\@studentassistant{#1}
+    \gdef\@studentassistanttitle{\ifmkessler@script@english Student Assistant\else Studentische Assistenz\fi}
 }
 
 %%%%Load base class article
@@ -121,6 +131,13 @@
         \begin{tabular}[t]{c}%
         \@assistanttitle \\
         {\sc \@assistant} \\
+        \end{tabular}\par
+    \fi
+    \ifmkessler@script@printstudentassistant
+    \vskip 1em%
+        \begin{tabular}[t]{c}%
+        \@studentassistanttitle \\
+        {\sc \@studentassistant} \\
         \end{tabular}\par
     \fi
     \vskip 1em%
