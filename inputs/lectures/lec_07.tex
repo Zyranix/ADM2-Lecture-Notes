@@ -19,6 +19,7 @@ For certain cases, though, we can use tricks to make calculation easier:
     \item For a \emph{fixed} (small) dimension, we can solve $\IP$ in polynomial time.
     \item If we are only interested in \emph{good} solutions, we could use approximation algorithms and heuristics.
     \item Alternatively, solve the relaxed $\LP$ and round to an $\IP$ solution.
+    \item We can relax "bad" constraints and variables.
     \item Just use Cutting Planes.
 \end{enumerate}
 \subsection{Integer-optimal solutions in $\LP$}
@@ -135,7 +136,7 @@ Thus, if $|\det(B)|=1$, then $x^*$ is integer.
     A 0-1-matrix $A$ has the \vocab{consecutive ones-property} if the $1$'s in each row
     do not have any $0$'s between them, i.e. $0001111100$.
 \end{definition}
-\begin{corollary}
+\begin{corollary} \label{thm:cop-is-tu}
     A matrix $A$ with consecutive ones-property is totally unimodular.
 \end{corollary}
 \begin{proof}

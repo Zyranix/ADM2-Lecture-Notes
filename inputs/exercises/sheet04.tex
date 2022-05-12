@@ -1,0 +1,31 @@
+\begin{aufgabe}
+    We're given an instance $(v^1,...,v^k,x^0)$ as described. Iff $x_0 \in P$,
+    then $x_0 \in \conv(v^1,\dots,v^k)$. Thus there exist $\lambda_1,\dots,\lambda_k$ such that
+    \begin{alignat*}{1}
+        \sum_{i=1}^k\lambda_i v^i & = x_0  \\
+        \sum_{i=1}^k\lambda_i     & =1,    \\
+        \lambda                   & \geq 0
+    \end{alignat*}
+    which we can find by $\LP$. Otherwise, the system is found infeasible, and we know there must
+    exist $c$ with $c^Tx \geq c^Tx^0$. We first show it suffices that this property holds for all vertices.
+
+    Suppose $c^Tv^i \geq c^Tx^0$. Let $x = \sum_i \lambda^\prime_i v^i \in P$. Then
+    \begin{align*}
+        c^Tx & = \sum_i \lambda^\prime_i c^T v^i   \\
+             & \geq \sum_i \lambda^\prime_i c^Tx^0 \\
+             & = c^Tx^0.
+    \end{align*}
+    Note that we used $\lambda^\prime \geq 0$ and $\sum_i \lambda^\prime_i =1$ in the second and third step.
+
+    Using
+    \begin{align*}
+        c^Tv^i \geq c^tx^0 \Leftrightarrow (v^i - x^0)^T \cdot c \geq 0,
+    \end{align*}
+    this means we can find $c$ with following constraints via $\LP$:
+    \begin{alignat*}{2}
+        (v^i - x^0)^T \cdot c & \geq 0, & \quad i = 1,...,k.
+    \end{alignat*}
+\end{aufgabe}
+\begin{aufgabe}
+
+\end{aufgabe}
