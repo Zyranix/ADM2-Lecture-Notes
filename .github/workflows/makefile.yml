@@ -14,7 +14,6 @@ jobs:
 
     - name: Handle prerequisites
       run: make before-install
-
     
     - name: Compile LaTeX document
       uses: xu-cheng/latex-action@v2
@@ -27,8 +26,8 @@ jobs:
     - name: Install packages
       run: make install-packages
       
-    - name: Generate output
-      run: make generate-output
+    - name: Pre-Deploy
+      run: make generate-deploy
     
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4.3.3

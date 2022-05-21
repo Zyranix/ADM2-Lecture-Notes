@@ -130,7 +130,7 @@ install-packages:
 	# @sudo apt install -y biber
 	# @sudo apt install -y gnuplot
 
-generate-output: full
+generate-deploy:
 	@mkdir dist
 	@mv full.pdf dist/2022_ADM2.pdf
 	@mv full.log dist/2022_ADM2.log
