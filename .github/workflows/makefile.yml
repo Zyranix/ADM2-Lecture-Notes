@@ -11,9 +11,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      
+
     - name: Handle prerequisites
       run: make before-install
+
+    
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: full.tex
+        args: -pdf -dvi- -latexoption=-interaction=nonstopmode
       
     - name: Install packages
       run: make install-packages

@@ -116,19 +116,19 @@ before-install:
 	@sudo ".ci/git-info-2.sh"
 
 install-packages:
+	# @sudo apt install -y make
 	@sudo apt install -y wget
 	@sudo apt install -y tree
-	@sudo apt install -y texlive-latex-recommended
-	@sudo apt install -y texlive-latex-extra
-	@sudo apt install -y texlive-fonts-extra
-	# @sudo apt install -y texlive-lang-german
-	@sudo apt install -y texlive-science
-	@sudo apt install -y texlive-bibtex-extra
-	@sudo apt install -y lmodern
-	@sudo apt install -y latexmk
-	@sudo apt install -y biber
-	@sudo apt install -y gnuplot
-	@sudo apt install -y make
+	# @sudo apt install -y texlive-latex-recommended
+	# @sudo apt install -y texlive-latex-extra
+	# @sudo apt install -y texlive-fonts-extra
+	# # @sudo apt install -y texlive-lang-german
+	# @sudo apt install -y texlive-science
+	# @sudo apt install -y texlive-bibtex-extra
+	# @sudo apt install -y lmodern
+	# @sudo apt install -y latexmk
+	# @sudo apt install -y biber
+	# @sudo apt install -y gnuplot
 
 generate-output: full
 	@mkdir dist
