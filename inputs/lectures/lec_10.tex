@@ -1,0 +1,122 @@
+%! TEX root = ../../master.tex
+\lecture[Fun]{Do 19 May 2022}{Missing}
+\todo{Content lec10}
+\begin{definition}[Polymatroid rank function]
+    A function $r : 2^E \rightarrow \realnum^+_0$ that satisfies
+    \begin{enumerate}
+        \item $r(\emptyset) = 0$,
+        \item $R \subset S \subset E \Rightarrow r(R) \leq r(S)$, and
+        \item is submodular,
+    \end{enumerate}
+    is called a \vocab{polymatroid rank function}.
+\end{definition}
+\begin{theorem}
+    Let $r(S)$ be max-flow value when we put for all $j \not in S$, $u_{sj}=0$.
+    Then $r$ is submodular.
+\end{theorem}
+\begin{proof}
+    See homework \todo{homework}.
+\end{proof}
+\begin{theorem}
+    Greedy works for polymatroids.
+\end{theorem}
+\begin{theorem}
+    Consider max-flow/min-cut on network $N =(s,t,E)$, and define $r(S)$ for all $S \subseteq E$
+    as the capacity of $s+S$. Then this $r$ is submodular.
+\end{theorem}
+\begin{proof}
+    Considering $S+s,T+s,S\cap T+s, S \cup T+s$, then every edge occurs on both sides,
+    except the ones from $S+s$ to $T\S$, which immediately leads to
+    \begin{align*}
+        r(S) + r(T) \geq r(S \cap T) + r(S \cup T).
+    \end{align*}
+    Notice though that $r(\emptyset) > 0$ and not monotone.
+\end{proof}
+Let's compare Greedy vs. Monotonicity.
+If $r$ is monotone, then $x_{e_i}=r(S_i)-r(S_{i-1}) \geq 0$.
+But if we don't care for $x \geq 0$, then we can apply Greedy.
+
+\begin{align*}
+    x\ \text{free} \implies \sum_{S:e \in S}y_S = w_e
+\end{align*}
+Notice that "$=$" was "$\geq$", but our previous proof showed that we
+get equality anyway for the dual constraint.
+\begin{remark}
+    Submodular $\LP$s are \emph{not} totally unimodular.
+    Consider e.g. following submatrix of a submodular $\LP$:
+    \[
+    \begin{pNiceMatrix}[first-row, first-col]
+               & e_1          & e_2 & e_3 &  \\
+        e_1e_2    & 1            & 1   & 0      \\
+        e_1e_3    &  1            & 0   & 1      \\
+        e_2e_3    &   0           & 1    & 1     
+        \end{pNiceMatrix}
+    \]
+    Still, we get only integer solutions, meaning submodular RHS's are special
+\end{remark}
+\begin{definition}
+    We call a polyhedron \vocab{integral} if $P=P_I$, with $P_I$ being the
+    integer hull of $P$.
+    Equivalently, all vertices of $P$ are integral.
+\end{definition}
+\begin{theorem} \label{thm:lp_is_integral}
+    If for all $c$ such that an optimum exist holds that
+    \begin{align*}
+        z \coloneqq \max \{c^Tx \mid x \in P\} \in \integers,
+    \end{align*}
+    then $P$ is integral.
+\end{theorem}
+\begin{proof}
+    Let $v$ be any vertex of $P$. We know there is $c$ such that $z_c = c^Tv \in \integers$, but by assumption for any index $i$ also 
+    $z_{c_i}=(c+e_i)^Tv \in \integers$. Therefore, $(c+e_i)^Tv-c^Tv=v_i\in \integers$,
+    and in particular $v \in \integers^n$
+\end{proof}
+\begin{definition}
+    We call a system $Ax \leq b$ \vocab{totally dual integral} if for all $c$ with an optimum to $\{c^Tx \mid x \in P\}$ 
+    the corresponding $y^*$ is integral.
+\end{definition}
+\begin{corollary}
+    If $Ax \leq b$ is totally dual integral, and $b \in \integers^m$, then $P$ is integral.
+\end{corollary}
+\begin{proof}
+    Recall that our $z$ is also the optimal objective value of the dual.
+    We know for all $c$ with an optimum, that $y^* \in \integers^m$ for $b^Ty^* = z \in \integers$.
+    By \autoref{thm:lp_is_integral}, all primary vertices are integral.
+\end{proof}
+\begin{theorem}
+    $x(S) \leq r(S)$ is totally dual integral.
+\end{theorem}
+\begin{proof}
+    Greedy says 
+    \begin{align*}
+        y_S^* = \begin{cases}
+            w_i - w_{i+1}, &\text{if } S=S_i,\\
+            0, & \text{else}
+        \end{cases} \in \integers^{2^E}
+    \end{align*}
+\end{proof}
+\begin{conclusion} Note the difference:
+     
+    "Totally unimodular" corresponds to integral polyhedra for \emph{all} integer-RHS.
+    
+    "Totally dual integral" corresponds to integral polyhedra for \emph{special} RHS.
+\end{conclusion}
+Consider again intersections of matroids.
+\begin{theorem}
+    For submodular $r_1,r_2$, given the primal $\LP$
+    \begin{maxi*}{x}{w^Tx}{}{}
+        \addConstraint{x(S)}{\leq r_1(S)}
+        \addConstraint{x(S)}{\leq r_2(S)}
+        \addConstraint{x}{\geq 0}
+    \end{maxi*}
+    with its dual
+    \begin{mini*}{y^1,y^2}{r_1^Ty^1+r_2^Ty^2}{}{}
+        \addConstraint{\sum_{S:e \in S}y_S^1+y_S^2}{\geq w_e}
+        \addConstraint{x(S)}{\leq r_2(S)}
+        \addConstraint{y^1,y^2}{\geq 0}.
+    \end{mini*}
+    Then the primal is totally dual integral.
+\end{theorem}
+\begin{proof}
+    \todo{write proof}
+\end{proof}
