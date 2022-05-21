@@ -21,6 +21,8 @@ jobs:
       with:
         root_file: full.tex
         args: -pdf -dvi- -latexoption=-interaction=nonstopmode
+      env:
+        TEXINPUTS: "LatexPackagesBuild//:"
       
     - name: Install packages
       run: make install-packages
