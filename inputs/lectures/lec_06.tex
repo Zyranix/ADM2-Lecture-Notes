@@ -1,5 +1,5 @@
 %! TEX root = ../../master.tex
-\lecture[Representation of polyhedra. Theorem of the Alternative and applications.]{Do 05 May 2022}{Theorem of the Alternative}
+\lecture[Representation of polyhedra. Theorem of the Alternative and applications. Non-linearity in LP.]{Do 05 May 2022}{Theorem of the Alternative}
 \begin{theorem}[Minkowski] \label{thm:minkowski}
     For a polyhedron $P$ it holds $x \in P$ iff there exist vertices $v_1,...,v_k$
     and rays $r_1, ..., r_l$, such that
@@ -20,15 +20,14 @@
         \item The \vocab[polyhedron!V-representation]{V-representation} (from "vertex") is given by \autoref{thm:minkowski}.
     \end{itemize}
 \end{definition}
-\todo{add ref HW?}
 \begin{conclusion}
     Depending on the representation we have, we have different ways to solve $\OPT$ and $\SEP$:
     \\
     \begin{center}
         \begin{tabular}{rll}
-                                        & H-representation                          & V-representation                   \\ \cline{2-3}
-            \multicolumn{1}{r|}{$\OPT$} & \multicolumn{1}{l|}{LP Simplex/Ellipsoid} & \multicolumn{1}{l|}{Brute Force}   \\ \cline{2-3}
-            \multicolumn{1}{r|}{$\SEP$} & \multicolumn{1}{l|}{Brute Force}          & \multicolumn{1}{l|}{LP (Homework)} \\ \cline{2-3}
+                                        & H-representation                          & V-representation                           \\ \cline{2-3}
+            \multicolumn{1}{r|}{$\OPT$} & \multicolumn{1}{l|}{LP Simplex/Ellipsoid} & \multicolumn{1}{l|}{Brute Force}           \\ \cline{2-3}
+            \multicolumn{1}{r|}{$\SEP$} & \multicolumn{1}{l|}{Brute Force}          & \multicolumn{1}{l|}{LP (\autoref{ex:4.1})} \\ \cline{2-3}
         \end{tabular}
     \end{center}
 
@@ -196,7 +195,7 @@ can be used as the certificate we seek for.
 \begin{remark}
     Theorems stating that exactly one of two systems have a solution are called \vocab{Theorem of the Alternative}.
 \end{remark}
-\begin{theorem}[Farkas Lemma]
+\begin{theorem}[\vocab{Farkas' Lemma}]
     \label{thm:farkas}
     Exactly one of the following systems is feasible:
     \begin{align*}
@@ -204,7 +203,6 @@ can be used as the certificate we seek for.
            &        &            &  & y^Tb & <0     \\
            &        &            &  & y    & \geq 0 \\
     \end{align*}
-    This is also known as \vocab{Farkas Lemma}.
     In particular, the left system delivers a certificate of feasibility, whereas the right a certificate of infeasibility.
 \end{theorem}
 \begin{proof}
@@ -271,29 +269,96 @@ meaning that certificates cannot be calculated in polynomial time (unless $\pP =
     \end{alignat*}
     Note for the last equivalence that we used $y = y^1 - y^2$ with $y^1,y^2 \geq 0$, and interpreted $y^3$ as slack.
 \end{remark}
-\begin{theorem}[Gourdan]
-    Consider $Ax < 0$.
+\begin{theorem}[\vocab{Gourdan's Theorem}]
+    Exactly one of following systems is feasible:
+    \begin{align*}
+        Ax & < 0 & \text{vs.} &  & y^TA & = 0    \\
+           &     &            &  & y    & \geq 0 \\
+           &     &            &  & y    & \neq 0
+    \end{align*}
 \end{theorem}
-\todo{write Gourdan}
-Consider an LP with lower and upper bounds:
+\begin{proof}
+    Consider a feasible $x$ such that $Ax^0 < 0$.
+    Then we can scale and get $x^0$ such that $Ax \leq -\mathbf{1}$, and, again, using \autoref{thm:farkas},
+    yields our other system. Note that $y^T(-\mathbf{1})<0$ is equivalent to $\sum y_i > 0$,
+    implying with $y \geq 0$ that $y \neq 0$.
+\end{proof}
+\begin{note}
+    We can also check that both systems cannot be feasible:
+    \begin{alignat*}{2}
+                              &  & Ax^0                         & < 0                          \\
+        \Leftrightarrow \quad &  & \underbrace{(y^0)^TA}_{0}x^0 & < \underbrace{(y^0)^T0}_{0},
+    \end{alignat*}
+    which is a contradiction.
+\end{note}
+\subsection{Non-linearity in $\LP$}
+Consider an LP with lower and upper bounds and its dual:
+\\
+\begin{minipage}{\textwidth}
+    \centering
+    \begin{minipage}{0.2\textwidth}
+        \begin{mini*}{x}{c^Tx}{}{}
+            \addConstraint{Ax}{=b}
+            \addConstraint{l}{\leq x}{\leq u}
+        \end{mini*}
+    \end{minipage}
+    $\Longleftrightarrow$
+    \begin{minipage}{0.2\textwidth}
+        \begin{mini*}{x}{c^Tx}{}{}
+            \addConstraint{Ax}{=b}
+            \addConstraint{x}{\geq l}
+            \addConstraint{-x}{\geq -u}
+            \addConstraint{x}{\text{ free}}
+        \end{mini*}
+    \end{minipage}
+    $\overset{\text{Dual}}{\longleftrightarrow}$
+    \begin{minipage}{0.4\textwidth}
+        \begin{maxi*}{y,\lambda,\mu}{b^Ty + l^T\lambda - u^T \mu}{}{}
+            \addConstraint{y^TA + \lambda^T - \mu^T }{= c^T}
+            \addConstraint{\lambda,\mu}{\geq 0}
+            \addConstraint{y}{\text{ free}}
+        \end{maxi*}
+    \end{minipage}
+\end{minipage}
+
+Note that we can write the dual constraint as
 \begin{align*}
-    \min \quad c^Tx \\
-    Ax=b            \\
-    l \leq x \leq u
+    \lambda^T-\mu^T = c^T- y^TA,
 \end{align*}
-Decompose:
-\begin{align*}
-    \min \quad c^Tx \\
-    Ax=b            \\
-    x \geq l        \\
-    -x \geq u       \\
-    x \text{ free}
-\end{align*}
-Dualize:
-\begin{align*}
-    \max \quad b^Ty + l^T\lambda - u^T \mu \\
-    y^TA + \lambda^T - \mu^T = c^T         \\
-    \lambda,\mu \geq 0                     \\
-    y \text{ free}
-\end{align*}
-Rewrite
+allowing an interpretation of $\lambda^T$ as the positive part of $c^T-y^TA$,
+and $\mu^T$ as the negative part. Reformulating thus yields
+\begin{maxi*}{y,\lambda,\mu}{b^Ty + l^T(c^T-y^TA)^+ - u^T (c^T-y^TA)^-}{}{}
+    \addConstraint{y}{\text{ free}}
+\end{maxi*}
+Note that now, the system doesn't seem to have any constraints left, but clearly this cannot be true.
+In fact, $c^T-y^TA)^+$ and $c^T-y^TA)^-$ are piecewise linear only! Therefore, in order to get a valid $\LP$ -
+this is exactly what the original formulation did.
+\\
+\begin{minipage}{\textwidth}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                axis x line=center,
+                axis y line=middle,
+                xlabel=$(c^T-y^TA)_j$,
+                ylabel=obj. val. in $j$-comp.,
+                ylabel style={sloped, xshift=-100pt},
+                xmin=-3,
+                xmax=4,
+                ymin=-4,
+                ymax=4,
+                grid=none,
+                ticks=none,
+                % minor tick num=1,
+                % axis equal image,
+            ]
+            \addplot[blue, ultra thick] coordinates {(0,0) (5,3)}
+            node[pos=0.5, yshift=7pt,sloped]{slope $l_j$}
+            ;
+            \addplot[blue, ultra thick] coordinates {(-2,-5) (0,0)}
+            node[pos=0.5, yshift=7pt,sloped]{slope $u_j$}
+            ;
+        \end{axis}
+    \end{tikzpicture}
+\end{minipage}
+As can be seen in the plot, the cost function is concave!
