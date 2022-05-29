@@ -1,9 +1,9 @@
 \begin{aufgabe}
     TBD
 \end{aufgabe}
-\begin{aufgabe}
+\begin{aufgabe} \label{ex:5.2}
     Let $r$ be submodular as defined, and let $A,B \subset E$ be sets.
-    We prove by induction over $n \coloneqq |B-A| \in \natnum$ that 
+    We prove by induction over $n \coloneqq |B-A| \in \natnum$ that
     \begin{align}
         \label{eq:subm-ex}
         r(A)+r(B) \geq r(A\cup B) + r(A \cap B).
@@ -11,8 +11,8 @@
     Suppose $n = 0$. Then $A \cup B = A$ and $A \cap B = B$, implying equality of \eqref{eq:subm-ex}.
 
     Now, consider \eqref{eq:subm-ex} to be true for sets $A,B \subset E$ such that $|B-A|=n$.
-    Suppose $A,B \subset E$ with $|B-A|=n+1>0$, and let $e \in B-A$. 
-    Notice that $A \cap B \subset A \subset E$ with $e \not \in A$. 
+    Suppose $A,B \subset E$ with $|B-A|=n+1>0$, and let $e \in B-A$.
+    Notice that $A \cap B \subset A \subset E$ with $e \not \in A$.
     Therefore, by applying rearranged submodularity, we get
     \begin{align}
         \label{eq:subm-ex-e}
