@@ -98,7 +98,7 @@ The so-called \vocab{marginal cost} of adding $e$ to $R$ is $r(R+e)-r(R) \in \{0
     but also forces $r(R)$ to increase.
 \end{proof}
 There is also an equivalent definition of submodularity:
-\begin{theorem}
+\begin{theorem} \label{thm:submodularity}
     A function $r : \mathcal{P}(M) \rightarrow \realnum$ is \vocab{submodular} iff for all $S,R \subseteq E$
     \begin{align*}
         r(S)+r(R) \geq r(S\cap R) + r(S \cup R).
@@ -108,14 +108,14 @@ There is also an equivalent definition of submodularity:
     See \autoref{ex:5.2}.
 \end{proof}
 Now let's try to derive Kruskal from our $\LP$s \eqref{eq:kruskal_alt} and \eqref{eq:kruskal_dual}:
-\begin{theorem}
+\begin{lemma}
     Suppose $x^*,y^*$ are optimal in their corresponding $\LP$s  \eqref{eq:kruskal_alt} and \eqref{eq:kruskal_dual}.
     Among the dual optimal
     solution let $y^*$ be the one with $y^*=\sum_{S\subset E}(y_S)^2$ (notice the square!).
 
     Then for $R,S \subset E$, if $y_R^*, y_S^* > 0$, it follows that either $R \subset S$ or $S \subset R$.
     We call this property \vocab{nested}.
-\end{theorem}
+\end{lemma}
 \begin{proof}
     Assume $y_R^*, y_S^* > 0$, but are not nested.
     Let $\eps = \min(y_R^*,y_S^*0) >0$ and
@@ -141,9 +141,9 @@ Now let's try to derive Kruskal from our $\LP$s \eqref{eq:kruskal_alt} and \eqre
     is a contradiction! (One can check this by tedious calculations.)
 \end{proof}
 Consider $\mathcal{J} \coloneqq \{S \subseteq E \mid y_S^* > 0\}$.
-Because of previous theorem we can build a chain of elements of $\mathcal J$:
+Because of previous lemma we can build a chain of elements of $\mathcal J$:
 \begin{align*}
-    S_1 \subset ... \subset_m, |S_i|=i.
+    S_1 \subset ... \subset S_m, \quad |S_i|=i.
 \end{align*}
 If length $m$ is not possible, add some $y^*_S=0$ sets.
 Thus, using this $S$ as a basis yields following system:

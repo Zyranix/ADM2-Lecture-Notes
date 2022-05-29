@@ -1,5 +1,5 @@
 %! TEX root = ../../master.tex
-\lecture[Fun]{Do 19 May 2022}{Missing}
+\lecture[Polymatroids]{Do 19 May 2022}{Polymatroids}
 \todo{Content lec10}
 \begin{definition}[Polymatroid rank function]
     A function $r : 2^E \rightarrow \realnum^+_0$ that satisfies
@@ -45,11 +45,11 @@ get equality anyway for the dual constraint.
     Submodular $\LP$s are \emph{not} totally unimodular.
     Consider e.g. following submatrix of a submodular $\LP$:
     \[
-    \begin{pNiceMatrix}[first-row, first-col]
-               & e_1          & e_2 & e_3 &  \\
-        e_1e_2    & 1            & 1   & 0      \\
-        e_1e_3    &  1            & 0   & 1      \\
-        e_2e_3    &   0           & 1    & 1     
+        \begin{pNiceMatrix}[first-row, first-col]
+                   & e_1 & e_2 & e_3 & \\
+            e_1e_2 & 1   & 1   & 0     \\
+            e_1e_3 & 1   & 0   & 1     \\
+            e_2e_3 & 0   & 1   & 1
         \end{pNiceMatrix}
     \]
     Still, we get only integer solutions, meaning submodular RHS's are special
@@ -67,12 +67,12 @@ get equality anyway for the dual constraint.
     then $P$ is integral.
 \end{theorem}
 \begin{proof}
-    Let $v$ be any vertex of $P$. We know there is $c$ such that $z_c = c^Tv \in \integers$, but by assumption for any index $i$ also 
+    Let $v$ be any vertex of $P$. We know there is $c$ such that $z_c = c^Tv \in \integers$, but by assumption for any index $i$ also
     $z_{c_i}=(c+e_i)^Tv \in \integers$. Therefore, $(c+e_i)^Tv-c^Tv=v_i\in \integers$,
     and in particular $v \in \integers^n$
 \end{proof}
 \begin{definition}
-    We call a system $Ax \leq b$ \vocab{totally dual integral} if for all $c$ with an optimum to $\{c^Tx \mid x \in P\}$ 
+    We call a system $Ax \leq b$ \vocab{totally dual integral} if for all $c$ with an optimum to $\{c^Tx \mid x \in P\}$
     the corresponding $y^*$ is integral.
 \end{definition}
 \begin{corollary}
@@ -87,18 +87,18 @@ get equality anyway for the dual constraint.
     $x(S) \leq r(S)$ is totally dual integral.
 \end{theorem}
 \begin{proof}
-    Greedy says 
+    Greedy says
     \begin{align*}
         y_S^* = \begin{cases}
-            w_i - w_{i+1}, &\text{if } S=S_i,\\
-            0, & \text{else}
-        \end{cases} \in \integers^{2^E}
+                    w_i - w_{i+1}, & \text{if } S=S_i, \\
+                    0,             & \text{else}
+                \end{cases} \in \integers^{2^E}
     \end{align*}
 \end{proof}
 \begin{conclusion} Note the difference:
-     
+
     "Totally unimodular" corresponds to integral polyhedra for \emph{all} integer-RHS.
-    
+
     "Totally dual integral" corresponds to integral polyhedra for \emph{special} RHS.
 \end{conclusion}
 Consider again intersections of matroids.
