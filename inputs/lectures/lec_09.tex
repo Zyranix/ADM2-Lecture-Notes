@@ -1,9 +1,7 @@
 %! TEX root = ../../master.tex
 \lecture[Matroids. Greedy works only on matroids.]{Di 17 May 2022}{Matroids}
-
-\subsection{Integer-optimal solutions in $\LP$ for \emph{some} RHSs}
 \begin{definition}[Greedy]
-    Given a set $\mathcal{J} \subset \mathcal{P}(E)$. We call following class of algorithms
+    Given a set $\mathcal{I} \subset \mathcal{P}(E)$. We call following class of algorithms
     $\vocab{greedy}$:
     \\
     \begin{algorithm}[H]
@@ -11,7 +9,7 @@
         sort $w_1 \geq \dots \geq w_m$\\
         $T \leftarrow \emptyset$\\
         \For{$i=1,...,m$}{
-            \If{$T \cup e_i \in \mathcal{J}$}{
+            \If{$T \cup e_i \in \mathcal{I}$}{
                 $T \leftarrow T \cup e_i$\\
             }
         }
@@ -19,8 +17,8 @@
     \end{algorithm} \noindent
 \end{definition}
 \begin{theorem}
-    Using our $\LP$s \eqref{eq:kruskal_alt} and \eqref{eq:kruskal_dual}, $\MST$
-    can be solved with \emph{any} submodular function $r$.
+    The $\LP$s \eqref{eq:kruskal_alt} and \eqref{eq:kruskal_dual}
+    can be solved greedily with \emph{any} submodular function $r$.
 \end{theorem}
 \begin{proof}
     We show that it suffices to choose for $i=1,\dots,m$ greedily $x_{e_i}$ as big as possible, i.e.
@@ -55,19 +53,19 @@ Now, let's concentrate on submodular functions where $r(\{e_i\}) \in \{0,1\}$.
 We can derive this notion with matroids - a common generalisation of (combinatorial) graphs/matrices that
 define "independence".
 \begin{definition}[Matroid]
-    Given a set $\mathcal{J} \subset \mathcal{P}(E)$. If also
+    Given a set $\mathcal{I} \subset \mathcal{P}(E)$. If also
     \begin{enumerate}
-        \item $\emptyset \in \mathcal{J}$,
-        \item $S \in \mathcal{J}, R \subset S \Rightarrow R \in \mathcal{J}$, and
-        \item $R,S \in \mathcal{J}, |R|< |S| \Rightarrow \exists e \in S\setminus R: R+e\in \mathcal{J}$,
+        \item $\emptyset \in \mathcal{I}$,
+        \item $S \in \mathcal{I}, R \subset S \Rightarrow R \in \mathcal{I}$, and
+        \item $R,S \in \mathcal{I}, |R|< |S| \Rightarrow \exists e \in S\setminus R: R+e\in \mathcal{I}$,
     \end{enumerate}
-    then $\mathcal{J}$ is a \vocab{matroid}. If only properties (1) and (2) hold, we call it a \vocab{independence system}.
+    then $\mathcal{I}$ is a \vocab{matroid}. If only properties (1) and (2) hold, we call it a \vocab{independence system}.
     Property (3) is also called \vocab{extensibility}.
 \end{definition}
 \begin{definition}[Rank function]
-    Given a matroid $\mathcal J$. Define the \vocab{rank function} $r : \mathcal P(E) \rightarrow \integers$ as
+    Given a matroid $\mathcal I$. Define the \vocab{rank function} $r : \mathcal P(E) \rightarrow \integers$ as
     \begin{align*}
-        r(S) = \max_{I \in \mathcal{J}, I \subset S} |I|.
+        r(S) = \max_{I \in \mathcal{I}, I \subset S} |I|.
     \end{align*}
 \end{definition}
 \begin{theorem}
@@ -81,8 +79,8 @@ define "independence".
     The only bad case is $r(S+e)-r(S)=1$ and $r(R+e)-r(R)=0$.
     Suppose
     \begin{align*}
-        r(R) & = |I_1|, I_1 \in \mathcal{J}, I_1 \subset R \\
-        r(S) & = |I_2|, I_2 \in \mathcal{J}, I_2 \subset S
+        r(R) & = |I_1|, I_1 \in \mathcal{I}, I_1 \subset R \\
+        r(S) & = |I_2|, I_2 \in \mathcal{I}, I_2 \subset S
     \end{align*}
     Set $k = r(S)-r(R) \geq 0$.
     From $R \subsetneq S$ and extensibility follows that
@@ -90,11 +88,11 @@ define "independence".
     \begin{align*}
         I_2=I_1 \cup K
     \end{align*}
-    Also, from $r(S+e) > r(S)$ it follows from extensibility, that there is $f \in S + e$ such that $I_2+f \in \mathcal{J}$.
+    Also, from $r(S+e) > r(S)$ it follows from extensibility, that there is $f \in S + e$ such that $I_2+f \in \mathcal{I}$.
     We see that $f=e$, otherwise it follows from $I_2+f \subset S$ that $r(S) > |I_2|$, which is a contradiction.
 
-    Summarizing, we see $I_2+e \in \mathcal{J}$.
-    From property (2) follows that $I_1+e \in \mathcal{J}$.
+    Summarizing, we see $I_2+e \in \mathcal{I}$.
+    From property (2) follows that $I_1+e \in \mathcal{I}$.
     Also $I_1 +e \subset R +e$, which implies $r(R+e)=r(R)+1=|I_1|+1$. This contradicts our initial assumption!
 \end{proof}
 \begin{corollary}
@@ -103,7 +101,7 @@ define "independence".
 \begin{theorem} \label{thm:greedy-ind-is-matroid}
     If Greedy is optimal for all cost vectors $w$ on an independence system, then it is a matroid.
 \end{theorem}
-Let $(E,\mathcal{J})$ be an independence system. Then extensibility states
+Let $(E,\mathcal{I})$ be an independence system. Then extensibility states
 that additionally all maximal independent subsets of $S$ have the same size, and are thus $\emph{maximum}$.
 \begin{example}
     Note the difference of \emph{maximal} and \emph{maximum}! Given following graph:
@@ -132,13 +130,13 @@ that additionally all maximal independent subsets of $S$ have the same size, and
 \end{example}
 Define
 \begin{align*}
-    \rho(S) = \min \{|I|\mid I \subset S, I \in \mathcal{J}, I\ \text{maximal}\}.
+    \rho(S) = \min \{|I|\mid I \subset S, I \in \mathcal{I}, I\ \text{maximal}\}.
 \end{align*}
 Especially, for matroids $\rho(S)=r(S)$.
 
 We want to prove a stronger theorem, though:
 \begin{theorem}
-    If we apply Greedy to an independence system $(E, \mathcal{J})$, then it holds
+    If we apply Greedy to an independence system $(E, \mathcal{I})$, then it holds
     \begin{align*}
         q \coloneqq \min_{S \subset E} \frac{\rho(S)}{r(S)}\leq \frac{\text{greedy obj. value}}{\text{optimal obj. value}} \leq 1
     \end{align*}
@@ -168,7 +166,7 @@ We want to prove a stronger theorem, though:
     \begin{align*}
         q = \frac{\rho(S)}{r(S)}.
     \end{align*}
-    By definition there are $I_1,I_2 \subset S$ with $I_1,I_2 \subset \mathcal{J}$
+    By definition there are $I_1,I_2 \subset S$ with $I_1,I_2 \subset \mathcal{I}$
     such that $r(S)=|I_2|$ and $\rho(S)=|I_1|$.
     Choose
     \begin{align*}
@@ -200,8 +198,8 @@ We want to prove a stronger theorem, though:
 \begin{example}
     Other matroids are given by:
     \begin{enumerate}
-        \item Uniform: $\mathcal{J}=\{S \mid |S| \leq k\}$
-        \item Partition: $E$ is partitioned into $P_1,...,P_k$. Then $I \in \mathcal{J}$ iff for all $i$, $|I \cap P_i| \leq 1$.
+        \item Uniform: $\mathcal{I}=\{S \mid |S| \leq k\}$
+        \item Partition: $E$ is partitioned into $P_1,...,P_k$. Then $I \in \mathcal{I}$ iff for all $i$, $|I \cap P_i| \leq 1$.
               \begin{enumerate}
                   \item  $G=(N,A),\ P_i = \delta^+(\{i\})$
                   \item  $G=(S \cup T,E),\ P_i=\delta(\{i\}), i \in S$
@@ -215,7 +213,54 @@ We want to prove a stronger theorem, though:
         \item Branching: $G=(N,A)$, $B \subseteq A$ is a branching iff acyclic, i.e. for all $i$, $\delta^-(\{i\}) \leq 1$.
     \end{enumerate}
 \end{example}
-\begin{remark}
-    Note that previous examples can be generated via intersections of partition matroids.
-    Therefore, intersections of matroids seem interesting.
+\begin{remark} \label{rmk:intersection_matroid}
+    Intersections of matroids seem interesting:
+    Previous examples can be generated via intersections of partition matroids,
+    i.e. for a bipartite graph $G = (S \cup T, E)$, the set of bipartite matchings $M$ is given by
+    \begin{align*}
+        \mathcal I_1 & \coloneqq \{I \subset E \mid \forall i \in S: |I \cap \delta^+(\{i\})| \leq 1\} \\
+        \mathcal I_2 & \coloneqq \{I \subset E \mid \forall i \in T: |I \cap \delta^+(\{i\})| \leq 1\} \\
+        M            & = \mathcal I_1\cap \mathcal I_2.
+    \end{align*}
+    We can visualize this by coloring every partition set and defining the matroids as the subsets
+    where we take at most one edge per color:
+    \\
+    \\
+    \begin{minipage}{\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[
+                    every node/.style={circle, draw},
+                    every edge/.style={draw, semithick}
+                ]
+
+                \node (l1) at (0,0) {};
+                \node (l2) at (0,1) {};
+                \node (l3) at (0,2) {};
+                \node (r1) at (2,0) {};
+                \node (r2) at (2,1) {};
+                \node (r3) at (2,2) {};
+
+                \draw[green] (l1) -- (r1);
+                \draw[blue] (r1) -- (l2) -- (r2);
+                \draw[red] (r2) -- (l3) -- (r3);
+
+                \node (l1) at (4,0) {};
+                \node (l2) at (4,1) {};
+                \node (l3) at (4,2) {};
+                \node (r1) at (6,0) {};
+                \node (r2) at (6,1) {};
+                \node (r3) at (6,2) {};
+
+                \draw[green] (l1) -- (r1) -- (l2);
+                \draw[blue] (l2) -- (r2) -- (l3);
+                \draw[red] (l3) -- (r3);
+            \end{scope}
+            \node (cap) at (3,1) {\Large$\cap$};
+        \end{tikzpicture}
+        % \captionof{figure}{A graph with the spanning tree in black and arc subset $S$ in orange}
+    \end{minipage}
+    \vspace{5pt}
+    \\
+    By taking the intersection we prohibit to take multiple edges from the same node, leaving us at bipartite matchings.
 \end{remark}

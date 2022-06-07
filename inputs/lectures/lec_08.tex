@@ -1,5 +1,7 @@
 %! TEX root = ../../master.tex
 \lecture[Alternative MST formulations. Submodularity. Deriving Kruskal from $\LP$.]{Do 12 May 2022}{Submodularity}
+
+\subsection{Integer-optimal solutions in $\LP$ for special RHSs}
 \begin{definition}
     Given a graph $G=(N,E)$ and cost vector $c \in \realnum^E$. Finding a spanning tree $T$
     such that $c(T)$ is minimal is called $\vocab{Minimal Spanning Tree}$ problem, short $\MST$.
@@ -21,10 +23,10 @@ Tom doesn't like the $\LP$ formulation, though, because
     \item rather than $x(\gamma(K))$, we should use $x(S)\leq ?$ for $S \subseteq E$.
 \end{enumerate}
 We can circumvent this problems with following $\LP$, for some $M >> \max_i w_i$ and $w = M - c$, and some magic function $r$:
-\begin{mini}{w}{w^Tx}{}{} \label{eq:kruskal_alt}
+\begin{maxi}{w}{w^Tx}{}{} \label{eq:kruskal_alt}
     \addConstraint{x(S)}{\leq r(S), \quad}{S \subseteq E}
     \addConstraint{x}{\geq 0}
-\end{mini}
+\end{maxi}
 Let's have a closer look at $r(S)$, and define it as the maximum number of edges we can choose in $S$
 without creating a cycle.
 
@@ -140,96 +142,103 @@ Now let's try to derive Kruskal from our $\LP$s \eqref{eq:kruskal_alt} and \eqre
     \end{align*}
     is a contradiction! (One can check this by tedious calculations.)
 \end{proof}
-Consider $\mathcal{J} \coloneqq \{S \subseteq E \mid y_S^* > 0\}$.
-Because of previous lemma we can build a chain of elements of $\mathcal J$:
-\begin{align*}
-    S_1 \subset ... \subset S_m, \quad |S_i|=i.
-\end{align*}
-If length $m$ is not possible, add some $y^*_S=0$ sets.
-Thus, using this $S$ as a basis yields following system:
-% \begin{align*}
-\[
-    \begin{pNiceMatrix}[first-row, first-col]
-               & S_1    & S_2    & S_3 & \Cdots & S_m    \\
-        e_1    & 1      & \Cdots &     &        & 1      \\
-        e_2    & 0      & \Ddots &     &        & \Vdots \\
-        e_3    & \Vdots & \Ddots &     &        &        \\
-        \Vdots &        &        &     &        &        \\
-        e_m    & 0      & \Cdots &     & 0      & 1      \\
-    \end{pNiceMatrix}
-    \begin{pNiceMatrix}
-        y_{S_1}^* \\
-        y_{S_2}^* \\
-        y_{S_3}^* \\
-        \Vdots    \\
-        y_{S_m}^*
-    \end{pNiceMatrix}
-    =\begin{pNiceMatrix}
-        w_{e_1} \\
-        w_{e_2} \\
-        w_{e_3} \\
-        \Vdots  \\
-        w_{e_m}
-    \end{pNiceMatrix}
-    % \end{align*}
-\]
-Note the basis matrix has continuous ones property (and thus being totally unimodular by \autoref{thm:cop-is-tu}), and is
-an upper triangular matrix, meaning the resulting equation system is easy to solve.
-In fact, substituting yields
-\begin{align*}
-    y^*_{S_m}     & =w_{e_m}           \\
-    y^*_{S_{m-1}} & =w_{e_m-1}-w_{e_m} \\
-                  & \vdots             \\
-    y^*_{S_{1}}   & =w_{e_1}-w_{e_2}
-\end{align*}
-So, for this $y^*$ to be feasible (i.e. non-negative), the edges need to be ordered by weight, just like in Kruskal!
-Furthermore, for every edge $e_k \in E$ it holds
-\begin{align*}
-    \sum_{S: e_k \in S}y_S^* & = \sum_{i=k}^m y_{S_i}^*    \\
-                             & =\sum_{i=k}^m w_i - w_{i+1} \\
-                             & = w_{e_k},
-\end{align*}
-concluding feasibilty according to \eqref{eq:kruskal_dual}.
+\begin{theorem} \label{thm:integer-mst-submod}
+    Optimal feasible basic solutions to \eqref{eq:kruskal_alt} and $\eqref{eq:kruskal_dual}$
+    are integer, and thus solve $\MST$.
+\end{theorem}
+\begin{proof}
 
-On the other hand, we can simply derive a primal optimal basis:
-\[
-    \begin{pNiceMatrix}[first-row, first-col]
-               & e_1    & e_2    & e_3    & \Cdots & e_m    \\
-        S_1    & 1      & 0      & \Cdots &        & 0      \\
-        S_2    & \Vdots & \Ddots & \Ddots &        & \Vdots \\
-        S_3    &        &        &        &        &        \\
-        \Vdots &        &        &        &        & 0      \\
-        S_m    & 1      & \Cdots &        &        & 1      \\
-    \end{pNiceMatrix}
-    \begin{pNiceMatrix}
-        x_{e_1}^* \\
-        x_{e_2}^* \\
-        x_{e_3}^* \\
-        \Vdots    \\
-        x_{e_m}^*
-    \end{pNiceMatrix}
-    =\begin{pNiceMatrix}
-        r(S_1) \\
-        r(S_2) \\
-        r(S_3) \\
-        \Vdots \\
-        r(S_m)
-    \end{pNiceMatrix}
-\]
-Analoguous, we get
-\begin{align*}
-    x_{e_i}^* & = r(S_i) - r(S_{i-1})               \\
-              & = r(S_{i-1}+e_i)-r(S_i) \in \{0,1\}
-\end{align*}
-which represents the edge addition step, and assures feasibilty of \eqref{eq:kruskal_alt}!
+    Consider $\mathcal{I} \coloneqq \{S \subseteq E \mid y_S^* > 0\}$.
+    Because of previous lemma we can build a chain of elements of $\mathcal I$:
+    \begin{align*}
+        S_1 \subset ... \subset S_m, \quad |S_i|=i.
+    \end{align*}
+    If length $m$ is not possible, add some $y^*_S=0$ sets.
+    Thus, using this $S$ as a basis yields following system:
+    % \begin{align*}
+    \[
+        \begin{pNiceMatrix}[first-row, first-col]
+                   & S_1    & S_2    & S_3 & \Cdots & S_m    \\
+            e_1    & 1      & \Cdots &     &        & 1      \\
+            e_2    & 0      & \Ddots &     &        & \Vdots \\
+            e_3    & \Vdots & \Ddots &     &        &        \\
+            \Vdots &        &        &     &        &        \\
+            e_m    & 0      & \Cdots &     & 0      & 1      \\
+        \end{pNiceMatrix}
+        \begin{pNiceMatrix}
+            y_{S_1}^* \\
+            y_{S_2}^* \\
+            y_{S_3}^* \\
+            \Vdots    \\
+            y_{S_m}^*
+        \end{pNiceMatrix}
+        =\begin{pNiceMatrix}
+            w_{e_1} \\
+            w_{e_2} \\
+            w_{e_3} \\
+            \Vdots  \\
+            w_{e_m}
+        \end{pNiceMatrix}
+        % \end{align*}
+    \]
+    Note the basis matrix has continuous ones property (and thus being totally unimodular by \autoref{thm:cop-is-tu}), and is
+    an upper triangular matrix, meaning the resulting equation system is easy to solve.
+    In fact, substituting yields
+    \begin{align*}
+        y^*_{S_m}     & =w_{e_m}           \\
+        y^*_{S_{m-1}} & =w_{e_m-1}-w_{e_m} \\
+                      & \vdots             \\
+        y^*_{S_{1}}   & =w_{e_1}-w_{e_2}
+    \end{align*}
+    So, for this $y^*$ to be feasible (i.e. non-negative), the edges need to be ordered by weight, just like in Kruskal!
+    Furthermore, for every edge $e_k \in E$ it holds
+    \begin{align*}
+        \sum_{S: e_k \in S}y_S^* & = \sum_{i=k}^m y_{S_i}^*    \\
+                                 & =\sum_{i=k}^m w_i - w_{i+1} \\
+                                 & = w_{e_k},
+    \end{align*}
+    concluding feasibilty according to \eqref{eq:kruskal_dual}.
 
-It remains to be shown that our constructed solutions are indeed optimal.
-Using strong duality, we see
-\begin{align*}
-    \sum_{i=1}^m w_i x_{e_i}^* & = \sum_{i=1}^m w_i (r(S_i) - r(S_{i-1})) \\
-                               & = \sum_{i=1}^m r(S_i)(w_i - w_{i+1})     \\
-                               & = \sum_{i=1}^m r(S_i)y_{S_i}^*
-\end{align*}
+    On the other hand, we can simply derive a primal optimal basis:
+    \[
+        \begin{pNiceMatrix}[first-row, first-col]
+                   & e_1    & e_2    & e_3    & \Cdots & e_m    \\
+            S_1    & 1      & 0      & \Cdots &        & 0      \\
+            S_2    & \Vdots & \Ddots & \Ddots &        & \Vdots \\
+            S_3    &        &        &        &        &        \\
+            \Vdots &        &        &        &        & 0      \\
+            S_m    & 1      & \Cdots &        &        & 1      \\
+        \end{pNiceMatrix}
+        \begin{pNiceMatrix}
+            x_{e_1}^* \\
+            x_{e_2}^* \\
+            x_{e_3}^* \\
+            \Vdots    \\
+            x_{e_m}^*
+        \end{pNiceMatrix}
+        =\begin{pNiceMatrix}
+            r(S_1) \\
+            r(S_2) \\
+            r(S_3) \\
+            \Vdots \\
+            r(S_m)
+        \end{pNiceMatrix}
+    \]
+    Analoguous, we get
+    \begin{align*}
+        x_{e_i}^* & = r(S_i) - r(S_{i-1})               \\
+                  & = r(S_{i-1}+e_i)-r(S_i) \in \{0,1\}
+    \end{align*}
+    which represents the edge addition step, and assures feasibilty of \eqref{eq:kruskal_alt}!
+
+    It remains to be shown that our constructed solutions are indeed optimal.
+    Using strong duality, we see
+    \begin{align*}
+        \sum_{i=1}^m w_i x_{e_i}^* & = \sum_{i=1}^m w_i (r(S_i) - r(S_{i-1})) \\
+                                   & = \sum_{i=1}^m r(S_i)(w_i - w_{i+1})     \\
+                                   & = \sum_{i=1}^m r(S_i)y_{S_i}^*
+    \end{align*}
+\end{proof}
 \begin{conclusion}
     Using only a submodular function and $\LP$s, we constructed an algorithm that
     solves $\MST$. In particular, no special facts about trees etc. were used.
