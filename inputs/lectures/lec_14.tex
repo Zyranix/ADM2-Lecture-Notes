@@ -1,0 +1,94 @@
+%! TEX root = ../../master.tex
+\lecture[TODO]{Do 09 June 2022}{TODO}
+\todo{content lec14}
+
+We know how to efficiently find optimal general matchings, implying we can also efficiently solve the separation problem
+with blossom contraints.
+\begin{theorem}
+    There is an efficient non-Ellipsoid separation algorithm for blossom constraints.
+\end{theorem}
+\begin{proof}
+    The algorithm can be found in \cite[Ch.~6.8]{comb-optimization-cook}. The rough idea is to use submodularity.
+\end{proof}
+We want to have a look at further matching-like problems.
+\begin{definition}
+    Given an undirected graph $G=(V,E)$. We want to find a min-cost walk traversing every edge at least once and finishing where we started.
+    This problem is called \vocab{Michael Guan Postal Delivery Problem}, or archaically \vocab{Chinese Postman Problem}.
+\end{definition}
+\begin{remark}
+    In the optimal case, every edge needs only to be traversed once, leading to the lower bound $\sum_{e\in E} c(e)$.
+    The decision problem if this is possible is called \vocab{Euler Tour}, or historically \vocab{K\"onigsberg Bridge Problem}.
+\end{remark}
+\begin{theorem}
+    Given graph $G$. An Euler Tour exists in $G$ iff all nodes have even degree and $G$ is connected.
+\end{theorem}
+\begin{definition}
+    We call $G$ \vocab{Eulerian} if $G$ has an Euler Tour.
+\end{definition}
+Consider the case that $G$ is not Eulerian, and let $T$ be the set of nodes with odd degree.
+We want to find a min-cost subset $J \subseteq E$ such that $E \uplus J$ is Eulerian.
+Such $J$ is called a \vocab[T-join]{$T$-join}. \todo{structure}
+\begin{mini*}{J}{c(J)}{}{}
+    \addConstraint{J}{\text{ is $T$-join}}
+\end{mini*}
+In general, $T$ can be any even subset of nodes.
+\begin{definition}
+    For a graph $G=(V,E)$, consider even-sized $T \subseteq V$ and $J \subseteq E$. If
+    \begin{align*}
+        T = \{i \in \natnum \mid \deg_J(i) \text{ is odd}\},
+    \end{align*}
+    we call $J$ a $T$-join.
+\end{definition}
+\begin{example}
+    Applications of this are
+    \begin{enumerate}
+        \item our postal delivery problem using all odd nodes,
+        \item for $T=\{s,t\}$, a $T$-join is an $s-t$-path with negative costs allowed,
+        \item for even $|N|$ and $T=N$, a $T$-join is a min-cost general matching.
+    \end{enumerate}
+\end{example}
+\begin{theorem}
+    $J$ is a minimal (w.r.t. to its choice of edges) $T$-join iff $J$ is a collection of $|T|/2$ edge-disjoint paths.
+\end{theorem}
+\begin{proof}
+    Reverse is clear.
+
+    We prove by induction over even size $|J|$. Base case $0$ is trivial.
+    Consider $t \in T$ and let $C$ be a connected component of $(V,J)$ cont.t.
+    Note $\delta_J(t)$ is odd, and $\sum_{i\in C}\delta_J(i)$ is even, therefore there exists
+    another $s \in C$ with $\delta_J{s}$ odd.
+    By removing $\{s,t\}$ from $T$ and the $s-t$-path from $J$, we keep our $T$-join property, enabling us to use our induction step.
+\end{proof}
+\begin{theorem}
+    Let $s,t \in T$ connected by path $P$ in a $T$-join $J$. Suppose there exists a cheaper $s-t$-path $P'$.
+    Then, $J$ is not an optimal $T$-join.
+\end{theorem}
+\begin{proof}
+    We show that
+    \begin{align*}
+        J' \coloneqq (J - P) \Delta P'
+    \end{align*}
+    is a better $T$-join. \todo{graph}
+    Calculating everything yields
+    \begin{align*}
+        c(J') & \leq c(J) + c(P' \setminus P) - c(P \setminus P')                                \\
+              & = c(J) + (c(P' \setminus P) - c(P' \cap P)) - (c(P \setminus P') - c(P' \cap P)) \\
+              & = c(J) + \underbrace{c(P')-c(P)}_{<0}< c(J)
+    \end{align*}
+    as wished.
+\end{proof}
+\begin{corollary}
+    If $c \geq 0$, then optimal $J$ consists of $|T|/2$ shortests paths.
+\end{corollary}
+Consider now negative costs $c$. Let $M \subseteq E$ be the set of negative-valued edges, and define
+\begin{align*}
+    T^M \coloneqq  \{i \in \natnum \mid \delta_M(i) \text{ is odd}\}.
+\end{align*}
+Obviously, $M$ is a $T^M$-join.
+\begin{fact}
+    $J$ is a $T$-join iff $J \Delta M$ is a $(T \Delta T^M)$-join.
+\end{fact}
+For the cost, we see
+\begin{align*}
+    todo
+\end{align*}

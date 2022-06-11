@@ -1,0 +1,56 @@
+\begin{aufgabe} \label{ex:7.1}
+    For even-sized subsets $B \subseteq V$ we introduce
+    \begin{align*}
+        \sum_{e \in E(B)}x_e \leq \frac{|B|}{2}.
+    \end{align*}
+    We can merge this without problems with the odd blossom constraints, and get
+    \begin{maxi*}{x}{\mathbf{1}^Tx}{}{}
+        \addConstraint{\sum_{e\in \delta(v)}x_e}{\leq 1, \quad}{\forall v \in V}
+        \addConstraint{\sum_{e \in E(B)} x_e}{\leq \left\lfloor \frac{|B|}{2} \right\rfloor, \quad}{\forall B \subseteq V,\ |B|\geq 2}
+        \addConstraint{x}{\geq 0}
+    \end{maxi*}
+    and construct the dual
+    \begin{mini*}{y,z}{\mathbf{1}^Ty+\sum_{\substack{B\subseteq V,\\|B|\geq 2}}\left\lfloor \frac{|B|}{2} \right\rfloor z_B}{}{}
+        \addConstraint{y_i+y_j+\sum_{B:e \in E(B)} z_B}{\geq 1, \quad}{\forall (i,j) \in E}
+        \addConstraint{y,z}{\geq 0}
+    \end{mini*}
+
+    Now, given an optimal matching $M$ (with corresponding solution $x$) and its Tutte-Berge subset $X \subset V$,
+    we construct the optimal dual solution by setting for every $i \in V$
+    \begin{align*}
+        y_i \coloneqq \begin{cases}
+                          1, & \text{if } i \in X \\
+                          0, & \text{else}
+                      \end{cases}.
+    \end{align*}
+    Furthermore, consider $G^- \coloneqq G(V \setminus X)$, the graph without nodex $X$.
+    For every $B \subseteq V$ with at least 2 nodes, we set
+    \begin{align*}
+        z_B \coloneqq \begin{cases}
+                          1, & \text{if $B$ is maximal connected component in $G^-$} \\
+                          0, & \text{else}
+                      \end{cases}.
+    \end{align*}
+    This solution is feasible, because now every edge is covered either by a node $i \in X$, or
+    otherwise is part of one of the connected components of $G^-$, thus satisfying our only dual constraint.
+    It remains to show its optimality via strong duality - it holds that
+    \begin{align*}
+        \mathbf{1}^Tx = |M| & =\frac{1}{2}(|N|+|X|-oc(X))                   \\
+                            & = |X| + \frac{1}{2}(|N-X| - oc(X))            \\
+                            & = \mathbf{1}^Ty + \frac{1}{2}(|N-X| - oc(X)).
+    \end{align*}
+    What is left is to show $\frac{1}{2}(|N-X| - oc(X)) = \sum_{\text{$B$ is cc in $G^-$}}\left\lfloor \frac{|B|}{2} \right\rfloor z_B$.
+    Note that every node of $G^-$ is in exactly one connected component, so our sum on the right side is at most $\frac{1}{2}|N-X|$.
+    It holds that
+    \begin{align*}
+        \left\lfloor \frac{|B|}{2} \right\rfloor = \begin{cases}
+                                                       \frac{|B|}{2},   & \text{$B$ is even-sized} \\
+                                                       \frac{|B|-1}{2}, & \text{$B$ is odd-sized},
+                                                   \end{cases}.
+    \end{align*}
+    Because $oc(X)$ is based on $G^-$ by construction, this immediately yields the part we need to subtract from $|N-X|$, proving optimality.
+
+\end{aufgabe}
+\begin{aufgabe}
+    TBD
+\end{aufgabe}
