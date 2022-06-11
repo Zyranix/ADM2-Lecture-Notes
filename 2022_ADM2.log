@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.1)  8 JUN 2022 09:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.1)  11 JUN 2022 13:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3332,19 +3332,77 @@ Overfull \hbox (8.23814pt too wide) in paragraph at lines 450--451
 \T1/cmr/m/n/10 -alternating
  []
 
-[52]) [53]
+[52]) (./inputs/lectures/lec_13.tex
+Overfull \hbox (27.47742pt too wide) in paragraph at lines 3--3
+[]$[]$ 
+ []
+
+) (./inputs/lectures/lec_14.tex
+Overfull \hbox (27.47742pt too wide) in paragraph at lines 3--3
+[]$[]$ 
+ []
+
+
+LaTeX Warning: Marginpar on page 53 moved.
+
+
+LaTeX Warning: Marginpar on page 53 moved.
+
+
+LaTeX Warning: Marginpar on page 53 moved.
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 8.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 15.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 19.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 23.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 26.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 36.
+Package mdframed Info: Not enough space on this page on input line 41.
+[53]
+Package mdframed Info: Not enough space on this page on input line 41.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 43.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 51.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 63.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 81.
+ [54]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 89.
+) [55]
 
 Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 49.
+less on input line 51.
 
-(./inputs/exercises/exercises.tex (./inputs/exercises//sheet01.tex
+(./inputs/exercises/exercises.tex [56
+
+] (./inputs/exercises//sheet01.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 2.
 Package hyperref Info: bookmark level for unknown mkessler@exsheet@aufgabe defa
 ults to 0 on input line 2.
 )
-(./inputs/exercises//sheet02.tex
+[57] (./inputs/exercises//sheet02.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 2.
@@ -3354,25 +3412,21 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 25.
- [54
-
-]) (./inputs/exercises//sheet03.tex
+ [58]) [59]
+(./inputs/exercises//sheet03.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 2.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 18.
-
-[55]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 28.
-) (./inputs/exercises//sheet04.tex
+ [60]) [61] (./inputs/exercises//sheet04.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1.
- [56]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 30.
@@ -3386,55 +3440,70 @@ Missing character: There is no ` in font nullfont!
 Missing character: There is no ` in font nullfont!
 Missing character: There is no ` in font nullfont!
 Missing character: There is no ` in font nullfont!
-) (./inputs/exercises//sheet05.tex
+[62]) [63] (./inputs/exercises//sheet05.tex
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 2.
- [57]
-Package mdframed Info: Not enough space on this page on input line 3.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 4.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 33.
-)) [58]
+) [64]
+(./inputs/exercises//sheet06.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 4.
+) [65] (./inputs/exercises//sheet07.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1.
+
+[66]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 55.
+)) [67]
 runsystem(makeindex vocabindex.idx)...executed safely (allowed).
 
- (./vocabindex.ind [59
+ (./vocabindex.ind [68
 
 
 
-]) [60]
+]) [69]
 
-Package biblatex Warning: Type 'image' not found on input line 65.
-
-
-LaTeX Warning: Empty bibliography on input line 65.
+Package biblatex Warning: Type 'image' not found on input line 67.
 
 
-Overfull \hbox (6.58344pt too wide) in paragraph at lines 69--69
+LaTeX Warning: Empty bibliography on input line 67.
+
+
+Overfull \hbox (6.58344pt too wide) in paragraph at lines 71--71
 \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : [][]$\T1/cmtt/m/n/10 https : / / onlinelibr
 ary . wiley . com / doi / book / 10 . 1002 / 9781118033142$[][]\T1/cmr/m/n/10 .
  
  []
 
-[61
+[70
 
 
 ] (./full.aux)
 Package rerunfilecheck Info: File `full.out' has not changed.
-(rerunfilecheck)             Checksum: C119DF42B3A6FB13B626593A7165BB73;4028.
+(rerunfilecheck)             Checksum: 3A5D8C3601C3FFB142501767A388C24B;4326.
 Package logreq Info: Writing requests to 'full.run.xml'.
 \openout1 = `full.run.xml'.
 
  )
 (\end occurred when \ifx on line 11 was incomplete) 
 Here is how much of TeX's memory you used:
- 68599 strings out of 478305
- 1543438 string characters out of 5847251
- 2359052 words of memory out of 5000000
- 84967 multiletter control sequences out of 15000+600000
+ 68713 strings out of 478305
+ 1545690 string characters out of 5847251
+ 2359915 words of memory out of 5000000
+ 85017 multiletter control sequences out of 15000+600000
  505000 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  112i,23n,145p,3460b,2785s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3478,10 +3547,10 @@ sfrm0900.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfrm10
 /texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></opt/texli
 ve/texdir/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></opt/texlive/tex
 dir/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on full.pdf (61 pages, 777783 bytes).
+Output written on full.pdf (70 pages, 795582 bytes).
 PDF statistics:
- 1396 PDF objects out of 1440 (max. 8388607)
- 1217 compressed objects within 13 object streams
- 569 named destinations out of 1000 (max. 500000)
- 309 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1505 PDF objects out of 1728 (max. 8388607)
+ 1316 compressed objects within 14 object streams
+ 621 named destinations out of 1000 (max. 500000)
+ 325 words of extra memory for PDF output out of 10000 (max. 10000000)
 
