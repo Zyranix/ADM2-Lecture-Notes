@@ -12,7 +12,7 @@ This set-up is largely inspired by Maximilian Keßler's set-up for lecture notes
 
 It should suffice to clone this repo and use a fairly recent Tex-distribution. The code is tested with TexLive 2022 - note that e.g. the `apt`-distributed packages under Ubuntu (which is TexLive 2017) are **not** sufficient and a custom install of TexLive from their page is necessary!
 
-Todo: Add tutorial of functionality (for now, refer to Max's repo).
+Todo: Add tutorial of functionality (for now, refer to Max's repo, or reach out to me).
 
 ## File Structure
 This section explains the TeX-structure of the document
