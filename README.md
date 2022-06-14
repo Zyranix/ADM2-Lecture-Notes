@@ -8,7 +8,11 @@ These are my lecture notes for the module 'Algorithmic Discrete Optimization', t
 - The [most recent version](https://zyranix.github.io/ADM2-Lecture-Notes/2022_ADM2.pdf) of this script is made available with Github Actions. You can also have a look at the [generated log files](https://zyranix.github.io/ADM2-Lecture-Notes/2022_ADM2.log)
 
 ## Set-up
-This set-up is largely inspired by Maximilian Keßler's set-up for lecture notes. Please refer to [this link](https://gitlab.com/latexci/packages/LatexPackages) for further instructions. This document uses custom packages, so you won't be directly able to compile this document!
+This set-up is largely inspired by Maximilian Keßler's set-up for lecture notes, but also includes some additional dirty changes in the `.sty`-files. Please refer to [this link](https://gitlab.com/latexci/packages/LatexPackages) for further details. Nonetheless, not all features of Maximilian's set-up are currently used. 
+
+It should suffice to clone this repo and use a fairly recent Tex-distribution. The code is tested with TexLive 2022 - note that e.g. the `apt`-distributed packages under Ubuntu (which is TexLive 2017) are **not** sufficient and a custom install of TexLive from their page is necessary!
+
+Todo: Add tutorial of functionality (for now, refer to Max's repo).
 
 ## File Structure
 This section explains the TeX-structure of the document
