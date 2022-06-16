@@ -1,4 +1,18 @@
 %! TEX root = ../../master.tex
 \lecture[TODO]{Di 07 June 2022}{TODO}
-MISSING
+\todo{lec12 topics}
+
+\begin{algorithm}[H]
+    \SetAlgoLined
+
+    Use binary search to find $z^*$ in $\mathcal{O}(\log n)$\\
+    $G' \leftarrow G = (V,E)$\\
+    \For{$i=1,...,n$}{
+        $G'' \leftarrow G'$, but remove all edges incident to node $i$\\
+        \If{Call of decision oracle on $G'',z^*$ is true}{
+            $G' \leftarrow G''$\\
+        }
+    }
+    \caption{Blossom algorithm for maximum matching}
+\end{algorithm} \noindent
 \todo{lec12}
