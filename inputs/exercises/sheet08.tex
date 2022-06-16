@@ -1,0 +1,78 @@
+\begin{aufgabe}
+    TBD
+\end{aufgabe}
+\begin{aufgabe}
+    TBD
+\end{aufgabe}
+\begin{aufgabe} \label{ex:8.3}
+    We prove:
+    \begin{enumerate}[label=(\alph*)]
+        \item Let $J$ be a $T$-join and $S \subseteq V$.
+              Then the sum of all degrees of $S$ limited to $J$ is:
+              \begin{align*}
+                  \sum_{v \in S} \delta_J(v) & = \sum_{v \in S \cap T} \delta_J(v) + \sum_{v \in S \setminus T} \delta_J(v) \\
+                                             & \equiv |S \cap T| \cdot 1 + 0                                                \\
+                                             & \equiv |S \cap T|   \pmod{2}
+              \end{align*}
+              Thus, $|\delta(S) \cap J|$ must have the same parity as $|S \cap T|$,
+              because otherwise the theoretical sum of degrees of $G(S)$ would be odd.
+              This would contradict that the sum of all degrees in a (sub-)graph must be always even!
+
+              $J \cap \delta(S)$ is non-empty because $|S \cap T|$ has odd parity by definition.
+        \item We prove both directions.
+              \begin{itemize}
+                  \item[\enquote{$\Rightarrow$}] Suppose $F$ includes a $T$-join $J$.
+                      Consider the $T$-cut of a $T$-odd $S \subseteq V$. By (a), $F \cap \delta(S) \supseteq J \cap \delta(S) \neq \emptyset$.
+                  \item[\enquote{$\Leftarrow$}] Suppose $F$ has only non-empty intersections with $T$-cuts.
+                      We construct a $T$-join $J \subseteq F$ as follows:
+                      \\
+                      \begin{algorithm}[H]
+                          \SetAlgoLined
+                          $J \leftarrow \emptyset$\\
+                          $U \leftarrow \emptyset$\\
+                          \While{$v \in T - U$}{
+                              $S \leftarrow \{v\}$\\
+                              $K \leftarrow \emptyset$\\
+                              \While{true}{
+                                  Choose any $(u,w) \in \delta(S) \cap F$\\
+                                  $S \leftarrow S + u$\\
+                                  $K \leftarrow K + (u,w)$
+                                  \If{$w \in U$}{
+                                      Add any node reachable from $w$ via $J$ to $S$ and corresponding edges to $K$\\
+                                  }
+                                  \If{$w \in T$}{
+                                      $U \leftarrow U + \{v,w\}$\\
+                                      Let $P \subseteq K$ be the (unique) path from $v$ to $w$\\
+                                      $J \leftarrow J \Delta P$\\
+                                      break\\
+                                  }
+                              }
+                          }
+                          \caption{Construct $T$-join}
+                      \end{algorithm} \noindent
+                      We start from any unused node $v \in T$ and construct a path to another unused node
+                      in $T$ by repeatedly adding any edge in $F$ from the $T$-cut formed by all visited nodes $S$.
+                      For this, we need to assure $S$ is always $T$-odd:
+                      If our new node is in $T$, but used, we need to repair our $T$-odd-property of $S$ by adding all
+                      nodes in the connected component of our partial solution $J$. In particular, there must be an even number of nodes in this component we add.
+
+                      Therefore, our algorithm is well-defined and terminates.
+
+                      It is clear that our final $J \subseteq F$.
+                      Furthermore, by \autoref{thm:diff-joins}, our partial $J$ is always a $T$-join for $U$ (because $P$ is a $T$-join for $\{u,w\}$).
+                      Thus, in the end we have $T = U$ and $J$ is a $T$-join. (This feels more complicated than necessary...)
+              \end{itemize}
+              Any feasible solution now has a non-empty intersection with any $T$-cut, therefore the solution contains a $T$-join.
+              Because we only have non-negative costs, an optimal solution does not
+              need any edges that aren't part of the included $T$-join. Since every $T$-join is also feasible by our theorem,
+              an optimal $\IP$-solution is also a minimal $T$-join.
+        \item We prove both directions.
+              \begin{itemize}
+                  \item[\enquote{$\Rightarrow$}] Suppose $F$ includes a $T$-cut $\delta(S)$.
+                      Consider a $T$-join $J$, then $F \supseteq \delta(S) \supseteq \delta(S) \cap J \neq \emptyset$.
+                  \item[\enquote{$\Leftarrow$}] We prove the contraposition: Suppose $F$ does not include a $T$-cut.
+                      Then, for every $T$-cut $\delta(S)$ it holds $\delta(S) \cap (E-F)$ is non-empty.
+                      By (b), $E-F$ includes a $T$-join $J$. Therefore, $J \cap F = \emptyset$.
+              \end{itemize}
+    \end{enumerate}
+\end{aufgabe}
