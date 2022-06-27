@@ -1,10 +1,10 @@
 %! TEX root = ../../master.tex
-\lecture[Definitions for ILP. Binary LP. Disaggregation.]{Di 19 Apr 2022}{Introduction}
+\lecture[Definitions for ILP. Binary LP. Disaggregation.]{Tu 19 Apr 2022}{Introduction}
 % \begin{orga}
 %     \begin{itemize}
 %         \item    Die Vorlesung wird aufgezeichnet.
 %         \item Wir duzen uns.
-%         \item Für die Übungen muss man sich auf eCampus anmelden, ob Do, 20:00 Uhr (Do 15 Apr 2021 20:00 Uhr)
+%         \item Für die Übungen muss man sich auf eCampus anmelden, ob Do, 20:00 Uhr (Th 15 Apr 2021 20:00 Uhr)
 %         \item Die Übungsblätter werden Donnerstag zur Verfügung gestellt und werden nach 10 Tagen am Montag, 10 Uhr abgegeben.
 %         \item Es wird eine Fragestunde um Donnerstag, 16 Uhr geben.
 %         \item Es wird kein Skript geben, allerdings werden die geschriebenen Notizen auf eCampus zur Verfügung gestellt.
@@ -86,9 +86,9 @@ We can gather more evidence that $\IP$ must be hard.
     and introduce auxiliary binary variables
     \begin{align*}
         y_i \coloneqq \begin{cases}
-            1, & \text{if $x \in P_i$},   \\
-            0, & \text{if we don't care.} \\
-        \end{cases}
+                          1, & \text{if $x \in P_i$},   \\
+                          0, & \text{if we don't care.} \\
+                      \end{cases}
     \end{align*}
     Now, assume $M \in \realnum$ large enough (\vocab[Big-M method]{Big-$M$ method}), such that
     \begin{align*}

@@ -1,5 +1,5 @@
 %! TEX root = ../../master.tex
-\lecture[Further intuition why IP is hard. Big-$\mathcal{O}$ notation]{Do 21 Apr 2022}{Introduction II}
+\lecture[Further intuition why IP is hard. Big-$\mathcal{O}$ notation]{Th 21 Apr 2022}{Introduction II}
 
 \begin{theorem}
     $\IP$ can approximate any objective function infinitely good.\label{thm:ip-piecewise-model}
@@ -68,9 +68,9 @@
     Defining the intervals $I_i \coloneqq [a_i,a_{i+1}]$ for each segment of $f$, we can introduce binary variables $y_i$ such that
     \begin{align*}
         y_i = \begin{cases}
-            1, & \text{if } x \in I_i, \\
-            0, & \text{otherwise}
-        \end{cases}
+                  1, & \text{if } x \in I_i, \\
+                  0, & \text{otherwise}
+              \end{cases}
     \end{align*}
     Note that for $x \in I_i$, $x$ is a convex combination of $a_i,a_{i+1}$.
     Therefore, we can express $x$ as a linear combination of all breakpoints $a_i$, with the additional constraint that
