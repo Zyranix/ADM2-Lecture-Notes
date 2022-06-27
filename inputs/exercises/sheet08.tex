@@ -2,7 +2,27 @@
     TBD
 \end{aufgabe}
 \begin{aufgabe}
-    TBD
+    Observe that $G$ has a $T$-join if and only if all connected components of $G$ have a $T$-join.
+    So it suffices to show the case when $G$ is connected.
+    
+    Now suppose that $G$ has a $T$-join $J\subseteq E$.
+    Consider $$a:=\sum_{v\in T}\text{deg}_J(v) \text{ and } b:=\sum_{v\in N - T}\text{deg}_J(v).$$
+    The term $a+b$ precisely double-counts the cardinality of $J$.
+    Hence, $a+b$ is even.
+    Since $b$ is a sum of even addends it also must be even.
+    We can follow that $a=a+b-b$ is even.
+    Finally, because all summands of $a$ are odd there must be an even number of elements in $T$. 
+    
+    Assume conversely $T$ to have even cardinality $2t$ and let $v_1,\dots v_{2t}$ be the distinct nodes of $T$.
+    For $G$ is connected there exists a path $P_i$ connecting $v_i$ and $v_{i+t}$ for all $i=1\dots t$.
+    Now define $J$ to be the edges of $E$ occurring in an odd number of these $t$ paths.
+    For every $i\in [t]$ the sum $$\sum_{j=1}^{t}\text{deg}_{P_j}(v_i) = \text{deg}_{P_i}(v_i) + \sum_{j=1, j\neq i}^{t}\text{deg}_{P_j}(v_i) = 1 + \sum_{j=1, j\neq i}^{t}\text{deg}_{P_j}(v_i)$$
+    is odd because for every $i\in [i]\setminus\{j\}$ the addend $\text{deg}_{P_j}(v_i)$ is either 0 or 2.
+    Analogously, we can argue that this sum is also odd for all the other nodes of $T$ and even for all nodes not in $T$.
+    By construction of $J$ we have 
+    $$\text{deg}_J(v) \equiv \sum_{j=1}^t \text{deg}_{P_j}(v) \mod{2}$$
+    for all nodes $v\in N$.
+    This shows that $J$ is a $T$-join.
 \end{aufgabe}
 \begin{aufgabe} \label{ex:8.3}
     We prove:
