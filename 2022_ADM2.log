@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.1)  17 JUN 2022 19:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.1)  27 JUN 2022 16:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3519,10 +3519,21 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 121.
+) (./inputs/lectures/lec_17.tex
+Overfull \hbox (27.47742pt too wide) in paragraph at lines 3--3
+[]$[]$ 
+ []
+
+
+LaTeX Warning: Marginpar on page 64 moved.
+
+
+LaTeX Warning: Marginpar on page 64 moved.
+
 ) [64]
 
 Package fancyhdr Warning: \fancyhead's `E' option without twoside option is use
-less on input line 53.
+less on input line 54.
 
 (./inputs/exercises/exercises.tex [65
 
@@ -3613,49 +3624,60 @@ Overfull \hbox (47.00003pt too wide) in paragraph at lines 46--72
 []$[]$ 
  []
 
-[77] [78])) [79]
+[77] [78]) [79] (./inputs/exercises//sheet09.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 5.
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 63.
+ [80])) [81]
 runsystem(makeindex vocabindex.idx)...executed safely (allowed).
 
- (./vocabindex.ind [80
+ (./vocabindex.ind
+[82
 
 
 
-]) [81]
+]) [83]
 
-Package biblatex Warning: Type 'image' not found on input line 69.
-
-
-LaTeX Warning: Empty bibliography on input line 69.
+Package biblatex Warning: Type 'image' not found on input line 70.
 
 
-Overfull \hbox (12.95168pt too wide) in paragraph at lines 73--73
+LaTeX Warning: Empty bibliography on input line 70.
+
+
+Overfull \hbox (12.95168pt too wide) in paragraph at lines 74--74
 []\T1/cmr/m/n/10 Bernhard Ko-rte and Jens Vy-gen. \T1/cmr/m/it/10 Kom-bi-na-tor
 ische Op-ti-mierung\T1/cmr/m/n/10 . 3rd ed. Springer,
  []
 
 
-Overfull \hbox (7.04541pt too wide) in paragraph at lines 73--73
+Overfull \hbox (7.04541pt too wide) in paragraph at lines 74--74
 \T1/cmr/m/it/10 miza-tion\T1/cmr/m/n/10 . Wi-ley, 1999. \T1/cmr/m/sc/10 isbn\T1
 /cmr/m/n/10 : 978-0-471-82819-8. \T1/cmr/m/sc/10 url\T1/cmr/m/n/10 : [][]$\T1/c
 mtt/m/n/10 https : / / onlinelibrary .
  []
 
-[82
+[84
 
 
 ] (./full.aux)
 Package rerunfilecheck Info: File `full.out' has not changed.
-(rerunfilecheck)             Checksum: 28D2F3E38F5D88DE932B478974EBDD8C;5158.
+(rerunfilecheck)             Checksum: EA827B23CD5ECCF1A64AA748E9A5B272;5305.
 Package logreq Info: Writing requests to 'full.run.xml'.
 \openout1 = `full.run.xml'.
 
  )
 (\end occurred when \ifx on line 11 was incomplete) 
 Here is how much of TeX's memory you used:
- 69497 strings out of 478305
- 1558898 string characters out of 5847251
- 2379989 words of memory out of 5000000
- 85685 multiletter control sequences out of 15000+600000
+ 69546 strings out of 478305
+ 1559900 string characters out of 5847251
+ 2382471 words of memory out of 5000000
+ 85712 multiletter control sequences out of 15000+600000
  505000 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  112i,23n,145p,3460b,2790s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3699,10 +3721,10 @@ sfrm0900.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfrm10
 /texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></opt/texli
 ve/texdir/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></opt/texlive/tex
 dir/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on full.pdf (82 pages, 845128 bytes).
+Output written on full.pdf (84 pages, 851159 bytes).
 PDF statistics:
- 1715 PDF objects out of 1728 (max. 8388607)
- 1512 compressed objects within 16 object streams
- 725 named destinations out of 1000 (max. 500000)
- 365 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1769 PDF objects out of 2073 (max. 8388607)
+ 1543 compressed objects within 16 object streams
+ 741 named destinations out of 1000 (max. 500000)
+ 373 words of extra memory for PDF output out of 10000 (max. 10000000)
 
