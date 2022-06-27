@@ -2,5 +2,62 @@
     TBD
 \end{aufgabe}
 \begin{aufgabe}
-    TBD
+    We derive:
+    \begin{enumerate}[label=(\alph*)]
+        \item We start with $(2,1)$-matchings.
+              Because $b \equiv 2$, for every subset $H \subseteq N$ it holds
+              that $b(H)$ is even, therefore for $D \subseteq \delta(H)$ it follows
+              $b(H)+u(D)$ is odd iff $|D|$ is odd. Furthermore, it holds that
+              \begin{align*}
+                  \left\lfloor \frac{b(H) + u(D)}{2}\right\rfloor & = \left\lfloor \frac{2 |H| + |D|}{2}\right\rfloor \\
+                                                                  & = |H| + \left\lfloor \frac{|D|}{2}\right\rfloor.
+              \end{align*}
+              In summary, both sets of constraints are equivalent.
+
+              Consider now $(1,1)$-matchings. We can easily see that blossom constraints
+              form a subset of our $b$-matching constraints if for odd $H \subseteq N$ we choose $D = \emptyset \subseteq \delta(H)$.
+              It remains to show every other $b$-matching constraint is redundant.
+              Let $H \subseteq N$ and $D \subseteq \delta(H)$ such that $|H|+|D|$ is odd.
+              Let
+              \[
+                  H_D \coloneqq \{j \mid (i,j) \in D \AND i \in H \}
+              \]
+              be the set of outside-nodes directly connected by $D$.
+              $H_D$ is empty iff $D$ is empty, which is the case already considered.
+              For some $v \in H_D \neq \emptyset$, define
+              \begin{align*}
+                  H' \coloneqq \begin{cases*}
+                                   H \cup H_D     & if $|H \cup H_D|$ odd  \\
+                                   H \cup H_D - v & if $|H \cup H_D|$ even
+                               \end{cases*}.
+              \end{align*}
+              Then, $H'$ is odd and generates a blossom constraint.
+              Consider the second case (the first case works analogous):
+              \begin{alignat*}{2}
+                  x(E(H)) + x(D) & \leq x(E(H \cup H_D))                               &  & = x(E(H' + v))                                     \\
+                                 & \leq x(E(H')) + 1                                   &  & \leq \left\lfloor \frac{|H'|}{2} \right\rfloor + 1 \\
+                                 & = \frac{|H'| + 1}{2}                                &  & = \frac{|H| + |H_D|}{2}                            \\
+                                 & \leq \left\lfloor \frac{|H| + |D|}{2} \right\rfloor &  & = \left\lfloor \frac{b(H) + u(D)}{2} \right\rfloor
+              \end{alignat*}
+              This shows that the blossom constraints suffice to make every $b$-constraint feasible.
+        \item Given a $(b,u)$-matching and $H,D$ as specified.
+              Recall our $\LP$ constraints:
+              \begin{alignat}{2}
+                  x(\delta(v)) & = b_v,    &  & \quad \forall v \in N\label{eq:match_constr_1} \\
+                  x_e          & \leq u_e, &  & \quad \forall e \in E\label{eq:match_constr_2} \\
+                  x_e          & \geq 0,   &  & \quad \forall e \in E\label{eq:match_constr_3}
+              \end{alignat}
+              Consider following row-multiplied expressions:
+              \begin{alignat*}{2}
+                  \sum_{i \in H} \eqref{eq:match_constr_1}                      & \equiv \quad & 2 \cdot x(E(H)) + x(\delta(H)) & = b(H)    \\
+                  \sum_{e \in D} \eqref{eq:match_constr_2}                      & \equiv \quad & x(D)                           & \leq u(D) \\
+                  -\sum_{e \in \delta(H) \setminus D} \eqref{eq:match_constr_3} & \equiv \quad & -x(\delta(H) \setminus D)      & \leq 0
+              \end{alignat*}
+              Summing everything up and dividing by two yields
+              \begin{align*}
+                  x(E(H)) + x(D) & \leq \frac{b(H) + u(D)}{2}
+              \end{align*}
+              as wished. In particular, every LHS coefficient is integral.
+              Therefore, all Chv\'atal conditions are satisfied, and we get our $b$-matching constraint as a cutting plane.
+    \end{enumerate}
 \end{aufgabe}
