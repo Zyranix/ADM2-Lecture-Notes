@@ -1,0 +1,104 @@
+%! TEX root = ../../master.tex
+\lecture[TODO]{Tu 28 June 2022}{TODO}
+\todo{content lec18}
+
+\begin{conclusion}
+    The Chv\'atal rank is \emph{always} finite.
+\end{conclusion}
+\begin{remark}
+    Nonetheless, the Chv\'atal rank can be arbitrarily large. Consider:
+    \vspace{5pt}
+    \\
+    \begin{minipage}{\textwidth}
+        \centering
+        \begin{tikzpicture}
+            \begin{scope}[every node/.style={circle}]
+
+                \node[anchor=north] (0) at (1,0) {$(0,0)$};
+                \node[anchor=north] (1) at (3,0) {$(1,0)$};
+                \node[anchor=south] (C) at (2,3) {$(\frac{1}{2},k)$};
+                \coordinate (S) at (0,0);
+                \coordinate (E) at (4,0);
+
+            \end{scope}
+            \path (0) edge (C);
+            \path (C) edge (1);
+            \path (S) edge (E);
+        \end{tikzpicture}
+        % \captionof{figure}{A graph with $S$ colored orange}
+    \end{minipage}
+    Here, the Chv\'atal rank is $2k$.
+\end{remark}
+We can also give similar qualitative measures for cuts:
+\begin{definition}
+    If the cutting plane $\alpha^Tx \leq \beta$ is valid for $P^k$, but not $P^{k-1}$, then this cutting plane
+    has \vocab{Chv\'atal} rank $k$.
+
+    Furthermore, we say the cutting plane is $\vocab{facet-inducing}$ for $P^I$ if the CP contains a facet of $P^I$.
+\end{definition}
+There are several methods of finding facet-inducing cutting planes:
+\begin{enumerate}
+    \item Find $\bar x$ such that $\alpha^T\bar x > \beta$, but $\bar x$ satisfies every other constraint of $P^I$.
+          However, we don't know $P^I$.
+    \item Find feasible, affinely independent $v^1,\dots,v^n \in P^I$ such that for all $i$ it holds $\alpha^Tv^i = \beta$
+    \item ..
+\end{enumerate}
+It is simpler when $P^I$ is full-dimensional, i.e. $\dim(P^I)=n$.
+
+It remains to show how we can solve $\MIP$s. Recall the fundamental theorem of $\MIP$ \autoref{thm:fundamental_mip}.
+Consider following simple-looking $\MIP$ for some fractional $b$:
+\begin{align*}
+    x + y & \geq b                 \\
+    x     & \in \realnum_{\geq 0}  \\
+    y     & \in \integers_{\geq 0}
+\end{align*}
+How can we cut off non-integer points without violating the continuity of $x$?
+Define a line
+\begin{align*}
+    l & = \{(x,y) \mid x + f(b)y \geq f(b)\left\lceil b \right\rceil \}
+\end{align*}
+We see this yields our integer hull.
+What about the general case, that is, $x \in \realnum_{\geq 0}^n, y \in \integers_{\geq 0}^p$?
+\begin{align*}
+                    &  & \sum_j a_jx_j + \sum_k d_ky_k                                                                                                                                                                                                   & \geq b                               \\
+    \Leftrightarrow &  & \left(\underbrace{\sum_{j:a_j \leq 0} a_jx_j}_{\leq 0} + \sum_{j:a_j > 0} a_jx_j\right) + \left( \sum_k \left\lfloor d_k \right\rfloor y_k + \sum_{k : f(d_k) < f(b)} f(d_k)y_k + \sum_{k : f(d_k) \geq f(b)} f(d_k)y_k \right) & \geq b                               \\
+    \Leftrightarrow &  & \underbrace{\sum_{j:a_j > 0} a_jx_j + \sum_{k : f(d_k) < f(b)} f(d_k)y_k}_{\in \realnum_{\geq 0}} + \underbrace{\sum_k \left\lfloor d_k \right\rfloor y_k +  \sum_{k : f(d_k) \geq f(b)} y_k}_{\in \integers_{\geq 0}}          & \geq b                               \\
+    \Leftrightarrow &  & \sum_{j:a_j > 0} a_jx_j + \sum_{k : f(d_k) < f(b)} f(d_k)y_k + f(b) \sum_k \left\lfloor d_k \right\rfloor y_k +  \sum_{k : f(d_k) \geq f(b)} y_k                                                                                & \geq f(b) \left\lceil b \right\rceil
+\end{align*}
+We call this \vocab{Gomory Mixed Integer Cuts}, shorthand $\GMI$, and \vocab{Mixed Integer Rounding}, shorthand MIR.
+Consider
+\begin{align*}
+    \sum_j a_j^+x_j + \sum_k \min(f(d_k), f(b))y_k + f(b) \sum_k \left\lfloor d_k \right\rfloor y_k \geq f(b) \left\lceil b \right\rceil.
+\end{align*}
+We introduce a technique to find $\GMI$ cuts.
+Consider row multipliers $\lambda \geq 0$ on
+\begin{alignat*}{2}
+    \lambda: &  & Ax+Dy & \geq b
+\end{alignat*}{2}
+and slack variables
+\begin{align*}
+    Ax+Dy - Is = b
+\end{align*}
+so that we get
+\begin{align*}
+    (\lambda^TA)x+(\lambda^TD)y - \lambda^Ts = \lambda^Tb
+\end{align*}
+with $\lambda$ now being free. Applying $\GMI$ yields
+\begin{equation*}
+    \begin{split}
+        \sum_j (\lambda^T A)^+_j x_j + f(\lambda^Tb)\sum_k \left\lfloor (\lambda^T D)_k\right\rfloor y_k + \quad &\\
+        + \sum_k \min(f(\lambda^TD_k),f(\lambda^Tb))y_k + \sum_{\lambda_i <0} |\lambda_i|s_i &\geq f(\lambda^Tb)\left\lceil \lambda^Tb \right\rceil
+    \end{split}
+\end{equation*}
+Now, substitute $s \coloneqq Ax + Dy - b$.
+\todo{example...}
+\begin{conclusion}
+    $\GMI$ cuts can be stronger than Chv\'atal-Gomory cuts.
+\end{conclusion}
+Consider a disjunction $y \leq \beta \OR y\geq \beta + 1$.
+We can find a \vocab{Split Cut} as a generalization of $\CG$ and $\GMI$ cuts.
+\todo{examples...}
+\begin{theorem}
+    Define the polyhedron generated by adding all $\GMI$ (split) cuts as $P^{\GMI}$ ($P^{\mathsf{split}}$).
+    Then $P^{\mathsf{split}} = P^{\GMI} \subset P^1 = P^{\CG}$.
+\end{theorem}
