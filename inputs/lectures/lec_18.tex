@@ -36,13 +36,7 @@ We can also give similar qualitative measures for cuts:
 
     Furthermore, we say the cutting plane is $\vocab{facet-inducing}$ for $P^I$ if the CP contains a facet of $P^I$.
 \end{definition}
-There are several methods of finding facet-inducing cutting planes:
-\begin{enumerate}
-    \item Find $\bar x$ such that $\alpha^T\bar x > \beta$, but $\bar x$ satisfies every other constraint of $P^I$.
-          However, we don't know $P^I$.
-    \item Find feasible, affinely independent $v^1,\dots,v^n \in P^I$ such that for all $i$ it holds $\alpha^Tv^i = \beta$
-    \item ..
-\end{enumerate}
+
 It is simpler when $P^I$ is full-dimensional, i.e. $\dim(P^I)=n$.
 
 It remains to show how we can solve $\MIP$s. Recall the fundamental theorem of $\MIP$ \autoref{thm:fundamental_mip}.
