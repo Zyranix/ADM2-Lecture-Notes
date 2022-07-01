@@ -1,6 +1,5 @@
 %! TEX root = ../../master.tex
-\lecture[TODO]{Th 30 June 2022}{TODO}
-\todo{content lec19}
+\lecture[Template cuts and examples for $\TSP$. Knapsack cover for binary variables. Facet-inducing cuts.]{Th 30 June 2022}{Special CP techniques}
 
 \begin{definition}
     \vocab{Template cuts}.
@@ -118,10 +117,10 @@ so deciding
 suffices if $x^0$ satisfies all Knapsack covers.
 Unfortunately, this is $\NP$-hard, but in practice we can use Dynamic Programming, see \todo{homework}.
 
-\begin{observation}
+\begin{observe}
     It seems to be ideal to find CPs that are \vocab{facet-inducing} on $P^I$, i.e. the intersection with
     $P^I$ is a facet of it. Knowing $\dim(P^I)$ is therefore necessary.
-\end{observation}
+\end{observe}
 $\TSP$ itself is not full-dimensional because of its degree equality-constraints.
 \begin{theorem}
     The integer hull for knapsack cover \emph{is} full-dimensional (if $a_j \leq b$).

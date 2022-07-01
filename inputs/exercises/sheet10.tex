@@ -1,0 +1,41 @@
+\begin{aufgabe}
+    TBD
+\end{aufgabe}
+\begin{aufgabe}
+    We proof by induction over $k \geq 3$: If $C_k=\{1,\dots,k\}$ is a clique in a graph $G=(V,E)$, then
+    \begin{align*}
+        \sum_{j \in C_k} x_j \leq 1
+    \end{align*}
+    can be derived as a valid CP for the integer hull of the Max Stable set problem using Chv\'atal cuts.
+
+    For $k=3$:
+    \[
+        \begin{NiceArray}{rrrrl}
+            \nicefrac{1}{2} \times ( & x_1 & + x_2 &      & \leq 1)  \\
+            \nicefrac{1}{2} \times ( &     & x_2   & +x_3 & \leq 1)  \\
+            \nicefrac{1}{2} \times ( & x_1 &       & +x_3 & \leq 1)  \\
+            \hline
+                                     & x_1 & + x_2 & +x_3 & \leq 1.5
+        \end{NiceArray}
+    \]
+    This satisfies all Chv\'atal conditions, and thus
+    \begin{align*}
+        x_1+x_2+x_3 \leq 1 = \left\lfloor 1.5 \right\rfloor
+    \end{align*}
+    is a valid cutting plane.
+
+    Suppose we already have Chv\'atal derivation for some $k\geq 3$.
+    We prove that we can also find a derivation for any clique  $C_{k+1}$.
+    Since subsets of cliques are itself cliques, we can use $C_{k+1} \setminus \{1\}$ and $C_{k+1} \setminus \{k+1\}$
+    and derive by our inductive assumption that
+    \[
+        \begin{NiceArray}{rrrrrrl}
+            \nicefrac{1}{2} \times ( & x_1 & + x_2 & \dots & + x_k &           & \leq 1)  \\
+            \nicefrac{1}{2} \times ( &     & x_2   & \dots & + x_k & + x_{k+1} & \leq 1)  \\
+            \nicefrac{1}{2} \times ( & x_1 &       &       &       & + x_{k+1} & \leq 1)  \\
+            \hline
+                                     & x_1 & + x_2 & \dots & + x_k & + x_{k+1} & \leq 1.5
+        \end{NiceArray}
+    \]
+    and immediately get our constraint we wanted to derive by rounding down again.
+\end{aufgabe}
