@@ -1,0 +1,54 @@
+\vspace{5pt}\\\scalebox{0.6}{
+\begin{minipage}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[every node/.style = {circle, draw}]
+\node (Al) at (6, 5) {Al};
+\node (Au) at (7, 3) {Au};
+\node (Fl) at (10, 0.5) {Fl};
+\node (Ga) at (10, 4) {Ga};
+\node (Ky) at (6, 10) {Ky};
+\node (LS) at (0, 0) {LS};
+\node (MS) at (4, 5) {MS};
+\node (OM) at (1.5, 3) {OM};
+\node (Tn) at (9, 8) {Tn};
+\node (Vb) at (4, 9) {Vb};
+\end{scope}
+\begin{scope}[every edge/.style = {draw, semithick}]
+\path (Al) edge node[anchor=north] {160} (Au);
+\path (Al) edge node[anchor=north] {444} (Fl);
+\path (Al) edge node[anchor=north] {272} (Ga);
+\path (Al) edge node[anchor=north] {455} (Ky);
+\path (Al) edge node[anchor=north] {322} (LS);
+\path (Al) edge node[anchor=north] {88} (MS);
+\path (Al) edge node[anchor=north] {172} (OM);
+\path (Al) edge node[anchor=north] {312} (Tn);
+\path (Al) edge node[anchor=north] {238} (Vb);
+\path (Au) edge node[anchor=north] {297} (Fl);
+\path (Au) edge node[anchor=north] {200} (Ga);
+\path (Au) edge node[anchor=north] {419} (LS);
+\path (Au) edge node[anchor=north] {186} (MS);
+\path (Au) edge node[anchor=north] {279} (OM);
+\path (Au) edge node[anchor=north] {362} (Tn);
+\path (Au) edge node[anchor=north] {350} (Vb);
+\path (Fl) edge node[anchor=north] {335} (Ga);
+\path (Ga) edge node[anchor=north] {397} (Ky);
+\path (Ga) edge node[anchor=north] {351} (MS);
+\path (Ga) edge node[anchor=north] {396} (OM);
+\path (Ga) edge node[anchor=north] {208} (Tn);
+\path (Ga) edge node[anchor=north] {295} (Vb);
+\path (Ky) edge node[anchor=north] {477} (OM);
+\path (Ky) edge node[anchor=north] {189} (Tn);
+\path (Ky) edge node[anchor=north] {217} (Vb);
+\path (LS) edge node[anchor=north] {286} (MS);
+\path (LS) edge node[anchor=north] {296} (OM);
+\path (MS) edge node[anchor=north] {110} (OM);
+\path (MS) edge node[anchor=north] {384} (Tn);
+\path (MS) edge node[anchor=north] {266} (Vb);
+\path (OM) edge node[anchor=north] {404} (Tn);
+\path (OM) edge node[anchor=north] {248} (Vb);
+\path (Tn) edge node[anchor=north] {178} (Vb);
+\end{scope}
+\end{tikzpicture}
+\end{minipage}
+}\vspace{5pt}\\

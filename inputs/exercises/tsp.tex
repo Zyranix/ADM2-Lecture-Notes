@@ -1,0 +1,51 @@
+In this section we will solve $\TSP$ instances. 
+For the project, we used Gurobi with its Python-API in a Jupyter Notebook, see \autoref{sec:code_project}
+\subsection{First instance}
+First, have a look at our \enquote{good} graph $(V,E_G)$:
+\input{code/init_out_i1_1.tex}
+Solving following $\LP$ 
+\begin{mini*}{x}{\sum_{e\in E_G}x_e}{}{}
+    \addConstraint{\sum_{\{i,j\} \in \delta(i)} x_{\{i,j\}}}{=2, \quad}{\forall i \in V}
+    \addConstraint{x}{\leq 1}
+    \addConstraint{x}{\geq 0,}
+\end{mini*}
+i.e. using only degree constraints, we get:
+\input{code/gurobi_out_i1_1.tex}
+We see three subtours which we will eliminate by adding corresponding subtour constraints
+\input{code/subtour_constr_i1_2.tex}
+and get an integral Hamiltonian tour:
+\input{code/gurobi_out_i1_2.tex}
+Adding back all edges $V$ and modifying the constraints to include the new edges does indeed not 
+generate a better solution:
+\input{code/gurobi_out_i1_3.tex}
+The total length of the optimal integral Hamilton tour is thus \input{code/sol_val_i1.tex}.
+\subsection{Second instance}
+First, have a look at our \enquote{good} graph $(V,E_G)$:
+\input{code/init_out_i2_1.tex}
+Solving following $\LP$ 
+\begin{mini*}{x}{\sum_{e\in E_G}x_e}{}{}
+    \addConstraint{\sum_{\{i,j\} \in \delta(i)} x_{\{i,j\}}}{=2, \quad}{\forall i \in V}
+    \addConstraint{x}{\leq 1}
+    \addConstraint{x}{\geq 0,}
+\end{mini*}
+i.e. using only degree constraints, we get:
+\input{code/gurobi_out_i2_1.tex}
+We see two subtours which we will eliminate by adding corresponding subtour constraints
+\input{code/subtour_constr_i2_2.tex}
+and get following integral Hamiltonian path:
+\input{code/gurobi_out_i2_2.tex}
+However, if we add all edges now, we get a non-integral solution
+\input{code/gurobi_out_i2_3.tex}
+Therefore we add 2-matching constraints
+\input{code/2match_constr_i2_4.tex}
+and still get a non-integral solution 
+\input{code/gurobi_out_i2_4.tex}
+We add even more 2-matching constraints
+\input{code/2match_constr_i2_5.tex}
+and finally get 
+\input{code/gurobi_out_i2_5.tex}
+The total length is \input{code/sol_val_i2.tex}.
+
+\subsection{Code}
+See the folder \texttt{exercises/code} in our project.
+\label{sec:code_project}

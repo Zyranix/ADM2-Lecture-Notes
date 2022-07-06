@@ -1,0 +1,31 @@
+\vspace{5pt}\\\scalebox{0.6}{
+\begin{minipage}{\textwidth}
+\centering
+\begin{tikzpicture}
+\begin{scope}[every node/.style = {circle, draw}]
+\node (Al) at (6, 5) {Al};
+\node (Au) at (7, 3) {Au};
+\node (Fl) at (10, 0.5) {Fl};
+\node (Ga) at (10, 4) {Ga};
+\node (Ky) at (6, 10) {Ky};
+\node (LS) at (0, 0) {LS};
+\node (MS) at (4, 5) {MS};
+\node (OM) at (1.5, 3) {OM};
+\node (Tn) at (9, 8) {Tn};
+\node (Vb) at (4, 9) {Vb};
+\end{scope}
+\begin{scope}[every edge/.style = {draw, semithick}]
+\path (Al) edge node[anchor=north] {1.0} (LS);
+\path (Al) edge node[anchor=north] {1.0} (MS);
+\path (Au) edge node[anchor=north] {1.0} (Fl);
+\path (Au) edge node[anchor=north] {1.0} (Ga);
+\path (Fl) edge node[anchor=north] {1.0} (Ga);
+\path (Ky) edge node[anchor=north] {1.0} (Tn);
+\path (Ky) edge node[anchor=north] {1.0} (Vb);
+\path (LS) edge node[anchor=north] {1.0} (OM);
+\path (MS) edge node[anchor=north] {1.0} (OM);
+\path (Tn) edge node[anchor=north] {1.0} (Vb);
+\end{scope}
+\end{tikzpicture}
+\end{minipage}
+}\vspace{5pt}\\
