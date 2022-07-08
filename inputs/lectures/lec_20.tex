@@ -1,0 +1,64 @@
+%! TEX root = ../../master.tex
+\lecture[TODO]{Tu 05 July 2022}{TODO}
+\todo{contents lec20}
+
+\begin{definition}
+    Consider a binary constraint $a^Tx \leq b$ and some corresponding minimal Knapsack cover $C$.
+    We define
+    \begin{align*}
+        E(C) \coloneqq C \cap \{j \in N \mid a_j \geq \max_{k \in C} a_k\}
+    \end{align*}
+    as the \vocab{extended cover}.
+\end{definition}
+\begin{observe}
+    For $P^I$ and a extended cover $E(C)$ it always holds that
+    \begin{align*}
+        \sum_{j \in E(C)}a_j \leq |C|-1
+    \end{align*}
+    is also a valid cutting plane.
+    Moreover, the extended cover is \emph{sometimes} a facet, see \cite[Ch.~II.2, Prop. 23]{int-comb-optimization} for a detailed breakdown.
+\end{observe}
+\begin{example}
+    Consider for $x \in \bool$
+    \begin{align*}
+        7x_1+8x_2+9x_3+8x_4+22x_5 \leq 30.
+    \end{align*}
+    We see $C=\{1,2,3,4\}$ is a minimal cover, therefore we can derive the cutting plane
+    \begin{align*}
+        x_1+x_2+x_3+x_4 \leq 3
+    \end{align*}
+    and its extended cover $E(C) = \{1,2,3,4,5\}$ with the constraint
+    \begin{align*}
+        x_1+x_2+x_3+x_4+ \alpha x_5 \leq 3.
+    \end{align*}
+    How big can $\alpha$ be such that the constraint can still be valid?
+    For this, assume $x_5=1$ and look at the remaining RHS of $8$. Here, a maximum of 1 variable of $C$ can be chosen, so by rearranging
+    \begin{align*}
+        \alpha \leq 3 - (x_1+x_2+x_3+x_4) = 3-1=2
+    \end{align*}
+    and we get a \vocab{lifted cover constraint} of
+    \begin{align*}
+        x_1+x_2+x_3+x_4+ 2 x_5 \leq 3
+    \end{align*}
+    which is a facet.
+\end{example}
+
+\begin{definition}
+    Consider constraints of the form
+    \begin{align*}
+        \sum_j y_j & \leq b       \\
+        y_j        & \leq a_jx_j  \\
+        y          & \geq 0       \\
+        x          & \in \bool^n.
+    \end{align*}
+    We call these constraints with \vocab{variable upper bounds}.
+    For these, we define a \vocab{flow cover} as follows:
+    Let $C$ be any cover. We define $\lambda = a(C)-b > 0$ as the \vocab{excess cap} of $C$.
+\end{definition}
+\todo{what exactly flow cover?}
+For each \todo{ahahhhhhhhhh}
+\subsection{Branch and Bound}
+Consider again $\TSP$ with binary variables for every edge.
+Note that there are quadratically many variables - for the $\IP$ solver this is way too much!
+But we might consider heuristic ideas that use only \enquote{good} edges.
+For example, we can consider only \emph{short} edges under some threshold.
