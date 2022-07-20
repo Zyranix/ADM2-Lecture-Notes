@@ -110,7 +110,7 @@ Using this theorem might enable us to create an algorithm!
     The cardinality of a matching is at most the cardinality of a node cover.
     For the special case of bipartite graphs, König's theorem state that they are even equal.
 \end{recall}
-\begin{theorem}[\vocab{Tutte-Berge}]
+\begin{theorem}[\vocab{Tutte-Berge}]\label{thm:tutte-berge}
     For $G=(N,E)$,
     \begin{align*}
         \max_{\text{matching } M}|M|= \min_{X \subseteq V} \frac{1}{2}(|V|-\oc(X)+|X|)
@@ -127,7 +127,7 @@ Using this theorem might enable us to create an algorithm!
     the right side of our equation many matched edges.
 \end{proof}
 \begin{proof}[Proof of $\geq$]
-    See tutorial.
+    See tutorial or \autoref{thm:reverse-tb}.
 \end{proof}
 \begin{definition}[Cycle-shrinking]
     For an odd cycle $C$ in $G$, we define $G' \coloneqq G \times C$ to be the graph
@@ -229,7 +229,7 @@ Using this theorem might enable us to create an algorithm!
     By this procedure, it is generally \emph{not} true that $M$ is maximum iff $M'$ is maximum.
     Therefore, we need to circumvent this issue in order to use this fact.
 \end{warning}
-\begin{theorem}
+\begin{theorem} \label{thm:cycle-shrinking}
     Given $G,M$, and an odd cycle $C$ such that
     \begin{align*}
         |M \cap C| = \frac{|C|-1}{2}.

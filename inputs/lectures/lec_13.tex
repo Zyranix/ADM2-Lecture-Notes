@@ -1,18 +1,135 @@
 %! TEX root = ../../master.tex
-\lecture[TODO]{Tu 07 June 2022}{TODO}
-\todo{lec12 topics}
+\lecture[Blossom algorithm for cardinality matching. Equivalence of min-cost perfect matching and max-weight general matching. Their $\LP$ formulations. Idea for blossom algorithm on general matchings.]{Tu 07 June 2022}{Blossom algorithms}
 
 \begin{algorithm}[H]
     \SetAlgoLined
-
-    Use binary search to find $z^*$ in $\mathcal{O}(\log n)$\\
-    $G' \leftarrow G = (V,E)$\\
-    \For{$i=1,...,n$}{
-        $G'' \leftarrow G'$, but remove all edges incident to node $i$\\
-        \If{Call of decision oracle on $G'',z^*$ is true}{
-            $G' \leftarrow G''$\\
+    Graph $G=(V,E)$, matching $M$\\
+    Maintain $M$-alternating forests for all $M$-exposed nodes as roots.
+    \While{any following case can still occur}{
+        \If{$v\in V$ can extend tree}{
+            extend this tree with corresponding edge $(u,v)$
+        }
+        \If{blossom exists}{
+            shrink blossom and adjust $M$
+        }
+        \If{$M$-augmenting path exists between two roots}{
+            augment $M$ along this path
         }
     }
+    Deshrink blossoms and readjust $M$\\
+    return $M$
     \caption{Blossom algorithm for maximum matching}
+    \label{alg:blossom}
 \end{algorithm} \noindent
-\todo{lec12}
+\begin{theorem}
+    If \autoref{alg:blossom} stops, its output is a maximal matching.
+\end{theorem}
+\begin{proof}
+    Let $M$ be the matching after termination and $T_1, \dots, T_k$ its $M$-alernating trees.
+    Let $A_1,\dots,A_k$ ($B_1,\dots,B_k$) be the set of nodes with odd (even) distance from the corresponding tree's root.
+    Consider $A\coloneqq \dot\bigcup A_i$ and $B \coloneqq \dot\bigcup B_i$.
+    Then all nodes in $V \setminus (A\cup B)$ must be already matched.
+    Therefore, all its components are of even size (and form a perefect matching by itself).
+    Since the algorithm stopped, there are no edges between nodes in $B$ (otherwise there is an augmenting path or blossom).
+    So, $B$ has $|B|$ odd components.
+    Therefore $\oc(A) = |B|$. Recall $|B_i| = |A_i| +1$, and being disjoint unions $\oc(A)-|A|=k$.
+    The current matching has exactly its $k$ roots as $M$-exposed nodes.
+    By \autoref{thm:tutte-berge}, the cardinality of any matching is at most
+    \begin{align*}
+        \min_{X \subseteq V} \frac{1}{2} (|V| - (\oc(X) - |X|)) & =  \frac{1}{2} (|V| - \max_{X \subseteq V}(\oc(X) - |X|)) \\
+                                                                & \leq  \frac{1}{2} (|N| - (\oc(A) - |A|))                  \\
+                                                                & =  \frac{1}{2} (|N| - k) = |M|
+    \end{align*}
+    which proves maximality of $|M|$ for the shrunk graph.
+    By \autoref{thm:cycle-shrinking}, the reextended matching is also maximal in the original graph.
+\end{proof}
+\begin{corollary} \label{thm:reverse-tb}
+    This proves the $\geq$-direction of \autoref{thm:tutte-berge}.
+\end{corollary}
+\begin{remark}
+    The naive running time is given by $\Oh(n)$ augmenting steps which extends $\Oh(n)$ trees and shrinks $\Oh(n)$ blossoms each.
+    Since every blossom shrinking needs $\Oh(n)$ our running time is $\Oh(n^3)$.
+
+    However, using more efficient tree data structures can improve the running time to $\Oh(mn \log n)$.
+    Furthermore, ensuring augmentations use only shortest augmenting paths further reduces the time to $\Oh(\sqrt{n} \cdot m)$.
+    See \cite[Thm.~5.11]{comb-optimization-cook}.
+\end{remark}
+Now let us try to  generalize this method to weighted matchings.
+\begin{theorem}
+    Following problems are equally hard to solve:
+    \begin{enumerate}
+        \item min-cost perfect matching (i.e. $c^Tx$), and
+        \item max-weight general matching (i.e. $w^Tx$).
+    \end{enumerate}
+\end{theorem}
+\begin{proof}[Proof for $2. \implies 1$]
+    Set $w^0 \coloneqq -c$ and let $w_{\min}$ be the smallest entry of $w^0$.
+    If $w_{\min} < 0$, set $w^1 \coloneqq w^0-w_{\min} \cdot \mathbf{1}$ to ensure $w^1 \geq 0$ (otherwise $w^1 \coloneqq w^0$).
+    Let $w_{\max}$ be $n$ times the largest entry of $w^1$ and define $w^2 \coloneqq w^1 + w_{\max} \cdot \mathbf 1$.
+
+    We show: Finding a max-weight general matching on $(w^2)^Tx$ is also a min-cost perfect matching.
+    Suppose there is an augmenting path $P$. Then the cost change by augmenting is given by
+    \begin{align*}
+        \sum_{e \in P \setminus M} w_e^2 - \sum_{e \in P \cap M} w_e^2 & = \sum_{e \in P \setminus M} w_e^1 + w_{\max} - \sum_{e \in P \cap M} w_e^1 + w_{\max}                                           \\
+                                                                       & = w_{\max} + \underbrace{\sum_{e \in P \setminus M} w_e^1}_{\geq 0} - \underbrace{\sum_{e \in P \cap M} w_e^1}_{< w_{\max}} > 0.
+    \end{align*}
+    As a consequence, we will always choose a perfect matching if one exists.
+    By definition and because the number of chosen edges is fixed, it must have minimal cost.
+\end{proof}
+\begin{proof}[Proof for $1. \implies 2$]
+    Set $c = -w$.
+    Define the graph $G' = (V',E')$ as two merged copies $G^1,G^2$ of the original $G$ such that
+    $G'$ also includes self-crossing-edges, i.e.
+    \begin{align*}
+        V' & = V^1\ \dot\cup\ V^2,                                       \\
+        E' & = E^1\ \dot\cup\ E^2\ \dot\cup\ \{(i^1,i^2) \mid i \in V\}.
+    \end{align*}
+    Then we can always choose a perfect matching by mirroring a possibly non-perfect matching of $G$ in $G^1$ and $G^2$,
+    and fill unmatched nodes with these zero-cost crossing edges.
+\end{proof}
+Consider the $\LP$ relaxations of the two variants of weighted matchings
+\begin{maxi}{x}{w^Tx}{}{} \label{eq:primal-general-matching}
+    \addConstraint{x(\delta(\{i\}))}{\leq 1, \quad}{\forall i \in V}
+    \addConstraint{x(\gamma(S))}{\leq \frac{|S|-1}{2}, \quad}{\forall S \subseteq V,\ |S| \text{ odd}}
+    \addConstraint{x}{\geq 0}
+\end{maxi}
+and
+\begin{mini}{x}{c^Tx}{}{} \label{eq:primal-perfect-matching}
+    \addConstraint{x(\delta(\{i\}))}{= 1, \quad}{\forall i \in V}
+    \addConstraint{x(\delta(S))}{\geq 1, \quad}{\forall S \subseteq V,\ |S| \text{ odd}}
+    \addConstraint{x}{\geq 0.}
+\end{mini}
+We call the second set of constraints \vocab{blossom constraints}.
+These are supposed to make $\nicefrac{1}{2}$-integral solutions (and therefore weird things happening in the blossoms) infeasible.
+Now also consider their duals
+\begin{mini}{y,z}{\sum_i y_i + \sum_S \frac{|S|-1}{2} z_S}{}{} \label{eq:dual-general-matching}
+    \addConstraint{y_i +y_j + \sum_{S: i,j \in S} z_s}{\geq w_{i,j}, \quad}{\forall (i,j) \in E}
+    \addConstraint{y,z}{\geq 0}
+\end{mini}
+and
+\begin{maxi}{x}{\sum_i y_i + \sum_S z_S}{}{} \label{eq:dual-perfect-matching}
+    \addConstraint{y_i +y_j + \sum_{S:i\in S \text{ or } j \in S} z_S}{\leq c_{i,j}, \quad}{\forall  (i,j) \in E}
+    \addConstraint{z}{\geq 0}
+    \addConstraint{y}{\text{ free.}}
+\end{maxi}
+Using these formulation we want to find to reuse the blossom shrinking idea to construct
+the desired algorithm.
+Note that we can assign $z_s$ to blossoms and set $y_S \coloneqq z_S$ for the pseudonode $S$ after shrinking.
+Consider the reduced cost for an edge $e = \{i,j\}$:
+\begin{align*}
+    \eqref{eq:dual-general-matching}: &  & y_i + y_j + \sum_{S: i,j \in S}  z_S - w_{i,j}                          & \geq 0 \\
+    \eqref{eq:dual-perfect-matching}: &  & c_{i,j} - y_i - y_j - \sum_{S:i\in S \text{ or } j \in S} z_S - w_{i,j} & \geq 0 \\
+\end{align*}
+Either this term or $x_{i,j}$ must be 0 by complementary slackness.
+So, $e \in M$ only if it has reduced cost $0$.
+Thus, forest groth is blocked by lack of such edges.
+The idea now is to update the dual variables in the blossom algorithm, but the details are omitted.
+\begin{theorem}
+    The runtime of this algorithm is $\Oh(n^3)$.
+\end{theorem}
+\begin{corollary}
+    Both primal formulations \eqref{eq:primal-general-matching}, \eqref{eq:primal-perfect-matching} have integral vertices.
+\end{corollary}
+\begin{theorem}
+    It holds that \eqref{eq:dual-general-matching} is totally dual integral, whereas \eqref{eq:dual-perfect-matching} is not and has $\nicefrac{1}{2}$-integral solutions.
+\end{theorem}
