@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.1)  20 JUL 2022 15:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.1)  20 JUL 2022 20:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3685,21 +3685,37 @@ Overfull \hbox (8.42677pt too wide) in paragraph at lines 59--59
 
 LaTeX Warning: Marginpar on page 74 moved.
 
-) (./inputs/lectures/lec_21.tex)
-Overfull \hbox (27.47742pt too wide) in paragraph at lines 52--52
+) (./inputs/lectures/lec_21.tex
+Overfull \hbox (27.47742pt too wide) in paragraph at lines 8--8
 []$[]$ 
  []
 
-(./inputs/lectures/lec_22.tex)
-Overfull \hbox (27.47742pt too wide) in paragraph at lines 53--53
+
+LaTeX Warning: Marginpar on page 74 moved.
+
+) (./inputs/lectures/lec_22.tex
+Overfull \hbox (27.47742pt too wide) in paragraph at lines 3--3
 []$[]$ 
  []
 
-(./inputs/lectures/lec_23.tex)
-Overfull \hbox (27.47742pt too wide) in paragraph at lines 54--54
+
+LaTeX Warning: Marginpar on page 74 moved.
+
+
+LaTeX Warning: Marginpar on page 74 moved.
+
+) (./inputs/lectures/lec_23.tex
+Overfull \hbox (27.47742pt too wide) in paragraph at lines 3--3
 []$[]$ 
  []
 
+
+LaTeX Warning: Marginpar on page 74 moved.
+
+
+LaTeX Warning: Marginpar on page 74 moved.
+
+)
 
 LaTeX Warning: Marginpar on page 74 moved.
 
@@ -3874,17 +3890,17 @@ mtt/m/n/10 https : / / onlinelibrary .
 
 ] (./full.aux)
 Package rerunfilecheck Info: File `full.out' has not changed.
-(rerunfilecheck)             Checksum: 3EC8E9934D26120B5D6FEEAA596E2D37;6250.
+(rerunfilecheck)             Checksum: 1328CBB6D9AADE21E113577AB2B4AB7C;6250.
 Package logreq Info: Writing requests to 'full.run.xml'.
 \openout1 = `full.run.xml'.
 
  )
 (\end occurred when \ifx on line 11 was incomplete) 
 Here is how much of TeX's memory you used:
- 71341 strings out of 478037
- 1598855 string characters out of 5841058
- 2409309 words of memory out of 5000000
- 87581 multiletter control sequences out of 15000+600000
+ 71387 strings out of 478037
+ 1599898 string characters out of 5841058
+ 2411042 words of memory out of 5000000
+ 87621 multiletter control sequences out of 15000+600000
  505000 words of font info for 145 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  112i,23n,145p,3460b,2792s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -3928,10 +3944,10 @@ sfrm0900.pfb></opt/texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfrm10
 /texlive/texdir/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb></opt/texli
 ve/texdir/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></opt/texlive/tex
 dir/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on full.pdf (101 pages, 921648 bytes).
+Output written on full.pdf (101 pages, 923623 bytes).
 PDF statistics:
- 2033 PDF objects out of 2073 (max. 8388607)
- 1774 compressed objects within 18 object streams
- 850 named destinations out of 1000 (max. 500000)
+ 2040 PDF objects out of 2073 (max. 8388607)
+ 1781 compressed objects within 18 object streams
+ 856 named destinations out of 1000 (max. 500000)
  429 words of extra memory for PDF output out of 10000 (max. 10000000)
 
